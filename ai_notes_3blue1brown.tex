@@ -12,7 +12,7 @@
 \usepackage[export]{adjustbox}
 \usepackage{hyperref}
 \usepackage{placeins}
-\usepackage{fancyref}
+\usepackage{xcolor}
 
 \hypersetup{
     colorlinks,
@@ -21,8 +21,13 @@
     linkcolor=black,
     urlcolor=black
 }
-\usepackage{chngcntr}
-\counterwithin{figure}{section}
+% references still not showing the way they should.
+% \usepackage{chngcntr}
+% \counterwithin{figure}{section}
+% \counterwithin{figure}{subsection}
+
+%\setcounter{secnumdepth}{3} % default value for 'report' class is "2"
+%\setcounter{tocdepth}{3}
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -32,9 +37,6 @@
 \lhead{\nouppercase{\leftmark}}
 \cfoot{\thepage}
 \graphicspath{{"./img/"}}
-
-%\setcounter{secnumdepth}{3} % default value for 'report' class is "2"
-%\setcounter{tocdepth}{3}
 
 \newcommand{\lbl}[1]{(see image \ref{#1})}
 \newcommand{\img}[1]{
@@ -61,7 +63,9 @@ Neural Networks \\
 \vspace{0.5cm}
 
 \section{Introduction}
-Notes for the introduction to neural networks presented by \textbf{3blue1brown}. Watch the whole series here: \href{https://www.youtube.com/watch?v=aircAruvnKk}. This series describes the strategy to recognize handwritten numbers.
+Notes for the introduction to neural networks presented by \textbf{3blue1brown}. Watch the whole series, click \href{https://www.youtube.com/watch?v=aircAruvnKk}{\color{blue} {here}}. This series describes the strategy to recognize handwritten numbers.
+
+To navigate to reference / heading just click on the name.
 
 \clearpage
 
@@ -153,16 +157,6 @@ A very important summary: \textit{The activation of a neuron is basically a meas
 \end{figure}
 
 Another important tool is the so called \textbf{bias} which acts a sort of lower bound for the activation of the neuron. Say you want the neuron to only detect very thick and bright lines. Then you need this bias to to say something like \textit{only light up when weighted sum is greater than 10} \lbl{ai_10}. This can be achived by subtracting the bias inside the sigmoid function.
-
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[max width=.9\textwidth]{ai_10.png}
-	\label{fig:ai_10}
-\end{figure}
-
-\ref{fig:ai_10}
-%\ref{fig:ai_10} \autoref{fig:ai_10}
 
 \end{document}
 
