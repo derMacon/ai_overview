@@ -58,14 +58,11 @@ Neural Networks \\
 
 \vspace{0.5cm}
 \tableofcontents
-\vspace{0.5cm}
+\vspace{1cm}
+
+Notes for the introduction to neural networks presented by \textbf{3blue1brown}. Watch the whole series, click \href{https://www.youtube.com/watch?v=aircAruvnKk}{\color{blue} {here}}. This series describes the strategy to recognize handwritten numbers. To navigate to reference / heading just click on the name.
+
 \listoffigures
-\vspace{0.5cm}
-
-\section{Introduction}
-Notes for the introduction to neural networks presented by \textbf{3blue1brown}. Watch the whole series, click \href{https://www.youtube.com/watch?v=aircAruvnKk}{\color{blue} {here}}. This series describes the strategy to recognize handwritten numbers.
-
-To navigate to reference / heading just click on the name.
 
 \clearpage
 
@@ -157,6 +154,45 @@ A very important summary: \textit{The activation of a neuron is basically a meas
 \end{figure}
 
 Another important tool is the so called \textbf{bias} which acts a sort of lower bound for the activation of the neuron. Say you want the neuron to only detect very thick and bright lines. Then you need this bias to to say something like \textit{only light up when weighted sum is greater than 10} \lbl{ai_10}. This can be achived by subtracting the bias inside the sigmoid function.
+
+
+% -------------------------------------------------- 
+
+\subsection{Notation - Learning process}
+
+\begin{figure}[!htbp]
+\img{ai_11}
+\caption{Systemwide number of weights and biases}
+\end{figure}
+
+The \textit{learning process} generally describes the algorithm to set all those weights and biases needed for each and every node in the network. Since the given example network has 784 base input nodes, two hidden layers with 16 nodes each and a 10 node output layer, the whole system all in all has 13 002 values to set \lbl{ai_11}.
+
+\begin{figure}[!htbp]
+\img{ai_12}
+\caption{vector notation}
+\end{figure}
+
+To write the value / activation for each node in a more compact way than seen in \ref{ai_10} the vectore notation is being used quite often \lbl{ai_11}. The structure is as follows: First comes the weight matrix. In each row the matrix holds the weight for the connection between a given neuron on the current layer with one particular neuron on the next layer. E.g. the first row holds the information displayed in the picture \lbl{ai_11}. The matrix vector multiplication actually conveys the same information as the stated sum above. The resulting vector represents the activation of the nodes on the next layers. Afterwards a vector containing the bias for each node is being added to the product. To normalize the resulting activations will be transformed with the formally discussed \textbf{sigmoid} function by wrapping this function around everything.
+
+
+
+
+% -------------------------------------------------- 
+
+\section{Gradient descent, how neural networks learn}
+
+The basic idea is that you feed the network with testdata which form the previously discussed connections. During the learning phase the networks gets feedback on how it is performing and how it can improve. Once it is fairly accurate it is expected to be able to recognize pattern outside of the given testdata. To start all this the network gets assigned random numbers in all the weights and biases.
+
+% -------------------------------------------------- 
+
+\subsection{Cost function}
+
+\begin{figure}[!htbp]
+\img{ai_13}
+\caption{Cost function for one input}
+\end{figure}
+
+To give the network a feedback we need to define a cost function. This function takes an input input and checks if the output of the network corresponds with the expected output stated in the testcase. To do so the function calculates the square of difference between the expected and the actual output and adds all those up for all the nodes. E.g. see \ref{ai_13}. The network is not sure which digit it may be and besides the 1 suggest multiple other numbers. In a perfect world all other neurons should have an activation of zero while the one has an activation of also one. \textit{The \textbf{cost} of the actual output is high while the cost of the optimal output is low.} The \textbf{cost} of the whole network is defined by the average of those costs over all the training data.
 
 \end{document}
 

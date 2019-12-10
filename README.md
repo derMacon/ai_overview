@@ -3,6 +3,6 @@
 * youtube - [part 1](https://www.youtube.com/watch?v=aircAruvnKk)
 
 ### Reminder
-* Part 1 - 7:35
+* Part 2 - 6:02
 
 
