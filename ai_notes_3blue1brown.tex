@@ -13,6 +13,7 @@
 \usepackage{hyperref}
 \usepackage{placeins}
 \usepackage{xcolor}
+\usepackage{float}
 
 \hypersetup{
     colorlinks,
@@ -21,6 +22,7 @@
     linkcolor=black,
     urlcolor=black
 }
+
 % references still not showing the way they should.
 % \usepackage{chngcntr}
 % \counterwithin{figure}{section}
@@ -62,8 +64,8 @@ Neural Networks \\
 
 Notes for the introduction to neural networks presented by \textbf{3blue1brown}. Watch the whole series, click \href{https://www.youtube.com/watch?v=aircAruvnKk}{\color{blue} {here}}. This series describes the strategy to recognize handwritten numbers. To navigate to reference / heading just click on the name.
 
+\clearpage
 \listoffigures
-
 \clearpage
 
 \section{But what is a neural network?}
@@ -153,7 +155,7 @@ A very important summary: \textit{The activation of a neuron is basically a meas
 \caption{Activation displayed with bias and sigmoid function}
 \end{figure}
 
-Another important tool is the so called \textbf{bias} which acts a sort of lower bound for the activation of the neuron. Say you want the neuron to only detect very thick and bright lines. Then you need this bias to to say something like \textit{only light up when weighted sum is greater than 10} \lbl{ai_10}. This can be achived by subtracting the bias inside the sigmoid function.
+Another important tool is the so called \textbf{bias} which acts a sort of lower bound for the activation of the neuron. Say you want the neuron to only detect very thick and bright lines. Then you need this bias to say something like \textit{only light up when weighted sum is greater than 10} \lbl{ai_10}. This can be achived by subtracting the bias inside the sigmoid function.
 
 
 % -------------------------------------------------- 
@@ -207,21 +209,14 @@ To generate the next minimum to a given point we take the slope of the function 
 But it isn't enough to just take one point and run it with the explained algorithm, there need to be multiple points on the curve to determine the other minimums. Taking this approach we can find more minima and from those findings can determine the best / smallest one. Although we find more minima than before there is not guarantee for finding \textbf{all} minima.
 
 \begin{figure}[!htbp]
-\img{ai_14}
-\caption{Fining minimum 3d}
+\img{ai_16}
+\caption{Finding minimum 3d}
 \end{figure}
 
 Now consider a function taking in 2 input values and generating one output value \lbl{ai_14}. We can display this function as a surface on the xy plane in the 3d space. Now the challenge is to find the best minimum here. Again looking at the previous example we need to spread out points over the function where we want to take a look at the direction of the next minimum. To do so we need to take a look at the gradient vector. Inverting this we get a vector point pointing \textit{downhill} to the next minimum \lbl{ai_16}. 
 
-\begin{figure}[!htbp]
-\img{ai_16}
-\caption{Fining minimum 2d}
-\end{figure}
-
 %To put in in perspective with the cost function we need to imagine the 
 This principle can be applied to the given cost function of the network. To do so the cost function needs to be interpreted as a function taking all the weights in as parameters and generates a single output values. It is the same as the last example with the 3d space. When interpreting the cost function as some kind of x dimensional surface we need to find the direction for the minimum. As explained this can be done by taking the negative Gradient of the current value. 
-
-\clearpage 
 
 \begin{figure}[!htbp]
 \img{ai_17}
@@ -232,8 +227,67 @@ To write it in a compacter way we define a vector with all of the networks weigh
 
 When minimizing the cost function this way we don't minimize the function for one specific training example but for all possible training data samples. The algorithm for computing this gradient efficiently which is effectifly the part of how a neural network learns is called \textbf{backpropagation} (which has its own chapter). 
 
+\begin{figure}[!htbp]
+\img{ai_18}
+\caption{Finding minimum 3d}
+\end{figure}
+
+A way to interpret the given gradient vector is to associate each component value as an indicator for its importance on the overall cost function \lbl{ai_18}. Meaning tweaking a weight with a higher value has more influence on minimizing the cost function than a value with a low value.
 
 
+
+% -------------------------------------------------- 
+
+\section{What is backpropagation really doing?}
+
+Backpropagation is a way to compute the gradient to \textit{tell} the neural network what weights need to be changed. 
+
+\subsection{Intiutive walkthrough}
+
+\begin{figure}[!htbp]
+\img{ai_19}
+\caption{Desired changes to previous layer}
+\end{figure}
+
+When looking at a training sample we interpret the \textit{importance} of changing the activations of the different output neurons. In this example it is more important to increase the neuron with the value 2 rather than decreasing the neuron with the value eight since the eight is closer to the point where it should be. 
+
+
+\begin{figure}[!htbp]
+\img{ai_20}
+\caption{Which weights need to change}
+\end{figure}
+
+To see which parameters need change in detail we first have to take a look at one specific neuron. In this example the one holding the value of two. The \textit{activation} of the neuron depends on multiple factors. To increase the value of the output neuron we can increase the \textit{bias}, increase the weights and we can change the activation from the previous layer.
+
+Importance here: The neuron with a higher weight have a larger influence on the perceiving layer than the ones with a lower one. So its generally a good idea to to increase the weight of lit neurons who already have a larger weight than those who have not. But it's not enough to just look at the weights applied on this particular neuron. It is important to also check with the computed gradient from the cost function to see which of those neurons has the biggest influence on the cost function itself (in the video repeadedtly referred to as \textit{getting the most bang for your bug.}) 
+
+Conclusion: \textit{Those neurons that fire together wire together.} it is important to see that the biggest increase of the weights / the biggest strengthening of connections happens between neurons happens between neurons which are the most active and the ones we \textbf{wish} to become more active. While changing the weights and bias for one specific neuron does not bring change to any of the other neurons on the layer we have to also take in account what the neuron wants. Accourding to this priciple the two \textit{wants} the less active neurons with a negative weight should become more dimmer and the ones with a higher weight and activation should become brighter to overall increase the activation of the neuron itself. 
+
+\begin{figure}[!htbp]
+\img{ai_21}
+\caption{Desired changes - single neuron}
+\end{figure}
+
+But since it is not possible to directly influence the activation of the previous neurons from the last layer, we have to keep track of those \textbf{\textit{wishes}}. Since all the neurons on the same layer apply this principle and can propose their \textbf{wishes} regarding the brightness / activation of the previous layers we can tracked. Afterwards we need to add those desired changes together under the premise of the \textbf{influence} each neuron needs to have accourding to their difference to the optimal solution (discussed on the last paragraph). 
+
+\begin{figure}[H]
+\img{ai_22}
+\caption{Computing negative gradient vector - Average}
+\end{figure}
+
+
+% -------------------------------------------------- 
+
+\subsection{Stachastic gradient descent}
+
+After taking in all the desired changes from the top layer we need to apply the same principle to the underlying layer hence \textbf{propagating backwards}. This process describes what needs to happen on for a single test sample. But to lower the cost function for the all samples we need to compute the average for all training data samples. When putting all those together again as an output vector we roughly get the previously mentioned \textit{gradient vector}.
+
+\begin{figure}[!htbp]
+\img{ai_23}
+\caption{Plotted stochastic gradient descent on 3d space}
+\end{figure}
+
+The only problem with this is that to compute a complete gradient descent step for all samples. In reality the whole collectio of testdata will be subdivided into subsets \textit{(Mini-batches)} with which the steps are not as precise as with the whole set of samples but it is much faster to compute and is also capable of finding the minimum (it only takes more steps). Figure \ref{ai_23} displays what those steps might look like if they were plotted in the simplyfied three dimensional space.
 
 \end{document}
 
