@@ -2,6 +2,8 @@
     * Fhw lecture
         * Simpsons Paradox (wie wichtig?)
         * Data mining
+        * S. 152: One possible solution??? 
+            * gerenerell das overfitting nicht genau verstanden
 
 
 ## Important Keywords for further research
@@ -36,3 +38,6 @@
 * NLP / Text Mining: What does it mean?
 * Association analysis: What goes with this?
 
+* K-fold cross validation
+* Overfitting
+* clustering (insbes. k-Means)

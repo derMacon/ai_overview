@@ -13,7 +13,9 @@
 * Data science is the intersection of hacking skills, math and statistics knowledge and substantive experience
     * answering questions with data for better action decisions
 
-## Machine Learning - Intro
+## Machine Learning 
+
+### Intro
 * Paradigm shift between traditional programming and machine learning: 
     * TP: Takes in Data and so called rules to determine the computation for the answers
     * ML: Takes in Data and Answers for predifined problems and computes the answers using a model
@@ -55,8 +57,93 @@
 * **simple linear regression**: one predictor and one outcome (predicant)
 * **multiple linear regression**: multiple predictors and one outcome (predicant)
 
+### Cross validation
+* The process to test the model on differen datasets and determine its' quality.
+![corss validation](./img/04.png)
+* **Training set**: a set of examples used for learning where the target value is known
+* **Validation set**: a set of examples used to tune the architecture of a classifier and estimate the error
+* **Test set**: used only to assess (= beurteilen) the performances of a classifier. It is never used during the training process so that the error on the test set provides an unbiased estimate of the generalization.
+
+* **K-Fold**-cross validation: 
+![k-fold cross validation](./img/05.png)
+
+### ML - common problems
+* **Overfitting**: Model performs well on the data used during training and poorly on new data.
+![overfitting 1](./img/06.png)
+![overfitting 2](./img/07.png)
+* Solutions for overfitting: 
+    * remove noise (outliners)
+    * train with more data
+    * reduce model complexity (features, polynomial degree, etc.)
+    * regularization
+    * try another algorithm
+
 ### Hypothsis function
 ![Hypothsis function 1](./img/02.png)
 ![Hypothsis function 2](./img/03.png)
+* Error (aka loss or cost) function: MSE - Mean Square Error
+![cost function visualized](./img/08.png)
+
+### Gradient descent
+![gradient descent](./img/09.png)
+
+### Cluster analysis
+* Where does it belong to? How is it organized?
+* Popular algorithms: 
+    * k-Means
+    * Fuzzy k-Means 
+    * Hierarchical clustering
+* Typical example: Image recognition (e.g. apple vs. pear)
+* _Clustering is simple grouping things together according to similar features and attributes._
+* Objective of clustering: 
+    * Discover structures and patterns in high-dim. data.
+    * Pragmatic (= sachbezogen) grouping of data with similar patterns
+    * Clustering reduces the complexity and facilitates (= erleichern) interpretation
+
+* **K-Means**: Steps
+    * 1. Select the number of clusters you want to identify in your data. This is the _K_ in _K-Means clustering_. 
+    * 2. Randomly select k distinct data points. (Initial clusters)
+    * 3. Measure Measure the distance between the nth point and the generated initial clusters. 
+    * 4. Assign the nth point to the nearest cluster.  
+    * repeat steps 2 till 4 until every data point has been looked at.
+    * 5. Calculate the mean (= Durchschnitt) of each cluster. 
+    * We can assess the quality of the clustering by adding up the variation within each cluster
+    * Since k-means clustering can't _see_ the best clustering, its only optionis to keep track of these clsuters, and their total variance, and dot the whole thing over again with different starting points.
+
+![k-means clsutering 1](./img/10.png)
+![k-means clsutering 2](./img/11.png)
+
+* Conclusion: 
+    * **Minimize with group variance** for tight clusters
+    * **Maximize between group variance** for well sepearted clusters 
+
+### Classification
+* Question: Is this A or B?
+* Classification is the process of taking some sort of input and assigning a label (aka category, class) to it.
+    * Labels are discrete values (e.g. yes or no)
+    * Example: Is this e-mail actually spam? Is the tumor malignant (cancer) or not? What kind of breed is that dog?
+* Popular algorithms: 
+    * k-nearest neighbors (kNN)
+    * Decision trees
+    * Logistic regression
+    * naive Bayes
+    * Support vector machines (SVN)
+    * Artificial neural networks (ANN)
+* deeply connected to the topic of big data.
+* Distinction between _binary_ and _multiclass_ classification
+    * **Binary**: clasification task with (binary, e.g. yes / no; 0 / 1) classes
+    * **Multiclass**: classification task with more than two classes (classess are mutually exclusive)
+
+* k-Nearest Neightbors (kNN):
+* k-Nearest Neighbors (or k-NN) is a simple machine learning algorithm that categorizes an input by using its k nearest neighbors 
+* steps: 
+    * 1. Start with a dataset with known categories. The dataset needs to be already clustered. 
+    * 2. Then we add a new data point with unknown category to the plot. 
+    * 3. We classify the data point by looking at the nearest annotated points. (i.e. the _nearest neighbors_)
+        * If the K is equal to 1, then we only use the nearest neighbor to define the category. 
+        * With a larger K we pick the category with the most votes.
+
+![k-Nearest neighbors](./img/12.png)  
+
 
 
