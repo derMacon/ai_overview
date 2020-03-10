@@ -43,7 +43,7 @@
 * Association analysis: What goes with this?
 
 ### Linear regression
-![linear regression](./img/01.png)
+![linear regression](./img/01.png | width=80)
 * Example: How much / many would a user spend on e.g. candy crush
 * Popular algorithms: 
     * Linear regression
@@ -59,18 +59,18 @@
 
 ### Cross validation
 * The process to test the model on differen datasets and determine its' quality.
-![corss validation](./img/04.png)
+![corss validation](./img/04.png | width=80)
 * **Training set**: a set of examples used for learning where the target value is known
 * **Validation set**: a set of examples used to tune the architecture of a classifier and estimate the error
 * **Test set**: used only to assess (= beurteilen) the performances of a classifier. It is never used during the training process so that the error on the test set provides an unbiased estimate of the generalization.
 
 * **K-Fold**-cross validation: 
-![k-fold cross validation](./img/05.png)
+![k-fold cross validation](./img/05.png | width=80)
 
 ### ML - common problems
 * **Overfitting**: Model performs well on the data used during training and poorly on new data.
-![overfitting 1](./img/06.png)
-![overfitting 2](./img/07.png)
+![overfitting 1](./img/06.png | width=80)
+![overfitting 2](./img/07.png | width=80)
 * Solutions for overfitting: 
     * remove noise (outliners)
     * train with more data
@@ -79,13 +79,13 @@
     * try another algorithm
 
 ### Hypothsis function
-![Hypothsis function 1](./img/02.png)
-![Hypothsis function 2](./img/03.png)
+![Hypothsis function 1](./img/02.png | width=80)
+![Hypothsis function 2](./img/03.png | width=80)
 * Error (aka loss or cost) function: MSE - Mean Square Error
-![cost function visualized](./img/08.png)
+![cost function visualized](./img/08.png | width=80)
 
 ### Gradient descent
-![gradient descent](./img/09.png)
+![gradient descent](./img/09.png | width=80)
 
 ### Cluster analysis
 * Where does it belong to? How is it organized?
@@ -110,8 +110,8 @@
     * We can assess the quality of the clustering by adding up the variation within each cluster
     * Since k-means clustering can't _see_ the best clustering, its only optionis to keep track of these clsuters, and their total variance, and dot the whole thing over again with different starting points.
 
-![k-means clsutering 1](./img/10.png)
-![k-means clsutering 2](./img/11.png)
+![k-means clsutering 1](./img/10.png | width=80)
+![k-means clsutering 2](./img/11.png | width=80)
 
 * Conclusion: 
     * **Minimize with group variance** for tight clusters
@@ -143,7 +143,7 @@
         * If the K is equal to 1, then we only use the nearest neighbor to define the category. 
         * With a larger K we pick the category with the most votes.
 
-![k-Nearest neighbors](./img/12.png)  
+![k-Nearest neighbors](./img/12.png | width=80)  
 
 ## Statistics Types 
 * Descreptive
@@ -161,7 +161,7 @@
 * Also instead of fitting a line to the data, logistic regression fits an _S_ shaped _logistic function_.  
 * Example: The curve tells you the probability that a mouse is obese based on its weight.
 
-![logistic function](./img/13.png)  
+![logistic function](./img/13.png | width=80)  
 
 
 ## Neurons 
@@ -172,7 +172,7 @@
     * The activation function decides wheter a neuron should fire (activate / forward) his input signal or not. 
 * Fun fact: A neural network with only one neuron is called _perceptor_. 
 
-![neuron in a nutshell](./img/14.png)  
+![neuron in a nutshell](./img/14.png | width=80)  
 
 * The passing over of the signal from neuron to neuron is called **forward propagation**
 
