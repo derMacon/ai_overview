@@ -1,9 +1,5 @@
 # FH Wedel - Lecture notes
 
-
-
-![linear regression]{./img/01.png}
-
 * Explorative Data Analysis: Teilgebiet der Statistik, untersucht & begutachtet Daten von denen nur ein gerringerres Wissen über deren Zusammenhänge vorliegt.
     * confirm / validate the data
     * discover correleations
@@ -37,15 +33,6 @@
 
 ## Common ML techniques: 
 * Regression analysis: How much / many?
-    * Example: How much / many would a user spend on e.g. candy crush
-    * Popular algorithms: 
-        * Linear regression
-        * Polynomial regression
-        * Ridge Regression
-        * LASSO
-        * Elastic Net
-
-
 * Classification: Is this A or B?
 * Cluster analysis: Where does it belong to?
 * Anomaly detection: is this weird?
@@ -53,6 +40,23 @@
 * NLP / Text Mining: What does it mean?
 * Association analysis: What goes with this?
 
+### Linear regression
+![linear regression](./img/01.png)
+* Example: How much / many would a user spend on e.g. candy crush
+* Popular algorithms: 
+    * Linear regression
+    * Polynomial regression
+    * Ridge Regression
+    * LASSO
+    * Elastic Net
+* Can be expressed with a linear function _y = f(x)_
+* is a statistical ML method
+* you can quantify and make forecasts (predictions) based on relationships between numerical variables
+* **simple linear regression**: one predictor and one outcome (predicant)
+* **multiple linear regression**: multiple predictors and one outcome (predicant)
 
+### Hypothsis function
+![Hypothsis function 1](./img/02.png)
+![Hypothsis function 2](./img/03.png)
 
 
