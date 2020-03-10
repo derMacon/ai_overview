@@ -43,7 +43,7 @@
 * Association analysis: What goes with this?
 
 ### Linear regression
-![linear regression](./img/01.png | width=80)
+![linear regression](./img/01.png)
 * Example: How much / many would a user spend on e.g. candy crush
 * Popular algorithms: 
     * Linear regression
@@ -59,33 +59,43 @@
 
 ### Cross validation
 * The process to test the model on differen datasets and determine its' quality.
-![corss validation](./img/04.png | width=80)
+![corss validation](./img/04.png)
 * **Training set**: a set of examples used for learning where the target value is known
 * **Validation set**: a set of examples used to tune the architecture of a classifier and estimate the error
 * **Test set**: used only to assess (= beurteilen) the performances of a classifier. It is never used during the training process so that the error on the test set provides an unbiased estimate of the generalization.
 
 * **K-Fold**-cross validation: 
-![k-fold cross validation](./img/05.png | width=80)
+![k-fold cross validation](./img/05.png)
 
 ### ML - common problems
 * **Overfitting**: Model performs well on the data used during training and poorly on new data.
-![overfitting 1](./img/06.png | width=80)
-![overfitting 2](./img/07.png | width=80)
+![overfitting 1](./img/06.png)
+![overfitting 2](./img/07.png)
 * Solutions for overfitting: 
     * remove noise (outliners)
     * train with more data
     * reduce model complexity (features, polynomial degree, etc.)
-    * regularization
+    * add weight regularization
+        * Given two explanations for something always take the simpler one!
+        * Idea: Penalize large weights using penalties or constraints based on their squared values (L2 penalty) or absolute values (L1 penalty). 
     * try another algorithm
+    * reduce ANNs (artificial neural networks) capacity
+        * fewer hidden layer
+        * fewer neurons per layer
+        * adjust epochs & batch size
+        * early stop
+    * add dropout
+        * Idea: remove conspiracy
+![dropbout](./img/20.png)
 
 ### Hypothsis function
-![Hypothsis function 1](./img/02.png | width=80)
-![Hypothsis function 2](./img/03.png | width=80)
+![Hypothsis function 1](./img/02.png)
+![Hypothsis function 2](./img/03.png)
 * Error (aka loss or cost) function: MSE - Mean Square Error
-![cost function visualized](./img/08.png | width=80)
+![cost function visualized](./img/08.png)
 
 ### Gradient descent
-![gradient descent](./img/09.png | width=80)
+![gradient descent](./img/09.png)
 
 ### Cluster analysis
 * Where does it belong to? How is it organized?
@@ -110,8 +120,8 @@
     * We can assess the quality of the clustering by adding up the variation within each cluster
     * Since k-means clustering can't _see_ the best clustering, its only optionis to keep track of these clsuters, and their total variance, and dot the whole thing over again with different starting points.
 
-![k-means clsutering 1](./img/10.png | width=80)
-![k-means clsutering 2](./img/11.png | width=80)
+![k-means clsutering 1](./img/10.png)
+![k-means clsutering 2](./img/11.png)
 
 * Conclusion: 
     * **Minimize with group variance** for tight clusters
@@ -143,7 +153,7 @@
         * If the K is equal to 1, then we only use the nearest neighbor to define the category. 
         * With a larger K we pick the category with the most votes.
 
-![k-Nearest neighbors](./img/12.png | width=80)  
+![k-Nearest neighbors](./img/12.png)  
 
 ## Statistics Types 
 * Descreptive
@@ -161,7 +171,7 @@
 * Also instead of fitting a line to the data, logistic regression fits an _S_ shaped _logistic function_.  
 * Example: The curve tells you the probability that a mouse is obese based on its weight.
 
-![logistic function](./img/13.png | width=80)  
+![logistic function](./img/13.png)  
 
 
 ## Neurons 
@@ -172,9 +182,104 @@
     * The activation function decides wheter a neuron should fire (activate / forward) his input signal or not. 
 * Fun fact: A neural network with only one neuron is called _perceptor_. 
 
-![neuron in a nutshell](./img/14.png | width=80)  
+![neuron in a nutshell](./img/14.png)  
 
 * The passing over of the signal from neuron to neuron is called **forward propagation**
 
-Current page: 305
+### Normalization / Standardization
+* It is quite important to normalize / standardize the input layer values
+* Different kinds of activation functions
+
+![activation function 1](./img/15.png)  
+![activation function 2](./img/16.png)  
+![activation function 3](./img/17.png)  
+![activation function 4](./img/18.png)  
+![activation function 5](./img/19.png)  
+
+* It is possible to blend multiple activation functions in one nn
+    * (put several af in one model)
+
+### Backpropagation
+* The backwards distribution of the cost is called _backpropagation_. 
+* Once the derivatives have been claculated for all weights we can use them in _gradient descent_ to minimize _the cost_ and _train_ the neural network. 
+* At its' essence backpropagation is just a clever application of the chain rule. <- Not really clear what this means. 
+    * Whatch 3blue1brown video. 
+* Multiple gradient descent algorithms, e.g.
+    * Batch gradient descent
+    * Stochastic gradient descent
+    * Momentum
+    * etc.
+* NN automate the process of feature engineering
+
+
+### Königsberger Bridge problem
+* Graph theory started with this simple problem
+    * As a pedestrian you want to pass each bridge exactly once
+    * You end your tour at the exact spot from which it all started
+
+### Recommender Systems
+* What's the next best thing?
+* Popular algorithms 
+    * Content based recommender
+    * Collaborative Filtering (user / item based)
+    * Singular value decomposition (SVD)
+* Content based recommender (aka context based recommender) first analyzes the nature of each item (e.g. by NLP TF/IDF etc.)
+* Then recommends items similar to the given one
+    * Pro: No cold start problem
+    * Con: Over-specification, no improvement over time
+* Collaborative Filtering (User based)
+    * Collaborative Filtering try to find user who are look-a-like to a given one (based on their preferences, behaviour, etc.)
+    * Pro:
+        * Good results 
+        * more discovery
+        * improves over time
+        * no initial content analysis
+    * Con: 
+        * new-user problem
+        * cold-start problem
+        * sparse (= dürftig) data
+* Collaborative Filtering (Item based)
+    * Item-item collaborative filtering (aka product association recommender)
+    * refer to the fact that the taste of users remeins constant or change very slightly over time
+    * once the recommender knows what user likes, it will offer him associated items
+        * E.g. spotify discovery weekly
+    * Pro: 
+        * even better results
+        * less suprise 
+        * improves over time
+        * no initial content analysis
+    * Con: 
+        * new-item problem
+        * cold-start problem
+        * sparse data
+
+
+### Keras - The depplearning frontend
+* A high-level framework for building neural networks with only a few lines of code
+* written in python
+* open source
+* uses either TensorFlow (default) or Theano behind the scenes to do all its calculations
+* build in industry practices
+* optimized default settings
+* build in pretrained models
+    * e.g. for image recognition
+* Theano vs. TensorFlow
+    * Theano:
+        * Works well with Python
+        * GPU acceleration
+    * TensorFlow:
+        * GPU acceleration
+        * distributed computing
+* Keras vs. TensorFlow
+    * Keras
+        * high level
+        * fast experimentation
+        * less code
+    * TensorFlow
+        * low level
+        * more control
+        * more code
+
+
+
 

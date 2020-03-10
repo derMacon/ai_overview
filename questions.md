@@ -4,6 +4,9 @@
         * Data mining
         * S. 152: One possible solution??? 
             * gerenerell das overfitting nicht genau verstanden
+        * S. 306: Why is it important to normalize the input layer values?
+        * S. 318: Backpropagation???
+        * S. 432: weight regularization???  
 
 
 ## Important Keywords for further research
