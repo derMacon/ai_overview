@@ -1,5 +1,9 @@
 # FH Wedel - Lecture notes
 
+
+
+![linear regression]{./img/01.png}
+
 * Explorative Data Analysis: Teilgebiet der Statistik, untersucht & begutachtet Daten von denen nur ein gerringerres Wissen über deren Zusammenhänge vorliegt.
     * confirm / validate the data
     * discover correleations
@@ -40,7 +44,6 @@
         * Ridge Regression
         * LASSO
         * Elastic Net
-![linear regression]{./img/01.png}
 
 
 * Classification: Is this A or B?
