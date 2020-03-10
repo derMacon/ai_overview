@@ -33,7 +33,7 @@
         * semi-supervised: e.g. not all labels are known
         * reinforced: learning from consequences of action and reward
 
-## Common ML techniques: 
+### Common ML techniques: 
 * Regression analysis: How much / many?
 * Classification: Is this A or B?
 * Cluster analysis: Where does it belong to?
@@ -145,5 +145,36 @@
 
 ![k-Nearest neighbors](./img/12.png)  
 
+## Statistics Types 
+* Descreptive
+    * Deal with the whole population
+    * Describe & summarize the truth
+    * Do not generalize
+    * Do not make assumptions
+* Inferential 
+    * Deal with a subset of the population (sample)
+    * Draw conclusion based on it (generalize)
+    * Thus can neve be 100% accurate
 
+## Logistic Regression
+* Similar to linear regression but predicts whether something is **true** or **false** instead of predicting something continuous like _size_ (the way the linear regression does). 
+* Also instead of fitting a line to the data, logistic regression fits an _S_ shaped _logistic function_.  
+* Example: The curve tells you the probability that a mouse is obese based on its weight.
+
+![logistic function](./img/13.png)  
+
+
+## Neurons 
+* Multiple input signals 
+* Each signal gets a weight assigned
+* The neuron then multplies the weights with the respective input signals
+* apply an activation function to the summed signal of the synapses for binary classification
+    * The activation function decides wheter a neuron should fire (activate / forward) his input signal or not. 
+* Fun fact: A neural network with only one neuron is called _perceptor_. 
+
+![neuron in a nutshell](./img/14.png)  
+
+* The passing over of the signal from neuron to neuron is called **forward propagation**
+
+Current page: 305
 
