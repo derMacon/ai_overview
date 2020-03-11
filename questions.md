@@ -44,3 +44,6 @@
 * K-fold cross validation
 * Overfitting
 * clustering (insbes. k-Means)
+
+## Multilayer Perceptors
+* average pooling in image recognition
