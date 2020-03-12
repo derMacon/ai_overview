@@ -1,7 +1,7 @@
 # Geschichtliches
 Leitfrage: Welche Entwicklungen hat das Neuronale Netz von damals zu heute durchgemacht?
 
-![roadmap](./img/roadmap)
+![roadmap](./img/roadmap.png)
 [link](https://medium.com/analytics-vidhya/brief-history-of-neural-networks-44c2bf72eec)
 
 
@@ -18,11 +18,11 @@ Leitfrage: Welche Entwicklungen hat das Neuronale Netz von damals zu heute durch
         * Theta: 0 mit horizontalem Strich durch die Mitte
         * beliebige Zahl, siehe Beispiele
 
-![mp Neuron - and](./img/mpNeuron_and)
-![mp Neuron - nor](./img/mpNeuron_nor)
-![mp Neuron - not](./img/mpNeuron_not)
-![mp Neuron - or](./img/mpNeuron_or)
-![mp Neuron - tautologie](./img/mpNeuron_tautologie)
+![mp Neuron - and](./img/mpNeuron_and.png)
+![mp Neuron - nor](./img/mpNeuron_nor.png)
+![mp Neuron - not](./img/mpNeuron_not.png)
+![mp Neuron - or](./img/mpNeuron_or.png)
+![mp Neuron - tautologie](./img/mpNeuron_tautologie.png)
 
 * Nachteile des Modells
     * Nur boolesche Eingabewerte / Ausgabewert möglich
