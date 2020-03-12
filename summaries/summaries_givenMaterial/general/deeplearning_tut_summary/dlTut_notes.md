@@ -61,3 +61,22 @@
 * Filter moves around the the image and each possible "spot" for the 5 x 5 connected input neurons
 * Resulting 28 x 28 x 1 array is called _activation_ or _feature_ map
     * you get 28 x28 array because there 784 different locations that a 5 x 5 filter can tif on a 32 x 32 input image
+* different kinds possible for the actual pooling process 
+    * max pooling
+    * fractuional max pooling
+    * mean pooling
+    * Lp pooling
+    * stoachastic pooling
+    * spatial pooling
+    * generalized pooling
+* Trend: Instead of pooling use convolution with stride 2
+![pooling layers](./img/06.png)
+
+### Backpropagation
+* 1. Forward pass: compute network's output
+* 2. Evaluate loss
+* 3. Backward pass: adjust weights
+![loss function](./img/07.png)
+
+// p. 57 -> no idea if really relevant
+

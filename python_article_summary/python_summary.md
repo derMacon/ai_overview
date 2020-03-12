@@ -1,7 +1,0 @@
-# Learning Python - Summary
-
-## Basics
-
-
-
-
