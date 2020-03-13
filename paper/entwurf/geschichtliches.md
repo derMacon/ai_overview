@@ -58,7 +58,7 @@ Leitfrage: Welche Entwicklungen hat das Neuronale Netz von damals zu heute durch
 
 ## Dartmouth Konferenz
 // todo Teil kann vielleicht einfach ausgelassen werden???
-> [Quelle - Leicher nur Wikipedia](https://de.wikipedia.org/wiki/Dartmouth_Conference)
+> [Quelle - Leidre nur Wikipedia](https://de.wikipedia.org/wiki/Dartmouth_Conference)
 
 * 1956 - John McCarthy, Marvin Minsky, Nathanial Rochester, Claude Shannon (geplant / ausgeführt)
 * Forschungsprojekt / Konferenz gilt als Geburtsstunde der KI als akademisches Fachgebiet
@@ -75,4 +75,41 @@ Leitfrage: Welche Entwicklungen hat das Neuronale Netz von damals zu heute durch
 
 ## Von Neumann
 > [Quelle](https://www.leydesdorff.net/vonneumann/)
- 
+
+* 1957 - Von Neumann (Letztes Werk)
+* Paper: Vergleich des Aufbaus des Gehirns mit einem Rechner / Computer
+* Manuskript in zwei Teile unterteilt
+    * 1. Computer: Prozeduren, Kontrollmechanismen, sonstige Charakteristika
+    * 2. Neuronales System: von Neumann vergleicht damalige state-of-the-art Rechner mit der neuen Technologie.
+* Neumann beschreibt die Idee simple Neuronen mittels Telegraphrelais / Vakuum-Rohren oder Transistoren zu modellieren
+* Menschliche Neuronen brauchen immer eine kleine "Erholungsphase" bis sie wieder in der Lage sind aktiv zu werden
+    * Die genannten Bauteile brauchen einen wesentliche kürzeren Zeitraum
+    * Von Neumann hat damals schon das Potenzial für / von Künsliche Intelligenz erkannt
+        * Vergleich zwischen Rechner und Gehirn schon damals ein valides Unterfangen
+
+## Perceptron
+> [Quelle](https://www.sciencedirect.com/topics/veterinary-science-and-veterinary-medicine/perceptron)
+
+* 1958 - Frank Rosenblatt erfindet Perceptron
+* Perceptron: ältestes Neuronales Netz welches heutzutage noch genutzt wird
+* Inspiriert vom Auge einer Fliege
+    * Ein großer Teil der Entscheidung der nächsten Flugrichtung wird direkt im Auge entschieden
+    * Perceptron direktes Abbild dieser Beobachtung
+* Ein Peceptron mit nur einer Schicht
+* Berechnet eine gewichtete Summe aller Eingaben und addiert einen Schwellwert
+* im letzten Schritt wird eine Aktivierungsfunktion an diese Pipeline angehängt
+    * In der Lage Eingabe in zwei mögliche Ausgabeklassen zu unterscheiden
+    * zu Rosenblatts Zeiten sehr simpel,
+        * wenn Ergebnis kleiner gleich 0 -> Output 0
+        * ansonsten -> Output 1
+    * Generell gilt, je größer der Schwellwert ist, desto "leichter" kann ein Neuron aktiviert werden 
+    * Heutzutage werden verschiedene Aktivierungsfunktionen genutzt
+        * Immer abhängig vom jeweiligen Problem welches es zu lösen gilt
+
+
+![perceptor - output](./img/perceptor_output.png)
+![perceptor - aktivierungsfkt](./img/perceptor_aktivierungsfunktion.png)
+
+
+// deeplearning book, a simple network to classify handwritten digits
+
