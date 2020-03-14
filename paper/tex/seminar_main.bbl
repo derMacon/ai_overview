@@ -1,9 +1,15 @@
 \begin{thebibliography}{1}
 
-\bibitem{aufgabenstellung}
-{City Domino Aufgabenstellung}.
+\bibitem{mpNeuron}
+{McCulloch-Pitts Neuron}.
 \newblock
-  \url{http://intern.fh-wedel.de/mitarbeiter/klk/programmierpraktikum-java/aufgabentermine/ss18-citydomino/}.
-\newblock Aufgerufen am: 29-12-2018.
+  \url{https://towardsdatascience.com/mcculloch-pitts-model-5fdf65ac5dd1}.
+\newblock Aufgerufen am: 14-03-2020.
+
+\bibitem{perceptronAdeline}
+{Single-Layer Neural Networks and Gradient Descent}.
+\newblock
+  \url{https://sebastianraschka.com/Articles/2015_singlelayer_neurons.html}.
+\newblock Aufgerufen am: 14-03-2020.
 
 \end{thebibliography}
