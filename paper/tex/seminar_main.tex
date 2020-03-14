@@ -1,0 +1,170 @@
+\documentclass[a4paper, 11pt]{scrartcl}
+
+%Packages fuer die Darstellung von Quellcode
+\usepackage{beramono} %schoene Schriftart
+\usepackage{color}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{listings}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english, ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage{enumitem}
+%\usepackage[a4paper, total={6in, 8.5in}]{geometry}
+\usepackage[a4paper, bottom=2cm,includeheadfoot]{geometry}
+\usepackage{afterpage} %Um Titelseite mit gesonderter Formatierung zu belegen
+\usepackage{blindtext}
+\usepackage{todonotes}
+
+% Listen mit mehreren Spalten
+\usepackage{multicol}
+
+% Schoene Tabellen 
+\usepackage{booktabs}
+\usepackage{longtable}
+
+% Um auf Ueberschriften und dergleichen namentlich verweisen zu koennen
+\usepackage{nameref}
+
+% Um Dateien einzubinden
+\usepackage{embedfile}
+
+
+% Noetig fuer verschachtelte Imports 
+\usepackage{import}
+\usepackage{subcaption}
+% Noetig fuer 2 x 2 Bilder in einer Figureumgebung
+\usepackage{mwe}
+
+% Bilder
+\usepackage{graphicx}
+% Standardbreite um Text und Bilder gem. darzustellen
+\setkeys{Gin}{width=0.8\linewidth}
+
+% Floatbarrier
+\usepackage{placeins}
+
+% Einfacheres Navigieren im PDF/Web
+\usepackage{url}
+% Verweise jetzt nicht nur auf Ueberschrift sondern auf label
+%\usepackage[all]{hypcap} 
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+pdfstartview={FitH}, %Doc fuellt automatisch die horizontale Achse aus
+pdftitle={Einführung DeepLearning, Thema 2},
+pdfauthor={Silas Hoffmann, inf103088}
+}
+
+
+% Header Informationen festgelegt
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\rightmark}
+\chead{\thepart}
+\lhead{\nouppercase{\leftmark}}
+\cfoot{\thepage}
+
+
+%Quellcodestyle Spezifikationen
+\definecolor{DarkPurple}{rgb}{0.4,0.1,0.4}
+\definecolor{DarkCyan}{rgb}{0.0,0.5,0.4}
+\definecolor{LightLime}{rgb}{0.3,0.5,0.4}
+\definecolor{Blue}{rgb}{0.0,0.0,1.0}
+
+% Macro um nicht jedes Mal die listing und namen-Referenz angeben zu muessen
+\newcommand{\lstref}[1]{(siehe Listing \ref{#1}, S. \pageref{#1}, \nameref{#1})}
+
+
+% Syntaxhighlighting festgelegt
+\lstdefinestyle{CodeHighlighting} 
+{
+language=Pyton, %mit mehreren Sprachen moeglich, ermoeglicht Syntaxhighlighting
+columns=flexible,
+numbers=left,
+frame=single,
+frameround=tttt,
+showstringspaces=false,
+basicstyle=\footnotesize\ttfamily,
+keywordstyle=\bfseries\color{DarkPurple},
+commentstyle=\itshape\color{LightLime},
+stringstyle=\color{Blue}
+}
+
+
+% Titelseite
+% \title{\includegraphics[width=\linewidth]{pics/LogoIconLargeV1}}
+\title{Einführung in DeepLearning}
+\author{Silas Hoffmann, inf103088
+\normalsize
+\\6. Fachsemester
+\\6.Verwaltungssemester}
+\date{\today}
+
+\newcommand{\prefWidth}{width=0.8\linewidth}
+
+\begin{document}
+\newgeometry{a4paper, bottom=6cm}
+\maketitle
+
+\vfill
+\begin{center}
+	Thema 2
+	
+	\vspace{0.5cm}
+	\Large
+	\textbf{Seminar}
+	\normalsize
+	
+	\vspace{0.3cm}
+	im Sommersemester 2020
+	
+	\vspace{0.5cm}
+	Dozent: Prof. Dr. Dennis Säring
+	
+	\vfill
+	\small
+	Fachbereich Informatik
+	
+	\vspace{0.3cm}
+	Fachhochschule Wedel
+\end{center}
+\thispagestyle{empty}
+\restoregeometry
+
+% Inhaltsverzeichnis
+\newpage
+\pagestyle{plain}
+\tableofcontents
+\newpage
+\bibliography{Verweise}
+\listoffigures
+%\pagestyle{main}
+\newpage
+
+\pagestyle{fancy}
+
+\input{_intro/intro}
+
+\clearpage
+\input{geschichtliches/geschichtliches_part}
+
+\clearpage
+\input{aktuelleEntwicklung/aktuelles_part}
+
+ 
+\clearpage
+\appendix
+\pagenumbering{roman}
+\thispagestyle{plain}
+ 
+% \bibliographystyle{plain}
+% \bibliography{Verweise}
+
+\clearpage
+\section{Anhang}
+% \input{anhang/anhangDoc}
+
+\end{document}

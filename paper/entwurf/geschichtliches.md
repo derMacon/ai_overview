@@ -95,6 +95,7 @@ Leitfrage: Welche Entwicklungen hat das Neuronale Netz von damals zu heute durch
 * Inspiriert vom Auge einer Fliege
     * Ein großer Teil der Entscheidung der nächsten Flugrichtung wird direkt im Auge entschieden
     * Perceptron direktes Abbild dieser Beobachtung
+* Überwachtes Lernen
 * Ein Peceptron mit nur einer Schicht
 * Berechnet eine gewichtete Summe aller Eingaben und addiert einen Schwellwert
 * im letzten Schritt wird eine Aktivierungsfunktion an diese Pipeline angehängt
@@ -106,10 +107,27 @@ Leitfrage: Welche Entwicklungen hat das Neuronale Netz von damals zu heute durch
     * Heutzutage werden verschiedene Aktivierungsfunktionen genutzt
         * Immer abhängig vom jeweiligen Problem welches es zu lösen gilt
 
+* Rosenblatts' Lernregel
+    * 1. Initialisiere alle Gewichte mit 0 oder einer sehr kleinen Zahl
+    * 2. Für jede Trainingsprobe (training sample) X^(i)
+        * 1. Berechne den output Wert
+        * 2. Aktualisiere die Gewichte 
+
 
 ![perceptor - output](./img/perceptor_output.png)
 ![perceptor - aktivierungsfkt](./img/perceptor_aktivierungsfunktion.png)
 
+
+## Adeline
+* Bernard Widrow & Tedd Hoff
+* Adaptive Linear Neuron => Adeline
+* Delta Regel (auch Widrow-Hoff-Regel genannt)
+    * aktualisiert Gewichte anhand von einer linearen Aktivierungsfunktion
+        * nicht mittels einer springenden Stufenfunktion wie beim Perceptron
+
+![Perceptron vs. Adeline](./img/percetronVsAdeline.png)
+
+* 
 
 // deeplearning book, a simple network to classify handwritten digits
 
