@@ -1,4 +1,4 @@
-\section{McCulloch-Pitts-Neuron}
+\section{McCulloch-Pitts-Neuron} \label{sc:mpn}
 
 \subsection{Funktionsweise}
 
@@ -13,14 +13,15 @@ Im Jahr 1943 entwickelten Warren McCulloch und Walter Pitts ein Modell welches d
 
 Die sogenannten \emph{Dendriten} (englisch \emph{dendrites}) nehmen Informationen auf. Sie besitzen Rezeptoren welche in der Lage sind Signale anderer Neuronen aufzunehmen. Diese Signale bewirken elektrische Veränderungen in dem Neuron welche vom Zellkörper (\emph{Soma}) interpretiert / verarbeitet werden. Dieser Zellkörper sammelt alle Informationen und speichert diese im sogenannten \emph{Axonhügel} (engl. Axonhillock) welcher die Ursprungsstelle des \emph{Axons} beziehungsweise \emph{Neuriten} beschreibt. Wenn das gebündelte Signal stark genug sein sollte wird es an den nächsten Teil des Neurons, dem \emph{Axon}, weitergeleitet. Ab diesem Zeitpunkt wird das Signal als \emph{Aktionspotential} bezeichnet und wird über die \emph{Axon} übertragen. Am Ende wird das Signal an diverse \emph{Axonterminale} weitergeleitet welche per Neurotransmitter mit den jeweils nächsten Dendriten verbunden sind. 
 
-Dieser biologische Aufbau dient als Grundlage für die Entwicklung des Modells von McCulloch und Pitts. Das Augenmerk ihres Modells liegt in erster Linie darauf logische Gatter mittels eines Neuronen ähnlichen Modells zu definieren. Der grobe Aufbau eines sogenannten \emph{McCulloch-Pitts-Zelle} ist in \ref{fig:mpn_aufbau} zu sehen. 
+Dieser biologische Aufbau dient als Grundlage für die Entwicklung des Modells von McCulloch und Pitts. Das Augenmerk ihres Modells liegt in erster Linie darauf Klassifizierungsprobleme zu lösen. Bei einem Klassifizierungsproblem wird \emph{Das zu klassifizierende Objekt X ist dabei durch einen Merkmalvektor $\vec{x}$ aus dem betrachteten Merkmalraum M mit der Dimension n charakterisiert. Das Problem besteht nun darin zu entscheiden, ob das Objekt X in der betrachteten Klasse K liegt.} \cite{klproblem} oder nicht. Der grobe Aufbau eines sogenannten \emph{McCulloch-Pitts-Zelle} ist in \ref{fig:mpn_aufbau} zu sehen. Erwähnt sei auch noch, dass man mit diesem Modell lediglich binäre Klassifizierungen mittels einer linearen Entscheidungsfunktion / Aktivierungsfunktion durchführen kann (siehe \ref{bnKlassifizierung})
 
 
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[width=.5\linewidth]{img/aufbau}
-	\mycaption{Biologische Neuronen - Genereller Aufbau}{mpNeuron}
-	\label{fig:mpn_aufbau}
+\begin{figure}%
+  \centering
+  \subfloat[][]{\includegraphics[width=0.4\linewidth]{img/aufbau2}}%
+  \qquad
+  \subfloat[][]{\includegraphics[width=0.4\linewidth]{img/aufbau2}}%
+  \caption{Zu Wasser und zu Land}%
 \end{figure}
 
 Das Modell kann beliebig viele Input-werte aufweisen. Wichtig hierbei: Sie dürfen nur boolescher Natur sein (nur falsch oder wahr). Bei gegebenen Werten führt das Neuron selbst zwei Arbeitsschritte durch: 

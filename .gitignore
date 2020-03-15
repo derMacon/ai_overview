@@ -9,6 +9,8 @@
 *.toc
 *.vrb
 *.lof
+*.bbl
+*.blg
 
 # IDE
 */.idea/
