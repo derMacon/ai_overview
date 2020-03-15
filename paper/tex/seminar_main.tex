@@ -163,8 +163,6 @@ stringstyle=\color{Blue}
 
 \pagestyle{fancy}
 
-test test nochmal 
-\cite{perceptronAdeline}
 
 
 \input{_intro/intro}
@@ -180,7 +178,10 @@ test test nochmal
 \appendix
 \pagenumbering{roman}
 \thispagestyle{plain}
- 
+
+% alle bibtex Referenzen aufzählen, auch wenn nicht verwendet
+\nocite{*} 
+
 \bibliographystyle{plain}
 \bibliography{verweise}
 

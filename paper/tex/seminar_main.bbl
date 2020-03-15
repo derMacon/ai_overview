@@ -12,4 +12,9 @@
   \url{https://sebastianraschka.com/Articles/2015_singlelayer_neurons.html}.
 \newblock Aufgerufen am: 14-03-2020.
 
+\bibitem{nielsen2015neural}
+M.A. Nielsen.
+\newblock {\em Neural Networks and Deep Learning}.
+\newblock Determination Press, 2015.
+
 \end{thebibliography}
