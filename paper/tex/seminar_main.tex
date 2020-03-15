@@ -60,6 +60,21 @@ pdfauthor={Silas Hoffmann, inf103088}
 }
 
 
+% ---------- Macros -----------
+
+
+
+
+
+\newcommand{\mycaption}[2] {
+	\caption[#1]{#1 \cite{#2}}
+}
+
+
+
+% -----------------------------
+
+
 % Header Informationen festgelegt
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -171,6 +186,6 @@ test test nochmal
 
 \clearpage
 \section{Anhang}
-% \input{anhang/anhangDoc}
+\input{anhang/anhang}
 
 \end{document}

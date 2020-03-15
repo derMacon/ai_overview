@@ -1,5 +1,7 @@
 \section{McCulloch-Pitts-Neuron}
 
+\subsection{Funktionsweise}
+
 Im Jahr 1943 entwickelten Warren McCulloch und Walter Pitts ein Modell welches die Funktionalität eines biologischen Neurons imitieren sollte. In der folgenden Abbildung \ref{fig:bioNeuron} ist der grobe Aufbau eines Neurons zu sehen. 
 
 \begin{figure}[!htb]
@@ -30,28 +32,40 @@ Das Modell kann beliebig viele Input-werte aufweisen. Wichtig hierbei: Sie dürf
 
 \end{enumerate}
 
-Die übliche Notation dieses Modells gibt vor, dass der jeweilige Schwellwert jeweils in die linke Seite des Kreises geschrieben wird während die rechte Seite ausgegraut wird. Im folgenden seien einmal beispielhaft das \emph{AND} und das \emph{OR} Gatter dargestellt. 
+Die übliche Notation dieses Modells gibt vor, dass der jeweilige Schwellwert jeweils in die linke Seite des Kreises geschrieben wird während die rechte Seite ausgegraut wird. Im folgenden seien einmal beispielhaft das \emph{AND} und das \emph{OR} Gatter dargestellt. (Für weitere Beispiele siehe \autoref{ap:sc:mpz})
 
 \begin{figure}[!htb]
 	\centering
-	\href{http://commons.wikimedia.org/wiki/File:Pachydyptes_ponderosus.jpg}{
-		\includegraphics[width=.5\linewidth]{img/aufbau2}
-	}
-	\caption{Biologische Neuronen - Notation}{\cite{mpNeuron}}
-	\label{fig:mpn_notation}
+	\includegraphics[width=.5\linewidth]{img/aufbau2}
+	\mycaption{Biologische Neuronen - Notation}{mpNeuron}
+	\label{fig:bioNeuron_notation}
 \end{figure}
+
+% todo Formeln einfügen... wenn Zeit sein sollte
 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=\linewidth]{img/mpn_and}
-	\caption[McCulloch-Pitts-Zelle - AND Gatter]{McCulloch-Pitts-Zelle - AND Gatter \small{Quelle \cite{mpNeuron}}}
+	\mycaption{McCulloch-Pitts-Zelle - AND Gatter}{mpNeuron}
 	\label{fig:mpn_and}
 \end{figure}
 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=\linewidth]{img/mpn_or}
-	\caption{McCulloch-Pitts-Zelle - OR Gatter \cite{mpNeuron}}
+	\mycaption{McCulloch-Pitts-Zelle - OR Gatter}{mpNeuron}
 	\label{fig:mpn_or}
 \end{figure}
+
+
+\subsection{Nachteile bzw. Verbesserungspotenzial}
+
+\begin{minipage}{\textwidth}
+\begin{itemize}
+\item Dieses Modell erlaubt wie gesagt nur boolesche Eingabewerte, viele Modelle erfordern allerdings kontinuierliche Werte. Mit diesen wäre es zum Beispiel deutlich einfach ein Bild oder Ähnliches zu analysieren.
+\item Die Schwelle (Theta) muss stets manuell bestimmt werden. Einen Trainingsalgorithmus wie man ihn von heutigen Ansätzen her kennt gibt es in diesem Modell nicht. 
+\item Es gibt keinerlei Priorisierungsmóglichkeit zwischen den einzelnen Eingabewerten. Jeder hat einen gleichgroßen Einfluss auf das Ergebnis, so etwas wie ein Auschlußkriterium gibt es hierbei also nicht. 
+\item Es ist nicht möglich \emph{gedeckelt} Gatter wie zum Beispiel ein \emph{XOR} abzubilden. Bei einem Neuron mit zwei Input müsste zum Beispiel ein Schwellwert von 1 \underline{genau} getroffen werden. Dieses Modell ist allerdings nur in der Lage zu entscheiden ob ein Schwellwert \emph{überschritten} wurde oder nicht. 
+\end{itemize}
+\end{minipage}
 
