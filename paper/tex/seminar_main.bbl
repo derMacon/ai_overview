@@ -1,10 +1,21 @@
 \begin{thebibliography}{1}
 
+\bibitem{3b1b}
+{3Blue1Brown - Videokurs zur Einführung in die Neuralen Netze}.
+\newblock
+  \url{https://www.youtube.com/watch?v=aircAruvnKk&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi}.
+\newblock Aufgerufen am: 16-03-2020.
+
 \bibitem{klproblem}
 {Definition Klassifizierungssproblem}.
 \newblock
   \url{http://ekpwww.physik.uni-karlsruhe.de/~tkuhr/HauptseminarWS1112/Keck_handout.pdf}.
 \newblock Aufgerufen am: 15-03-2020.
+
+\bibitem{partAbl}
+{Khan Academy - Partielle Ableitungen (Funktion mit zwei Eingabewerten)}.
+\newblock \url{https://www.youtube.com/watch?v=1CMDS4-PKKQ&t=542s}.
+\newblock Aufgerufen am: 16-03-2020.
 
 \bibitem{mpNeuron}
 {McCulloch-Pitts Neuron}.
