@@ -4,7 +4,7 @@
 
 Im Jahr 1958 entwickelte der US-amerikanischer Psychologe und Informatiker Frank Rosenblatt das sogenannte \emph{Perceptron}. Dieses stellt das älteste neurale Netz dar welches teilweise auch heutzutage noch genutzt wird. Inspiriert wurde Rosenblatt vom Auge einer Fliege wobei die Entscheidung der nächsten Flugrichtung in Teilen bereits im Auge stattfindet. Das Perceptron stellt in diesem Zusammenhang eine direkte Abbildung dieser Beobachtung dar. 
 
-Das Modell ist eine Weiterentwicklung von der McCulloch-Pitts-Zelle (siehe \autoref{sc:mpn}). Allerdings ist das Perceptron in der Lage die unterschiedlichen Eingabewerte zu priorisieren. Dies geschieht mittels reeller Gewichte welche jeweils mit den Inputwerten verrechnet werden: $\sum_j w_j x_j$. Gleich bleibt jedoch die binäre Klassifizierung wie schon bei der McMulloch-Pitts-Zelle. 
+Das Modell ist eine Weiterentwicklung von der McCulloch-Pitts-Zelle (siehe \autoref{sc:mpn}). Allerdings ist das Perceptron in der Lage die unterschiedlichen Eingabewerte zu priorisieren. Dies geschieht mittels reeller Gewichte welche jeweils mit den Inputwerten verrechnet werden: $\sum_j w_j x_j$. Gleich bleibt jedoch die binäre Klassifizierung wie schon bei der McMulloch-Pitts-Zelle.
 
 \begin{figure}[!htb]
 	\centering
@@ -133,5 +133,35 @@ Für einen zweidimensionalen Trainingsdatensatz \footnote{Ein zweidimensionaler 
 
 In dieser Darstellung wurde die bereits in \ref{w0Erklaerung} besprochene Notation verwendet bei der ein zusätzliches Gewicht mit dem Schwellwert eingeführt wurde. Da der eigentliche Eingabewert hierbei lediglich den Faktor \emph{1} besitzt fällt er hierbei einfach weg. Wir haben also neben diesem einbezogenen \emph{Bias} lediglich die zwei weiteren Gewichte die angeglichen werden. 
 
+Für den Fall, dass das Modell einen Datensatz richtig klassifiziert gibt es genau zwei Möglichkeiten: 
+
+\begin{equation}
+\begin{aligned}
+& \Delta w_j = \eta(1^{(i)} - 1^{(i)})\;x^{(i)}_{j} = 0 \\
+& \Delta w_j = \eta(1^{(i)} - 1^{(i)})\;x^{(i)}_{j} = 0 \\
+\end{aligned}
+\end{equation}
+
+Durch den Differenzfaktor von Null verändert sich das betrachtete Gewicht erwartungsgemäß nicht. Bei dem entsprechenden Gegenteil ist dies nicht der Fall, hier könnte es zum Beispiel so aussehen: 
+
+\begin{equation}
+\begin{aligned}
+& \Delta w_j = \eta(1^{(i)} - -1^{(i)})\;x^{(i)}_{j} = \eta(2)\;x^{(i)}_{j} \\
+& \Delta w_j = \eta(-1^{(i)} - 1^{(i)})\;x^{(i)}_{j} = \eta(-2)\;x^{(i)}_{j} \\
+\end{aligned}
+\end{equation}
+
+Eine Implementierung des Beschriebenen Konzepts in der Programmiersprache Python ist auf Github \cite{pcImplementierung} zu finden. Ich werde hier jedoch nicht weiter auf die Details der Implementierung eingehen. 
+
+Wie schon die McCulloch-Pitts Zelle (siehe Abbildung \ref{fig:aufbau}) ist das Perceptron nur in der Lage mittels einer linearen Klassifizierungs-Funktion die zwei unterschiedlichen Gruppen auseinander zu halten (siehe Abbildung \ref{fig:probKlassi}).
 
 
+\begin{figure}%
+  \centering
+  \subfloat[][]{\includegraphics[width=.39\linewidth]{img/perceptron_klassifizierung1}}
+  \qquad
+  \subfloat[][]{\includegraphics[width=.405\linewidth]{img/perceptron_klassifizierung2}}%
+  % todo zweite Quelle mit in Macro einbinden
+  \mycaption{Perceptor - Problematische Klassifizierung}{mpNeuron}
+  \label{fig:probKlassi}
+\end{figure}
