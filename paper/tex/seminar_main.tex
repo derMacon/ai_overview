@@ -25,6 +25,9 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{eqnarray}
+% theorem Box
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{theorems}
 
 % Schoene Tabellen 
 \usepackage{booktabs}
@@ -89,7 +92,7 @@ pdfauthor={Silas Hoffmann, inf103088}
 
 
 
-% ---------- Macros -----------
+% ---------- Macros & Boxes -----------
 
 \newcommand{\mycaption}[2] {
 	\caption[#1]{#1 \cite{#2}}
@@ -98,7 +101,15 @@ pdfauthor={Silas Hoffmann, inf103088}
 % Macro um nicht jedes Mal die listing und namen-Referenz angeben zu muessen
 \newcommand{\lstref}[1]{(siehe Listing \ref{#1}, S. \pageref{#1}, \nameref{#1})}
 
-% -----------------------------
+% costum theorem box
+\newtcbtheorem[number within=section]{mytheo}{Regel}%
+{colback=white!5,colframe=lightgray!35!black,fonttitle=\bfseries}{th}
+
+% costum Herleitung
+\newtcbtheorem[number within=section]{myderivation}{Herleitung}
+{colback=white!5,colframe=Periwinkle!35!black,fonttitle=\bfseries}{th}
+
+% -------------------------------------
 
 % Syntaxhighlighting festgelegt
 \lstdefinestyle{CodeHighlighting} 

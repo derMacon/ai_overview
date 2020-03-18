@@ -16,8 +16,6 @@ Im 1959 entwickelten der Stanford Professor Bernard Widrow und der Elektroingene
 
 Widrow und Hoff definierten die Delta-Regel für den Lernalgorithmus ihres Modells. Dieser ist auch unter dem Namen \emph{Least-Mean-Square-Algorithmus} bekannt und ist auch heute noch von Relevanz). Im Kern möchte man hierbei das Minimum einer Kostenfunktion über dem Modell bestimmen. Ich werde im folgenden Abschnitt darauf eingehen wie dieser funktioniert und wie genau er für dieses Modell eingesetzt werden kann. 
 
-todo Intro nochmal überarbeiten...
-
 \paragraph{Gradientenverfahren}
 Der wesentliche Nachteil der Einheits-Sprungfunktion ist der, dass sie nicht stetig und damit auch nicht differenzierbar ist. Deswegen hat man sich beim Lernalgorithmus des Adeline-Modells dazu entschieden stattdessen die Identitätsfunktion zu verwenden. 
 
@@ -39,7 +37,7 @@ Werfen wir einen Blick auf die Abbildung \ref{fig:ad_gd1}.
 \end{figure}
 
 Die dargestellte Funktion besitzt nur einen Eingabewert. Zur Veranschaulichung kann man sich einen Ball vorstellen der einen Berg bzw. in ein Tal herunter rollt. Bezogen auf das Beispiel betrachtet man einen einen beliebigen Funktionswert und bestimmt die Ableitung an dieser Stelle. Diese Ableitung kann auch als \glqq Steigung \grqq an der betrachteten Stelle verstanden werden. Wenn man diese nun invertiert hat bekommt man theoretisch die \glqq Richtung \grqq in die der Ball rollen müsste. Ähnlich wie schon der Lernalgorithmus beim Perceptron wird mit einer Lernrate ${\eta}$ gearbeitet die bestimmt wie viel Veränderung in einem Iterations-Schritt stattfinden soll. Im Beispiel könnte man diese als Schrittweite verstehen. 
-Wie weit in einem Schritt gearbeitet wird ist von fundamentaler Bedeutung. In Abbildung \ref{fig:ad_gd2} ist zu sehen, dass es problematisch sein kann die Lernrate zu hoch zu definieren denn der Algorithmus kann das Minimum auch überspringen. Andererseits kann es auch zu Problemen kommen wenn die Lernrate zu klein definiert wurde da der Algorithmus eventuell in einem lokalen Minimum \glqq steckenbleibt \grqq . Um gerade das erste Problem zu beheben wird die Lernrate heutzutage in jedem Iterationsschritt in Abhängigkeit der Größe der Steigung berechnet. 
+Wie weit in einem Schritt gearbeitet wird ist von fundamentaler Bedeutung. In Abbildung \ref{fig:ad_gd2} ist zu sehen, dass es problematisch sein kann die Lernrate zu hoch zu definieren denn der Algorithmus kann das Minimum auch überspringen. Andererseits kann es auch zu Problemen kommen wenn die Lernrate zu klein definiert wurde da der Algorithmus eventuell in einem lokalen Minimum \glqq steckenbleibt \grqq . Um gerade das erste Problem zu beheben wird die Lernrate heutzutage in jedem Iterationsschritt in Abhängigkeit der Größe der Steigung berechnet.
 
 \begin{figure}[!htb]
 	\centering
@@ -57,9 +55,26 @@ Letztendlich besitzt das hier betrachtete Modell aber meist mehr als ein einzeln
 	\label{fig:ad_gd3}
 \end{figure}
 
-Auch bei Funktionen mit mehreren Eingabewerten ist es möglich an einem betrachteten Eingabevektor die Steigung zu bestimmen, diese nennt sich hier jedoch \emph{Gradientenvektor}. Bei der gerade betrachteten Abbildung ist bilden die \emph{x} und die \emph{y-Achse} jeweils die beiden Eingabewerte der Funktion wobei die Ausgabe mit der \emph{z-Achse} dargestellt wird. Hier wird die Analogie mit dem Herabrollen eines Berges vielleicht noch etwas klarer. Auch hier gilt wie bei den anderen betrachteten Modellen wieder die Notation ${w = w + \Delta w}$. 
+Auch bei Funktionen mit mehreren Eingabewerten ist es möglich an einem betrachteten Eingabevektor die Steigung zu bestimmen, diese nennt sich hier jedoch \emph{Gradientenvektor}. Bei der gerade betrachteten Abbildung ist bilden die \emph{x} und die \emph{y-Achse} jeweils die beiden Eingabewerte der Funktion wobei die Ausgabe mit der \emph{z-Achse} dargestellt wird. Hier wird die Analogie mit dem Herabrollen eines Berges vielleicht noch etwas klarer. Auch hier gilt wie bei den anderen betrachteten Modellen wieder die Notation: 
 
-${\Delta w}$ stellt den angedeutete Gradientenvektor dar. Im mehrdimensionalen Raum ist diese Gewichtsveränderung allgemein Fall für den kompletten Gewichtsvektor mit ${\Delta \mathbf{w} = - \eta \nabla J(\mathbf{w})}$ und für den speziellen Fall mit einem einzelnen Gewicht mit ${\Delta w_j = - \eta \frac{\partial J}{\partial w_j}}$ definiert. 
+\begin{equation} \label{eq:gewupd}
+{w = w + \Delta w}
+\end{equation}
+
+${\Delta w}$ stellt den angedeutete Gradientenvektor dar. Im mehrdimensionalen Raum ist diese Gewichtsveränderung allgemein Fall für den kompletten Gewichtsvektor und für den speziellen Fall mit einem einzelnen Gewicht folgendermaßen definiert. 
+
+\begin{mytheo}{Gradient}{theoexample} \label{theo:gradient1}
+Allgemein: 
+\begin{equation}
+{\Delta \mathbf{w} = - \eta \nabla J(\mathbf{w})}
+\end{equation}
+
+Für die jeweiligen Gewichte: 
+\begin{equation}
+\Delta w_j = - \eta \frac{\partial J}{\partial w_j}
+\end{equation}
+
+\end{mytheo}
 
 \subparagraph{Exkurs - Partielle Ableitungen} \cite{partAbl}
 Da es sich im Beispiel um einen mehrdimensionalen Eingabevektor handelt muss man zum hierbei mit den partiellen Ableitungen arbeiten. Diese lassen sich am besten anhand eines weiteren Beispiels erklären. Betrachten wir zuerst einmal die Funktion ${{f(x, y) = x^2 + y^2}}$ (siehe Abbildung \ref{fig:partAbl1}). 
@@ -91,8 +106,8 @@ In unserem Beispiel besitzt die Funktion ${ z = f(x, y) = x^2 + y^2 }$ folgende 
 Um nun den Gradienten zu bestimmen muss man diese einfach nur aufaddieren: 
 
 \begin{equation}
-  \Delta C \approx \frac{\partial C}{\partial v_1} \Delta v_1 +
-  \frac{\partial C}{\partial v_2} \Delta v_2.
+  \Delta J \approx \frac{\partial J}{\partial w_1} \Delta w_1 +
+  \frac{\partial J}{\partial w_2} \Delta w_2.
 \end{equation}
 
 \begin{figure}%
@@ -105,8 +120,12 @@ Um nun den Gradienten zu bestimmen muss man diese einfach nur aufaddieren:
 \end{figure}
 
 
-\subparagraph{Gradientenvektor der Kostenfunktion bestimmen}
+\subparagraph{Batch-Gradientenabstieg}
 Um den Gradientenvektor der Kostenfunktion (Regressionsquadratsumme) zu bestimmen greift folgender Formelapparat welchen ich im folgenden schrittweise durchgehen werde.
+
+\vspace{2 mm}
+\begin{minipage}{\textwidth}
+\begin{myderivation}{Gradient}{theoexample}
 
 \begin{equation} \label{eq:gr1}
 \frac{\partial J}{\partial w_j} = \frac{\partial }{\partial w_j} \frac{1}{2} \sum_i  (t^{(i)} - o^{(i)})^2 \\
@@ -128,6 +147,9 @@ Um den Gradientenvektor der Kostenfunktion (Regressionsquadratsumme) zu bestimme
 \frac{\partial J}{\partial w_j} = \sum_i  (t^{(i)} - o^{(i)})(-x^{(i)}_{j})
 \end{equation}
 
+\end{myderivation}
+\end{minipage}
+
 
 \begin{enumerate}
 
@@ -142,3 +164,37 @@ Um den Gradientenvektor der Kostenfunktion (Regressionsquadratsumme) zu bestimme
 \item Gleichung \ref{eq:gr5}: Es wird die innere Ableitung nach dem Gewicht $w_j$ gebildet. Das $t^{(i)}$ entfällt, da es sich um einen konstanten Faktor handelt. Der Faktor \emph{-1} kann vorgezogen werden womit man nur noch die Summe $ \sum_j w_j x^{(i)}_{j} $ ableiten muss. Wie bereits beim Perceptron (siehe Gleichung \ref{eq:vektorprod}) bildet sich die letztendliche Ausgabe ja über die Vektormultiplikation ${\mathbf{w}^T\mathbf{x}}$. Wenn man die Summe ausschreibt fällt einem auf, dass es nur einen einzigen Term in der kompletten Summe gibt welcher den Faktor $w_j$ beinhaltet über welchem hier schließlich abgeleitet werden soll. Daher Ist es möglich die gesamte Summe auf den Faktor $-x^{(i)}_{j}$ abzuleiten. 
 
 \end{enumerate}
+
+\begin{mytheo}{Gradient}{theoexample}
+
+Gradientenkomponente: 
+\begin{equation}
+\frac{\partial J}{\partial w_j} = \sum_i  (t^{(i)} - o^{(i)})(-x^{(i)}_{j})
+\end{equation}
+
+Dies muss nun in die ursprüngliche Form (siehe \ref{theo:gradient1}) eingefügt werden: 
+\begin{equation}
+\Delta w_j = - \eta \frac{\partial J}{\partial w_j} = - \eta \sum_i  (t^{(i)} - o^{(i)})(- x^{(i)}_{j}) = \eta \sum_i (t^{(i)} - o^{(i)})x^{(i)}_{j}
+\end{equation}
+
+Der komplette Gradientenvektor beinhaltet die Ergebnisse für die Ableitungsschritte nach jedem einzelnen Gewicht:
+\begin{equation}
+  \nabla J \equiv \left(\frac{\partial J}{\partial w_1}, \ldots, 
+  \frac{\partial J}{\partial w_m}\right)^T.
+\end{equation}
+
+\end{mytheo}
+
+Die einzelnen Komponenten des Gradientenvektors können dann wieder mit der aller erste Formel (siehe \ref{eq:gewupd}) in neue Gewichte verrechnet werden. 
+
+Die wesentlichen Unterschiede zum Lernalgorithmus welcher beim Perceptron verwendet wird, bestehen daraus, dass der Ausgabewert bei diesem Modell mit einer reellen Zahl dargestellt wird. Außerdem wird für das Aktualisieren eines Gewichts die komplette Menge an Trainingsdatensätzen verwendet. Deswegen wird diese Herangehensweise auch \emph{Batch-Gradientenabstieg} genannt. Beim Perceptron wird das Gewicht nach jedem einzelnen Trainingsdatensatz gerichtet. Eine Implementierung dieses Algorithmus befindet sich ebenfalls in dem Github Repository \cite{pcImplementierung}. 
+
+\paragraph{Stochastischer Gradientenabstieg}
+Der vorgestellte Algorithmus ist in der Praxis aber relativ rechenaufwendig weil man für jeden einzelnen Iterationsschritt alle Trainingsdatensätze betrachten muss. Ein Weg dies zu umgehen ist der sogenannte \emph{Mini-Batch Gradientenabstieg}. Hierbei wird die komplette Menge an Traininngsdatensätzen erst einmal gemischt und anschließend in kleinere Mengen unterteilt. Beim Iterationsschritt wird dann jeweils eine solcher Mengen betrachtet. Dies ist nicht der effizienteste Weg allerdings ist dieser viel schneller berechnet, dennoch gibt er eine gute Annäherung dafür wie die einzelnen Gewichte geändert werden müssen. In Abbildung \ref{fig:ad_gd4} kann man erkennen wie die unterschiedlichen Arten des Gradientenabstiegs grob arbeiten. Der linke Graph beschreibt den \glqq herkömmlichenl \grqq Batch-Gradientenabstieg während der rechte den stochastischen darstellt. Dieser trifft zwar nie die genau Richtung ist allerdings immer relativ nah dran und findet letztendlich ebenfalls das Ziel. 
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\linewidth]{img/3dPlot_sgd}
+	\mycaption{Gradientenverfahren - Vergleich}{3b1b}
+	\label{fig:ad_gd4}
+\end{figure}

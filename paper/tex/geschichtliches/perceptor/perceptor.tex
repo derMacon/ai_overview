@@ -119,6 +119,7 @@ Der genannte Ausgabewert wird wie bereits angedeutet über die Aktivierungsfunkt
 
 Zuerst wird ein Datensatz gewählt durch dessen Ausgabewerte alle Gewichte angeglichen werden sollen. Generell gilt, dass das \emph{i} in den Klammern nicht als Exponent sondern als Index für den betrachten Trainingsdatensatz steht. Dann wird die Differenz des optimalen Ausgabewerts und des erreichten Werts berechnet. Diese Differenz wird anschließend mit der Lernrate und dem korrespondierenden Eingabewert des betrachteten Gewichts multipliziert. Dies wird vielleicht etwas klarer wenn man noch einmal einen Blick in das Diagramm \ref{fig:perc_modelansicht} auf Seite \pageref{fig:perc_modelansicht} wirft. Der Eingabewert $x^{(i)}_{j}$ steht also für die Komponente mit dem Index \emph{j} in dem Eingabevektor des Trainingsdatensatzes an der Stelle \emph{i} innerhalb der Menge von Trainingsdaten. 
 
+
 \paragraph{Anwendung}
 
 Für einen zweidimensionalen Trainingsdatensatz \footnote{Ein zweidimensionaler Datenpunkt besitzt einen zweidimensionalen Eingabevektor (also genau zwei Eingabewerte).} würde die Lernregel folgendermaßen aussehen. Hervorzuheben sei jedoch, dass alle Gewichte gleichzeitig angeglichen werden. 
@@ -155,8 +156,8 @@ Eine Implementierung des Beschriebenen Konzepts in der Programmiersprache Python
 
 Wie schon die McCulloch-Pitts Zelle (siehe Abbildung \ref{fig:aufbau}) ist das Perceptron nur in der Lage mittels einer linearen Klassifizierungs-Funktion die zwei unterschiedlichen Gruppen auseinander zu halten (siehe Abbildung \ref{fig:probKlassi}).
 
-
-\begin{figure}%
+Hier noch einmal extra aufgeführt, die letztendliche Formel zum Berechnen einer einzelnen Gradientenkomponente.
+\begin{figure}
   \centering
   \subfloat[][]{\includegraphics[width=.39\linewidth]{img/perceptron_klassifizierung1}}
   \qquad
@@ -165,3 +166,4 @@ Wie schon die McCulloch-Pitts Zelle (siehe Abbildung \ref{fig:aufbau}) ist das P
   \mycaption{Perceptor - Problematische Klassifizierung}{mpNeuron}
   \label{fig:probKlassi}
 \end{figure}
+
