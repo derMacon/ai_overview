@@ -1,4 +1,6 @@
 \section{Convolutional Neural Network}
+Bisher wurden in erster Linie die Grundlagen für die heutigen neuronalen Netze erläutert. Im kommenden Abschnitt werde ich grob darauf eingehen wie man diese Techniken nutzen kann um mithilfe eines \emph{Convolutional neural networks} Bilder erkennen kann. 
+
 
 \subsection{Geschichte}
 
@@ -30,10 +32,50 @@ Einige Jahre später (1962), beschrieben die beiden Wissenschaftler wie solche k
 In den 1980er entwickelte Dr. Kunihiko Fukushima das Modell von Hubel und Wiesel weiter indem er ein mathematisches Modell mit den beiden Typen \emph{S-Cells} und \emph{C-Cells} einführte. Die S-Cells befinden sich jeweils in der ersten Schicht des Modells und sind mit den C-Cells verbunden. 
 
 \paragraph{Erkennung von Handschrift}
-Einer der Pioniere auf dem Gebiet ist der französische Informatiker Yann LeCun. In einer Ausarbeitung wie ein simples CNN Modell in der Lage ist handschriftliche Ziffern zu erkennen. Sein Modell verwendet wie schon angedeutet die Eigenschaft mit einfach Formen komplexere zu bilden und somit die Ziffern zu erkennen. Um sein Modell zu trainieren verwendete der die \emph{MNIST database of handwritten digits}. Diese Datenbank enthält 
+Einer der Pioniere auf dem Gebiet ist der französische Informatiker Yann LeCun. In den 90er Jahren publizierte er diverse Ausarbeitung. In seiner bekanntesten beschreibt er wie ein einfaches CNN Modell in der Lage ist handschriftliche Ziffern zu erkennen. Sein Modell verwendet wie schon angedeutet die Eigenschaft mit einfach Formen komplexere zu bilden und somit die Ziffern zu erkennen. Um sein Modell zu trainieren verwendete der die \emph{MNIST database of handwritten digits}. Diese Datenbank enthält Bilder von handgeschriebenen Ziffern welche jeweils mit einem entsprechenden Label versehen wurden welche vom Netz verwendet werden um die Kostenfunktion aufzustellen \footnote{Es sei ebenfalls noch kurz erwähnt, dass es zu sehr vielen Themengebieten derartige Datenbanken gibt. Eine umfangreiche Liste von frei verfügbaren Quellen ist hier \cite{openDataSets} zu finden.}. Die Datenbank enthält circa 60.000 Datensätze welche ausschließlich zum trainieren des Netzes verwendet werden und 10.000 Datensätze um den letztendlichen Fehler zu berechnen. Wie genau dies geschieht wird im späteren Verlauf des Kapitels geklärt. 
 
-
-
+Todo Referenz auf Erklärung einbinden. 
 
 \subsection{Funktionsweise}
-\blindtext
+Gegeben sei ein beliebiges Bild, ein CNN soll nun in der Lage sein dazu anzugeben mit welcher Wahrscheinlichkeit das Bild zu einer definierten Klasse gehört. Dies können auch durchaus mehr als eine Klasse pro Bild sein. Das zu kategorisierende Bild wird in Form einer Matrix verarbeitet. In der folgenden Darstellung kann man grob sehen wie sowas in etwa aussehen könnte (siehe Abbildung \ref{puppies}). 
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=.9\linewidth]{img/humanVsPc}
+	\mycaption{Vergleich  - Darstellung Mensch und Maschine}{cnnExplained}
+	\label{fig:puppies}
+\end{figure}
+
+Die rechte Darstellung ist hierbei auch noch unvollständig, denn es handelt sich bei dem Bild um ein Farbbild. In der Praxis ist werden für jedes Pixel drei unterschiedliche Farbwerte zwischen 0 und 255 gespeichert (wenn man sich im RGB-Farbraum befindet). Um die Ausgabeklasse eines Eingabearrays zu bestimmen wird wie schon bei den vorherigen Modellen darauf gesetzt auf \emph{low-leve}l Eigenschaften wie bestimmte Formen an bestimmten Positionen auf \emph{high-level} Eigenschaften geschlossen. Um dies zu erreichen wird bei dieser Art von Netz mit mehreren sogenannten Layern gearbeitet. Das Modell besteht im wesentlichen aus zwei Arten von Schichten: den Filtern (\emph{convolutional layer}) und Aggregations-Schichten (\emph{Pooling Layer}). Diese wiederholen sich abwechselnd. In Abbildung \ref{fig:cnnOverview} ist zu erkennen wie die beschriebenen Zwischenschritte der Verarbeitung grob aussehen können. 
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=.9\linewidth]{img/cnn_overview}
+	\mycaption{Überblick - CNN Verarbeitungsschritte}{cnnFunktionsweise2}
+	\label{fig:cnnOverview}
+\end{figure}
+
+\paragraph{Convolutional Layer}
+Der gegebene Matrix-Input wird mittels sogenannter \emph{Filter} (auch \emph{Neuron} oder \emph{Kernel} genannt) analysiert. Ein Filter besitzt eine feste Pixelgröße (\emph{Kernel-Size}) wie zum Beispiel 5 x 5. Diese spannt ein kleines \glqq Fenster \grqq über der Matrix auf. Dieses Fenster wandert beziehungsweise scannt anschließend mit einer definierten Schrittweite zeilenweise über die Eingabematrix. Mittels eines Parameters \emph{Padding} wird festgelegt, wie sich der Filter verhalten soll wenn er den Rand der Matrix erreicht. Die betrachteten Pixel im Betrachtungsfenster ein Neuron in der nächsten Schicht. Die Abbildung \ref{fig:cnn_convLayer} zeigt in relativ verständlicher Weise wie der sogenannte erste \emph{hidden Layer} dadurch aufgebaut wird. Wichtig: \emph{Die Größe dieser Ergebnismatrix ist abhängig von der Größe (Kernel-Size) des Filters, dem Padding und vor allem von der Schrittweite} \cite{cnnFunktionsweise2}. 
+
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=.6\linewidth]{img/cnn_convLayer}
+	\mycaption{CNN - Convolution Layer}{cnnFunktionsweise2}
+	\label{fig:cnn_convLayer}
+\end{figure}
+
+Eine Schrittweite von 2 bei einem Betrachtungsfenster von 2 x 2 Pixeln fúhrt beispielsweise pro Filter zu einer Halbierung der Größe der Ergebnis-Matrix im Vergleich zur Input-Matrix. Da in diesem Beispiel immer 4 Pixel gleichzeitig an einem Filter hängen wird die Eingabe in gewisser Weise \emph{gefaltet} (englisch \emph{convolution}). 
+
+In der Praxis wird oft ein convolutional Layer mit 32 Bit oder 16 Filtern verwendet. Jeder dieser Filter generiert eine eigene Ausgabematrix. Als nächste Schicht folgt erneut ein convolutional Layer welcher die Ausgabematrizen als neuen Input verwendet. Die dadurch generierte Ausgabe wird auch \emph{activation map} oder \emph{feature map} genannt und wird wiederum in einen \emph{Pooling Layer} gesteckt. 
+
+todo Ratten Beispiel für Filter 
+
+\paragraph{Pooling Layer}
+Ein \emph{Pooling Layer} ist dafür zuständig die Ergebnisse von Convolutional Layern zu aggregieren. Dies wird anhand eines Pooling-Prozesses ausgewertet. Der wesentliche Zweck dieser Schicht ist es \emph{nur die relevantesten Signale an die nächsten Schichten weiter zu geben, eine abstraktere Repräsentation des Inhalts zu erreichen und die Anzahl der Parameter eines Netzes zu reduzieren} \cite{cnnFunktionsweise2}. 
+
+Da ein Bild in der Regel ziemlich viele Pixel beinhaltet wird bei diesem Modell ein Pooling 
+
+
+

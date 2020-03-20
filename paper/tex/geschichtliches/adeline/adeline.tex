@@ -2,7 +2,7 @@
 
 \subsection{Aufbau}
 
-Im 1959 entwickelten der Stanford Professor Bernard Widrow und der Elektroingeneur Marcian Edward Hoff das sogenannte \emph{Adilne-Modell}. Der Name ist ein Akronym für \emph{ADAptive LINear Element}. Dieses Modell basiert auf dem Perceptron mit dem Unterschied, dass dieses Modell auf die Einheits-Sprungfunktion, wie sie das Peceptron verwendet, bei der Angleichung der Gewichte verzichtet. Es wird stattdessen eine lineare Aktivierungsfunktion ${g(\mathbf{z})}$ verwendet welche in diesem Fall erstmal mit der Identitätsfunktion besetzt wird (es gilt also ${g(\mathbf{w}^T\mathbf{x}) = \mathbf{w}^T\mathbf{x}}$). Außerdem wird eine Entscheidungsfunktion an das Ende des ganzen Modells gehängt um weiterhin die Werte quantifizieren zu können. Diese hat jedoch keinen Einfluss auf den Trainingsalgorithmus. 
+Im 1959 entwickelten der Stanford Professor Bernard Widrow und der Elektroingeneur Marcian Edward Hoff das sogenannte \emph{Adeline-Modell}. Der Name ist ein Akronym für \emph{ADAptive LINear Element}. Dieses Modell basiert auf dem Perceptron mit dem Unterschied, dass dieses Modell auf die Einheits-Sprungfunktion, wie sie das Peceptron verwendet, bei der Angleichung der Gewichte verzichtet. Es wird stattdessen eine lineare Aktivierungsfunktion ${g(\mathbf{z})}$ verwendet welche in diesem Fall erstmal mit der Identitätsfunktion besetzt wird (es gilt also ${g(\mathbf{w}^T\mathbf{x}) = \mathbf{w}^T\mathbf{x}}$). Außerdem wird eine Entscheidungsfunktion an das Ende des ganzen Modells gehängt um weiterhin die Werte quantifizieren zu können. Diese hat jedoch keinen Einfluss auf den Trainingsalgorithmus. 
 
 \begin{figure}[!htb]
 	\centering
@@ -192,7 +192,7 @@ Die wesentlichen Unterschiede zum Lernalgorithmus welcher beim Perceptron verwen
 \paragraph{Stochastischer Gradientenabstieg}
 Der vorgestellte Algorithmus ist in der Praxis aber relativ rechenaufwendig weil man für jeden einzelnen Iterationsschritt alle Trainingsdatensätze betrachten muss. Ein Weg dies zu umgehen ist der sogenannte \emph{Mini-Batch Gradientenabstieg}. Hierbei wird die komplette Menge an Traininngsdatensätzen erst einmal gemischt und anschließend in kleinere Mengen unterteilt. Beim Iterationsschritt wird dann jeweils eine solcher Mengen betrachtet. Dies ist nicht der effizienteste Weg allerdings ist dieser viel schneller berechnet, dennoch gibt er eine gute Annäherung dafür wie die einzelnen Gewichte geändert werden müssen. In Abbildung \ref{fig:ad_gd4} kann man erkennen wie die unterschiedlichen Arten des Gradientenabstiegs grob arbeiten. Der linke Graph beschreibt den \glqq herkömmlichenl \grqq Batch-Gradientenabstieg während der rechte den stochastischen darstellt. Dieser trifft zwar nie die genau Richtung ist allerdings immer relativ nah dran und findet letztendlich ebenfalls das Ziel. 
 
-\begin{figure}[!htb]
+\begin{figure}[!t]
 	\centering
 	\includegraphics[width=\linewidth]{img/3dPlot_sgd}
 	\mycaption{Gradientenverfahren - Vergleich}{3b1b}

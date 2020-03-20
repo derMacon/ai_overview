@@ -1,12 +1,15 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: seminar_main.aux
 The style file: plain.bst
 Database file #1: verweise.bib
+Warning--I didn't find a database entry for "simpleComplexCell"
 Warning--to sort, need author or key in mpNeuron
 Warning--to sort, need author or key in klproblem
 Warning--to sort, need author or key in pcImplementierung
 Warning--to sort, need author or key in partAbl
 Warning--to sort, need author or key in 3b1b
 Warning--to sort, need author or key in cnnHistory
-Warning--to sort, need author or key in simpleComplexCell
+Warning--to sort, need author or key in openDataSets
+Warning--to sort, need author or key in cnnExplained
 Warning--to sort, need author or key in perceptronAdeline
-(There were 8 warnings)
+Warning--to sort, need author or key in cnnFunktionsweise
+(There were 11 warnings)

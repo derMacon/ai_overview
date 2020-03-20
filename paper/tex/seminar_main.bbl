@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{3b1b}
 {3Blue1Brown - Videokurs zur Einführung in die Neuralen Netze}.
@@ -6,22 +6,33 @@
   \url{https://www.youtube.com/watch?v=aircAruvnKk&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi}.
 \newblock Aufgerufen am: 16-03-2020.
 
-\bibitem{cnnHistory}
-{Convolutional NN)}.
-\newblock
-  \url{https://glassboxmedicine.com/2019/04/13/a-short-history-of-convolutional-neural-networks/}.
-\newblock Aufgerufen am: 18-03-2020.
-
-\bibitem{simpleComplexCell}
-{Convolutional NN)}.
-\newblock \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1890437/}.
-\newblock Aufgerufen am: 18-03-2020.
-
 \bibitem{klproblem}
 {Definition Klassifizierungssproblem}.
 \newblock
   \url{http://ekpwww.physik.uni-karlsruhe.de/~tkuhr/HauptseminarWS1112/Keck_handout.pdf}.
 \newblock Aufgerufen am: 15-03-2020.
+
+\bibitem{cnnExplained}
+{Einführung Convolutional neural network)}.
+\newblock
+  \url{https://adeshpande3.github.io/A-Beginner%27s-Guide-To-Understanding-Convolutional-Neural-Networks/}.
+\newblock Aufgerufen am: 18-03-2020.
+
+\bibitem{openDataSets}
+{Öffentliche Datensätze - Übersicht)}.
+\newblock \url{https://github.com/awesomedata/awesome-public-datasets}.
+\newblock Aufgerufen am: 18-03-2020.
+
+\bibitem{cnnFunktionsweise}
+{Funktionsweise von Convolutional neuralen Netzen)}.
+\newblock \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1890437/}.
+\newblock Aufgerufen am: 18-03-2020.
+
+\bibitem{cnnHistory}
+{Geschichte der Convolutional neuronalen Netze)}.
+\newblock
+  \url{https://glassboxmedicine.com/2019/04/13/a-short-history-of-convolutional-neural-networks/}.
+\newblock Aufgerufen am: 18-03-2020.
 
 \bibitem{partAbl}
 {Khan Academy - Partielle Ableitungen (Funktion mit zwei Eingabewerten)}.
