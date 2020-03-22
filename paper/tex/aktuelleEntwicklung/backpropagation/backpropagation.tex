@@ -10,7 +10,7 @@ Gemeinhin wird die Notation wie sie in Abbilung \ref{fig:weight_not} zu sehen is
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\linewidth]{img/weight_notation}
+	\includegraphics[width=.9\linewidth]{img/weight_notation}
 	\mycaption{Notation}{dlnielsen}
 	\label{fig:weight_not}
 \end{figure}
@@ -69,4 +69,63 @@ Gewichtete Eingabe:
 
 \subsection{Fundamentale Gleichungen}
 
-Ziel des Backpropagation Algorithmus ist es 
+Ziel des Backpropagation Algorithmus ist es herauszubekommen welche Gewichte und Schwellwerte verändert werden müssen um die Kostenfunktion zu minimieren. Im folgenden werde ich nach und nach die vier wichtigsten Formeln des Verfahrens beschreiben. 
+
+\begin{mytheo}{Backpropagation - Fundamentale Gleichungen}{theoexample} \label{theo:zus}
+
+\begin{equation} \label{eq:error}
+\delta^L = \nabla_a C \odot \sigma'(z^L).
+\end{equation}
+
+\begin{equation}
+\delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l),
+\end{equation}
+
+\begin{equation}
+\frac{\partial C}{\partial b^l_j} = \delta^l_j.
+\end{equation}
+
+\begin{equation}
+\frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j.
+\end{equation}
+
+\end{mytheo}
+
+
+\subsection{Fehler auf der Ausgabeschicht (Gleichung \ref{eq:error})}
+Um zu verstehen was man unter einem Fehler genau versteht sei angenommen die Ausgabe eines Neurons \emph{j} im Layer \emph{l} wird um einen unbestimmten Wert verzerrt. Mathematisch ausgedrückt sieht dies dann folgendermaßen aus: 
+
+\begin{equation}
+\sigma(z^l_j+\Delta z^l_j)
+\end{equation}
+
+Statt der herkömmlichen Ausgabe $\sigma{z^l_j}$ wird ein \emph{Fehler} $\Delta z^l_j$ hinzugefügt. Allgemein wird der Fehler eines einzelnen Neurons dadurch folgendermaßen beschrieben: 
+
+\begin{equation}
+\delta^l_j \equiv \frac{\partial C}{\partial z^l_j}.
+\end{equation}
+
+Wie wir bereits beim Gradientenabstieg gesehen haben, beschreibt diese partielle Ableitung die \glqq Steigung \grqq der Kostenfunktion im Bezug auf den die Ausgabe $z^l_j$. Dieser Wert dient im späteren Verlauf allerdings lediglich als Zwischenschritt, da wir im Endeffekt an den Gradienten bezüglich der Gewichte sowie den Schwellwerten interessiert sind. Im Nachhinein wird daher versucht den Fehler ${\partial C / \partial z^l_j}$ auf die Gewichte ${\partial C / \partial w^l_j}$ und Bias ${\partial C / \partial b^l_j}$ zurückzuführen. 
+
+Die komponentenweise Darstellung für die Berechnung des Fehlers auf der Ausgabeschicht $\delta^L$ sieht folgendermaßen aus:
+
+\begin{equation}
+\delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j)
+\end{equation}
+
+Der vordere Teil $\partial C / \partial a^L_j$ beschreibt wie sich die Kostenfunktion bezüglich eines Neurons mit dem Index \emph{j} auf der Ausgabeschicht verhält (Steigung der Kostenfunktion nach $a^L_j$). Wenn das Neuron nicht sehr viel \emph{Einfluss} auf die Kostenfunktion nimmt, bleibt dieser Faktor klein und das Ergebnisfehler fällt minimal aus. Der hintere Teil beschreibt die Ableitung der Aktivierungsfunktion und die Steigung an der gegebenen Stelle $z^L_j$. 
+Da man hierbei auch wieder versuchen möchte die Formeln möglichst allgemein zu halten wird der Fehler auf wieder als Vektor der Ausgabeschicht definiert. Das sieht dann so aus: 
+
+\begin{equation}
+\delta^L = \nabla_a C \odot \sigma'(z^L)
+\end{equation}
+
+Dies ist auch die Darstellung wie sie Anfang des Abschnitts verwendet wurde (siehe \ref{theo:zus}). $\nabla_a C$ stellt dabei den Vektor dar dessen partielle Ableitung $\partial C / \partial a^L_j$ entsprechen. Es ist also lediglich eine andere Schreibweise für die partielle Ableitung bezogen auf die komplette Ausgabeschicht. Wenn wir für die Kostenfunktion wie schon in früheren Kapiteln die quadratische Kostenfunktion wählen entspricht \emph{C} gleich $C = \frac{1}{2} \sum_j (y_j-a^L_j)^2$. Nach $a^L_j$ abgeleitet entspricht dies dann wiederum $\partial C / \partial a^L_j = (a_j^L-y_j)$. Die Herleitung ist sehr ähnlich zu der des Gradienten (siehe \ref{deri:grad}), hier fehlt lediglich die Iteration über die kompletten Trainingsdatensätze. 
+
+Der entstandene Vektor ($\nabla_a C$) wird dann komponentenweise mit der Ableitung der Aktivierungsfunktion multipliziert. Da diese vektorisiert wurde entspricht das Ergebnis von $\sigma'(z^L)$ ebenfalls wieder einem Vektor was diese Rechenoperation ermöglicht. Eine andere Schreibweise ist daher folgende Gleichung: 
+
+\begin{equation}
+\delta^L = (a^L-y) \odot \sigma'(z^L)
+\end{equation}
+
+Hierbei wurde lediglich die Ableitung eingesetzt. 
