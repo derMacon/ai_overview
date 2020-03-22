@@ -1,4 +1,4 @@
-\section{Convolutional Neural Network}
+\section{Convolutional Neural Network} \label{sc:cnn}
 Bisher wurden in erster Linie die Grundlagen für die heutigen neuronalen Netze erläutert. Im kommenden Abschnitt werde ich grob darauf eingehen wie man diese Techniken nutzen kann um mithilfe eines \emph{Convolutional neural networks} Bilder erkennen kann. 
 
 
@@ -58,7 +58,6 @@ Die rechte Darstellung ist hierbei auch noch unvollständig, denn es handelt sic
 \paragraph{Convolutional Layer}
 Der gegebene Matrix-Input wird mittels sogenannter \emph{Filter} (auch \emph{Neuron} oder \emph{Kernel} genannt) analysiert. Ein Filter besitzt eine feste Pixelgröße (\emph{Kernel-Size}) wie zum Beispiel 5 x 5. Diese spannt ein kleines \glqq Fenster \grqq über der Matrix auf. Dieses Fenster wandert beziehungsweise scannt anschließend mit einer definierten Schrittweite zeilenweise über die Eingabematrix. Mittels eines Parameters \emph{Padding} wird festgelegt, wie sich der Filter verhalten soll wenn er den Rand der Matrix erreicht. Die betrachteten Pixel im Betrachtungsfenster ein Neuron in der nächsten Schicht. Die Abbildung \ref{fig:cnn_convLayer} zeigt in relativ verständlicher Weise wie der sogenannte erste \emph{hidden Layer} dadurch aufgebaut wird. Wichtig: \emph{Die Größe dieser Ergebnismatrix ist abhängig von der Größe (Kernel-Size) des Filters, dem Padding und vor allem von der Schrittweite} \cite{cnnFunktionsweise2}. 
 
-
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=.6\linewidth]{img/cnn_convLayer}
@@ -106,3 +105,5 @@ Ein weit verbreiteter Pooling-Mechanismus stellt der sogenannte \emph{MaxPooling
 \paragraph{Fully Connected Layer}
 Diese Schicht wird auch oft als \emph{Dense Layer} bezeichnet. Ausgangspunkt für die Verwendung dieses Layers ist, dass sämtliche high-level Merkmale bereits durch die bereits beschriebenen Schichten erkannt wurden. In dieser Schicht werden sämtliche Neuronen mit allen Ein- und Ausgabewerten verbunden. Generell fasst diese Schicht alle high-level Merkmale zu den jeweiligen Ausgabeklassen zusammen. Wenn wir beim Beispiel der Ziffernerkennung bleiben, spiegelt die Vorgängerschicht die einzelnen Schnörkel und Striche der einzelnen Ziffern wieder. Der Dense Layer fasst diese dann zu den wirklichen Ziffern zusammen. So entsteht als Ausgabe hierbei ein N-dimensionaler Vektor welcher in den einzelnen Komponenten die jeweilige Wahrscheinlichkeit hält, dass es sich um die jeweilige Klasse handelt oder nicht. Bei den Ziffern wäre dies ein 10 dimensionaler Vektor. Wenn man nun die Ziffer 0 erkennen wollen würde kann es gut sein, dass sich das Netz \glqq nicht ganz sicher \grqq ist, da es die Ziffer 9 im oberen Bereich zum Beispiel ebenfalls eine Rundung besitzt. Die Ausgabe könnte dann so aussehen, dass alle Komponenten bis auf die am Index 0 und 9 mit einer Wahrscheinlichkeit von 0 belegt wurden. 
 
+\paragraph{Training} 
+Das genutzte Verfahren der \emph{Backpropagation} ist von fundamentaler Bedeutung für alle aktuellen Architekturen, daher bekommt er eine eigenen Section (siehe todo Referenz einfügen). 
