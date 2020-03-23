@@ -56,12 +56,12 @@ Bisherige Schreibweise:
 \end{equation}
 
 Zusammengefasste Form:
-\begin{equation}
+\begin{equation} \label{eq:zusForm}
 a^l = \sigma(z^l)
 \end{equation}
 
 Gewichtete Eingabe:
-\begin{equation}
+\begin{equation} \label{eq:gewEin}
   z^l \equiv w^l a^{l-1}+b^l
 \end{equation}
 
@@ -77,7 +77,7 @@ Ziel des Backpropagation Algorithmus ist es herauszubekommen welche Gewichte und
 \delta^L = \nabla_a C \odot \sigma'(z^L).
 \end{equation}
 
-\begin{equation}
+\begin{equation} \label{eq:recError}
 \delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l),
 \end{equation}
 
@@ -92,7 +92,7 @@ Ziel des Backpropagation Algorithmus ist es herauszubekommen welche Gewichte und
 \end{mytheo}
 
 
-\subsection{Fehler auf der Ausgabeschicht (Gleichung \ref{eq:error})}
+\paragraph{Fehler auf der Ausgabeschicht - Gleichung \ref{eq:error}}
 Um zu verstehen was man unter einem Fehler genau versteht sei angenommen die Ausgabe eines Neurons \emph{j} im Layer \emph{l} wird um einen unbestimmten Wert verzerrt. Mathematisch ausgedrückt sieht dies dann folgendermaßen aus: 
 
 \begin{equation}
@@ -105,27 +105,92 @@ Statt der herkömmlichen Ausgabe $\sigma{z^l_j}$ wird ein \emph{Fehler} $\Delta 
 \delta^l_j \equiv \frac{\partial C}{\partial z^l_j}.
 \end{equation}
 
-Wie wir bereits beim Gradientenabstieg gesehen haben, beschreibt diese partielle Ableitung die \glqq Steigung \grqq der Kostenfunktion im Bezug auf den die Ausgabe $z^l_j$. Dieser Wert dient im späteren Verlauf allerdings lediglich als Zwischenschritt, da wir im Endeffekt an den Gradienten bezüglich der Gewichte sowie den Schwellwerten interessiert sind. Im Nachhinein wird daher versucht den Fehler ${\partial C / \partial z^l_j}$ auf die Gewichte ${\partial C / \partial w^l_j}$ und Bias ${\partial C / \partial b^l_j}$ zurückzuführen. 
+Fangen wir jedoch von vorne an. Bei der Backpropagation wird versucht von den Fehlern welche am Ende auftreten auf die verschiedenen Gewichte und Schwellwerte zu schließen die verändert werden müssen. Hierbei wird zuallererst der durchschnittliche Fehler der letzten Schicht berechnet. Hierfür wird die Kostenfunktion nach dem jeweiligen normalisierten Ausgabewerts eines Neurons mit Index \emph{j} abgeleitet.
 
-Die komponentenweise Darstellung für die Berechnung des Fehlers auf der Ausgabeschicht $\delta^L$ sieht folgendermaßen aus:
+\begin{equation} \label{eq:1}
+\delta^L_j = \frac{\partial C}{\partial z^L_j}
+\end{equation}
+
+Wichtig hierbei, das \emph{L} steht hierbei für den letzten (Ausgabe-) Layer. Dieser Ausdruck kann etwas verfeinert werden, indem man die Kettenregel anwendet \footnote{Der Youtuber 3blue1brown hat hierzu ein sehr gutes Video produziert welches die Zusammenhänge mit der Kettenregel verdeutlicht \cite{3b1b} (Kapitel: Backpropagation)}. Zur Erinnerung, die Kettenregel sieht folgendermaßen aus:  
+
+\begin{equation}
+\frac{d}{{dx}}\left[ {f\left( u \right)} \right] = \frac{d}{{du}}\left[ {f\left( u \right)} \right]\frac{{du}}{{dx}}
+\end{equation}
+
+Für die Vereinfachung der Gleichung \ref{eq:1} wird die Definition von \emph{z} herangezogen (siehe Gleichung \ref{eq:gewEin}). Wir erinnern uns, $a^l = \sigma(z^l)$ (siehe \ref{eq:zusForm}). \emph{z} stellt in diesem Fall den kompletten Ausgabewert des Neurons dar \emph{bevor} dieser in die Aktivierungsfunktion gesteckt wurde und berechnet sich wie schon in Gleichung \ref{eq:gewEin} gezeigt mit ${z^l \equiv w^l a^{l-1}+b^l}$. Wenn man die Kostenfunktion nun nach \emph{z} ableiten möchte muss man hierbei erst einmal die äußere mit der inneren Ableitung multiplizieren. Es entsteht folgende Gleichung: 
+
+\begin{equation}
+\delta^L_j = \sum_k \frac{\partial C}{\partial a^L_k} \frac{\partial a^L_k}{\partial z^L_j}
+\end{equation}
+
+Der hintere Term $\partial a^L_k / \partial a^L_j$
+
+Da die Aktivierung $a^L_k$ im letzten Term lediglich vom Neuron mit dem Index \emph{k} abhängt bilden alle Summanden mit $k \neq j$ den Wert null. Es kann folglich auf die nachfolgende Gleichung geschlossen werden. (Dieses Entfallen der Summe war bereits in der Herleitung des Gradientenabstiegs zu beobachten). 
+
+\begin{equation}
+\delta^L_j = \frac{\partial C}{\partial a^L_j} \frac{\partial a^L_j}{\partial z^L_j}
+\end{equation}
+
+Da gilt, dass $a^L_j = \sigma(z^L_j)$ lässt sich der zweite Term in $\sigma'(z^L_j)$ umschreiben. 
 
 \begin{equation}
 \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j)
 \end{equation}
 
-Der vordere Teil $\partial C / \partial a^L_j$ beschreibt wie sich die Kostenfunktion bezüglich eines Neurons mit dem Index \emph{j} auf der Ausgabeschicht verhält (Steigung der Kostenfunktion nach $a^L_j$). Wenn das Neuron nicht sehr viel \emph{Einfluss} auf die Kostenfunktion nimmt, bleibt dieser Faktor klein und das Ergebnisfehler fällt minimal aus. Der hintere Teil beschreibt die Ableitung der Aktivierungsfunktion und die Steigung an der gegebenen Stelle $z^L_j$. 
-Da man hierbei auch wieder versuchen möchte die Formeln möglichst allgemein zu halten wird der Fehler auf wieder als Vektor der Ausgabeschicht definiert. Das sieht dann so aus: 
+Die Formel bezieht sich momentan auf eine spezifische Komponente innerhalb der letzten Schicht, Ziel dieser Einheit ist es jedoch möglichst allgemeingültige Formeln zu finden damit der Rechner effizienter arbeiten kann. Daher wird die betrachtete Formel derartig umformuliert, dass es einen Ausgabevektor gibt welcher sämtliche Fehler der Ausgabeneuronen enthält. Auf die jeweiligen Felder kann hierbei über die jeweiligen Indizes zugegriffen werden. 
 
 \begin{equation}
 \delta^L = \nabla_a C \odot \sigma'(z^L)
 \end{equation}
 
-Dies ist auch die Darstellung wie sie Anfang des Abschnitts verwendet wurde (siehe \ref{theo:zus}). $\nabla_a C$ stellt dabei den Vektor dar dessen partielle Ableitung $\partial C / \partial a^L_j$ entsprechen. Es ist also lediglich eine andere Schreibweise für die partielle Ableitung bezogen auf die komplette Ausgabeschicht. Wenn wir für die Kostenfunktion wie schon in früheren Kapiteln die quadratische Kostenfunktion wählen entspricht \emph{C} gleich $C = \frac{1}{2} \sum_j (y_j-a^L_j)^2$. Nach $a^L_j$ abgeleitet entspricht dies dann wiederum $\partial C / \partial a^L_j = (a_j^L-y_j)$. Die Herleitung ist sehr ähnlich zu der des Gradienten (siehe \ref{deri:grad}), hier fehlt lediglich die Iteration über die kompletten Trainingsdatensätze. 
+Dies ist auch die Darstellung wie sie Anfang des Abschnitts verwendet wurde (siehe \ref{theo:zus}). $\nabla_a C$ stellt dabei den Vektor dar dessen partielle Ableitungen $\partial C / \partial a^L_j$ entsprechen (\emph{j} ist hierbei weiterhin der Index des betrachteten Neurons innerhalb des letzten Layers). Es ist also lediglich eine andere Schreibweise für die partielle Ableitung, bezogen auf die komplette Ausgabeschicht. 
 
-Der entstandene Vektor ($\nabla_a C$) wird dann komponentenweise mit der Ableitung der Aktivierungsfunktion multipliziert. Da diese vektorisiert wurde entspricht das Ergebnis von $\sigma'(z^L)$ ebenfalls wieder einem Vektor was diese Rechenoperation ermöglicht. Eine andere Schreibweise ist daher folgende Gleichung: 
+\begin{equation}
+\delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j)
+\end{equation}
+
+
+Wenn wir für die Kostenfunktion wie schon in früheren Kapiteln die quadratische Kostenfunktion wählen entspricht $C = \frac{1}{2} \sum_j (y_j-a^L_j)^2$. Nach $a^L_j$ abgeleitet ergibt sich dann wiederum $\partial C / \partial a^L_j = (a_j^L-y_j)$. Die Herleitung ist sehr ähnlich zu der des Gradienten (siehe \ref{deri:grad}), hier fehlt lediglich die Iteration über die kompletten Trainingsdatensätze. Diese Ableitung kann man dann ebenfalls in die Gleichung einsetzen um ein etwas klareres Bild zu schaffen. 
+
+\begin{equation}
+\delta^L = (a^L-y) \odot \sigma'(z^L)
+\end{equation}
+ 
+ 
+\begin{mytheo}{Zusammenfassung}{theoexample}
+
+
+Um den Fehlervektor der letzten Schicht zu bestimmen: 
+
+\begin{equation}
+\delta^L = \nabla_a C \odot \sigma'(z^L).
+\end{equation}
+
+
+äquivalent zu: 
 
 \begin{equation}
 \delta^L = (a^L-y) \odot \sigma'(z^L)
 \end{equation}
 
-Hierbei wurde lediglich die Ableitung eingesetzt. 
+
+Um die Fehler komponentenweise zu bestimmen: 
+
+\begin{equation}
+\delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j)
+\end{equation}
+
+\end{mytheo}
+
+
+
+
+
+
+\paragraph{Rekursive Fehlererkennung - Gleichung \ref{eq:recError}}
+
+Da wir nun die Fehler des letzten Layers kennen wird diese Erkenntnis genutzt um auf die Fehler der vorherigen Schichten zu deuten. 
+
+Man versucht mithilfe der jeweils nächsten Schicht auf die Fehlerwerte der aktuellen Schicht zu kommen. Die Gleichung $\delta^l_j = \partial C / \partial z^l_j$ wird zu $\delta^{l+1}_k = \partial C / \partial z^{l+1}_k$ umgeformt. 
+
+
