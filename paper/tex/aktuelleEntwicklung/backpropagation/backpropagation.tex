@@ -92,6 +92,15 @@ Ziel des Backpropagation Algorithmus ist es herauszubekommen welche Gewichte und
 \end{mytheo}
 
 
+\begin{figure}[!htb]
+	\centering
+	
+\Tree [.C \qroof{Label}.y [.$a^{l+1}_j$ [ .$z^{l+1}_j$ [ $w^l_j$ [ .$a^l_j$ [ .$z^l_j$ \qroof{Weight}.$w^l_j$ \qroof{Activation}.$a^{l-1}_j$ \qroof{Bias}.$b^l_j$ ] ] $b^l_j$ ] ] ] ]
+
+	\mycaption{Baumdarstellung - Zusammenhang der Gewichte, Aktivierungen und Schwellwerte}{3b1b}
+	\label{fig:tree}
+\end{figure}
+
 \paragraph{Fehler auf der Ausgabeschicht - Gleichung \ref{eq:error}}
 Um zu verstehen was man unter einem Fehler genau versteht sei angenommen die Ausgabe eines Neurons \emph{j} im Layer \emph{l} wird um einen unbestimmten Wert verzerrt. Mathematisch ausgedrückt sieht dies dann folgendermaßen aus: 
 
@@ -242,3 +251,7 @@ z^{l+1}_k = \sum_j w^{l+1}_{kj} a^l_j +b^{l+1}_k = \sum_j w^{l+1}_{kj} \sigma(z^
 \item Gleichung \ref{eq:recErr7}: Wie schon bei der letzten fundamentalen Gleichung dieses Algorithmus wird die Darstellung noch einmal von der bisherigen komponentenweisen Darstellung in die vektorielle Darstellung überführt. 
 
 \end{enumerate}
+
+
+
+
