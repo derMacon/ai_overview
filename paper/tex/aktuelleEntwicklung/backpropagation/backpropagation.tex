@@ -189,8 +189,56 @@ Um die Fehler komponentenweise zu bestimmen:
 
 \paragraph{Rekursive Fehlererkennung - Gleichung \ref{eq:recError}}
 
-Da wir nun die Fehler des letzten Layers kennen wird diese Erkenntnis genutzt um auf die Fehler der vorherigen Schichten zu deuten. 
+Da wir nun die Fehler der letzten Schicht kennen, wird diese Erkenntnis genutzt um auf die Fehler der vorherigen Schichten zu schließen. Im folgenden wird zwischen den beiden Gleichungen $\delta^l_j = \partial C / \partial z^l_j$ und $\delta^{l+1}_k = \partial C / \partial z^{l+1}_k$ ein Zusammenhang hergestellt der diese Vorgehensweise ermöglicht.
 
-Man versucht mithilfe der jeweils nächsten Schicht auf die Fehlerwerte der aktuellen Schicht zu kommen. Die Gleichung $\delta^l_j = \partial C / \partial z^l_j$ wird zu $\delta^{l+1}_k = \partial C / \partial z^{l+1}_k$ umgeformt. 
+\begin{myderivation}{Rekursiver Fehler}{theoexample} \label{deri:grad}
+
+\begin{equation} \label{eq:recErr1}
+\delta^l_j = \frac{\partial C}{\partial z^l_j}
+\end{equation}
+
+\begin{equation} \label{eq:recErr2}
+\delta^l_j = \sum_k \frac{\partial C}{\partial z^{l+1}_k} \frac{\partial z^{l+1}_k}{\partial z^l_j} 
+\end{equation}
+
+\begin{equation} \label{eq:recErr3}
+\delta^l_j = \sum_k \frac{\partial z^{l+1}_k}{\partial z^l_j} \delta^{l+1}_k,
+\end{equation}
+
+\begin{equation} \label{eq:recErr4}
+z^{l+1}_k = \sum_j w^{l+1}_{kj} a^l_j +b^{l+1}_k = \sum_j w^{l+1}_{kj} \sigma(z^l_j) +b^{l+1}_k.
+\end{equation}
+
+\begin{equation} \label{eq:recErr5}
+\frac{\partial z^{l+1}_k}{\partial z^l_j} = w^{l+1}_{kj} \sigma'(z^l_j).
+\end{equation}
+
+\begin{equation} \label{eq:recErr6}
+\delta^l_j = \sum_k w^{l+1}_{kj}  \delta^{l+1}_k \sigma'(z^l_j).
+\end{equation}
+
+\begin{equation} \label{eq:recErr7}
+\delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l),
+\end{equation}
+
+\end{myderivation}
 
 
+
+\begin{enumerate}
+
+\item Gleichung \ref{eq:recErr1}: Genau wie bereits zur Bestimmung des Fehlers auf der letzten Schicht wird hierbei die Kostenfunktion nach der jeweiligen Ausgabe des Neurons abgeleitet bevor es durch die Aktivierungsfunktion gezogen wird ($z^l_j$). 
+
+\item Gleichung \ref{eq:recErr2}: Nun wird wie vorher schon die Kettenregel angewandt (die Aktivierung wird jedoch erst einmal vernachlässigt). Es wird lediglich nach dem Z-Wert aufgelöst.
+
+\item Gleichung \ref{eq:recErr3}: Die Reihenfolge der beiden Terme wird vertauscht und es wird die oben genannte Definition eingesetzt ($\delta^{l+1}_k = \partial C / \partial z^{l+1}_k$). 
+
+\item Gleichung \ref{eq:recErr4}: In einem Zwischenschritt wird Z-Wert des nächsten Layers notiert. Diese Gleichung ist folgendermaßen zu verstehen: Der Z-Wert des jeweils nächsten Layers im Neuron mit dem Index \emph{k} setzt sich zusammen aus der Summe aller Gewichte welche ihren Endpunkt im betreffenden Neuron haben mit den Aktivierungen der vorherigen Schichten. Diese Summe wird anschließend mit dem entsprechenden Schwellwert des Neurons verrechnet. Die Aktivierung \emph{a} wird abschließend noch durch ihre Funktion mit der Aktivierungsfunktion $\sigma$ ersetzt. 
+
+\item Gleichung \ref{eq:recErr5}: Hier wird der gerade besprochene Zwischenschritt welcher in der Gleichung \ref{eq:recErr3} den vorderen Teil darstellt einmal entsprechend der Notation differenziert. Auch hier gilt wieder, sämtliche Summanden der Summenfunktion mit einem Index $i \neq k$ werden vernachlässigt da sie bei der Ableitung als Konstanten verstanden werden (es wird schließlich nach $z^l_j$ abgeleitet). 
+
+\item Gleichung \ref{eq:recErr6}: Wenn wir die letzte Gleichung \ref{eq:recErr5} wieder in unsere ursprüngliche Gleichung \ref{eq:recErr3} einsetzen bekommen wir diese Darstellung. 
+
+\item Gleichung \ref{eq:recErr7}: Wie schon bei der letzten fundamentalen Gleichung dieses Algorithmus wird die Darstellung noch einmal von der bisherigen komponentenweisen Darstellung in die vektorielle Darstellung überführt. 
+
+\end{enumerate}
