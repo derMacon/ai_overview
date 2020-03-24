@@ -6,6 +6,11 @@
   \url{https://www.youtube.com/watch?v=aircAruvnKk&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi}.
 \newblock Aufgerufen am: 16-03-2020.
 
+\bibitem{archiOverview}
+{Übersicht - verschiedene Architekturen}.
+\newblock \url{https://www.asimovinstitute.org/neural-network-zoo/}.
+\newblock Aufgerufen am: 22-03-2020.
+
 \bibitem{klproblem}
 {Definition Klassifizierungssproblem}.
 \newblock
@@ -13,31 +18,42 @@
 \newblock Aufgerufen am: 15-03-2020.
 
 \bibitem{cnnExplained}
-{Einführung Convolutional neural network)}.
+{Einführung Convolutional neural network}.
 \newblock
   \url{https://adeshpande3.github.io/A-Beginner%27s-Guide-To-Understanding-Convolutional-Neural-Networks/}.
 \newblock Aufgerufen am: 18-03-2020.
 
 \bibitem{openDataSets}
-{Öffentliche Datensätze - Übersicht)}.
+{Öffentliche Datensätze - Übersicht}.
 \newblock \url{https://github.com/awesomedata/awesome-public-datasets}.
 \newblock Aufgerufen am: 18-03-2020.
 
+\bibitem{cnnFunktionsweise2}
+{Funktionsweise - CNN}.
+\newblock \url{https://bit.ly/2QGK0Ej}.
+\newblock Aufgerufen am: 18-03-2020.
+
 \bibitem{cnnFunktionsweise}
-{Funktionsweise von Convolutional neuralen Netzen)}.
+{Funktionsweise - CNN}.
 \newblock \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1890437/}.
 \newblock Aufgerufen am: 18-03-2020.
 
 \bibitem{cnnHistory}
-{Geschichte der Convolutional neuronalen Netze)}.
+{Geschichte der Convolutional neuronalen Netze}.
 \newblock
   \url{https://glassboxmedicine.com/2019/04/13/a-short-history-of-convolutional-neural-networks/}.
 \newblock Aufgerufen am: 18-03-2020.
 
 \bibitem{partAbl}
-{Khan Academy - Partielle Ableitungen (Funktion mit zwei Eingabewerten)}.
+{Khan Academy - Partielle Ableitungen (Funktion mit zwei Eingabewerten}.
 \newblock \url{https://www.youtube.com/watch?v=1CMDS4-PKKQ&t=542s}.
 \newblock Aufgerufen am: 16-03-2020.
+
+\bibitem{ss}
+{Künstliche Neuronale Netzwerke und Deep Learning - Stefan Stelle}.
+\newblock
+  \url{https://www.htwsaar.de/wiwi/fakultaet/personen/profile/selle-stefan/Selle2018e_Kuenstliche_Neuronale_Netzwerke.pdf/at_download/file}.
+\newblock Aufgerufen am: 24-03-2020.
 
 \bibitem{mpNeuron}
 {McCulloch-Pitts Neuron}.
@@ -46,7 +62,7 @@
 \newblock Aufgerufen am: 14-03-2020.
 
 \bibitem{pcImplementierung}
-{Perceptor - Python Implementierung}.
+{Perceptron - Python Implementierung}.
 \newblock
   \url{https://github.com/rasbt/mlxtend/blob/master/mlxtend/classifier/perceptron.py}.
 \newblock Aufgerufen am: 16-03-2020.
