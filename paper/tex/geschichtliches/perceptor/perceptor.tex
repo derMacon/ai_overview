@@ -111,6 +111,7 @@ Diese Datensätze bestehen aus Eingabewerten für das System und der korrespondi
 
 \vspace{5 mm}
 
+\label{sp:lernrate}
 Der genannte Ausgabewert wird wie bereits angedeutet über die Aktivierungsfunktion des Modells bestimmt. Die einzelnen Komponenten des \emph{Gewichtevektors} werden getrennt betrachtet und angeglichen. Ein Aktualisieren eines einzelnen Gewichts innerhalb des Gewichtsvektors wird formal mit $w_j := w_j + \Delta w_j$ beschrieben (das Dreieck kennzeichnet, dass es sich um eine \emph{Veränderung} handelt). Da die beschriebene Lernregel inkrementell arbeitet muss man eine sogenannte \emph{Lernrate} bestimmen. Dieser Wert bestimmt letztendlich wie stark ein Gewicht bei einer Iteration verändert wird. Formal wird diese Rate mit dem Zeichen $\eta$ dargestellt. Die eigentliche Formel zum Angleichen der Gewichte sieht folgendermaßen aus: 
 
 \begin{equation} \label{eq:lernRegel}
