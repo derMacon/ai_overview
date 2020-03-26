@@ -1,6 +1,6 @@
-\section{Backpropagation}
+\section{Backpropagation} \label{sec:backprop}
 
-\subsection{Notation}
+\subsection{Notation} \label{ss:notationBP}
 Diesem Lernalgorithmus liegt eine Kostenfunktion zugrunde. Diese schaut letztendlich einfach wie sich das Netz momentan für ein Trainingsdatensatz verhält. Wenn das Netz diesen richtig erkennt ist der ausgegebene Fehler gering ansonsten ist er hoch. 
 
 Um in einem mehrschichtigen Netz effizient die Kostenfunktion zu minimieren wird in vielen Fällen der \emph{Backpropagation}-Algorithmus verwendet. Dieser wurde bereits in den Siebzigerjahren definiert, erlangt jedoch erst im Jahr 1986 mit dem Paper \emph{Learning representations by back-propagating errors} von Rumelhart, Hinton und Williams Bekanntheit. 
@@ -49,7 +49,7 @@ Mit diesen Zusammenfassungen kann nun die Gleichung \ref{eq:act} folgendermaßen
 
 Diese Umschreibung abstrahiert das Denken über die lokalen Neuronen auf ein höheres Level sodass es einfacher ist das Gesamtbild zu betrachten. Um noch mehr Klarheit zu schaffen wird oftmals die Aktivierung einer Schicht \emph{l} aus der Funktion herausgezogen und mit dem Buchstaben \emph{z} versehen. $z^l$ kann nun in die Aktivierungsfunktion $\sigma$ eingesetzt werden. Im folgenden werde ich diese Ausgabewerte welche in die Aktivierungsfunktion hereingereicht werden stets mit \emph{z-Wert} abkürzen. 
 
-\paragraph{Zusammenfassung} der bisherigen Beschreibungen
+\paragraph{Zusammenfassung} der bisherigen Beschreibungen.
 
 \begin{mytheo}{Backpropagation - Notation}{theoexample}
 
@@ -93,7 +93,6 @@ Ziel des Backpropagation-Algorithmus ist es herauszubekommen welche Gewichte und
 \end{equation}
 
 \end{mytheo}
-
 
 % \begin{figure}[!htb]
 %	\centering
@@ -190,10 +189,6 @@ Um die Fehler komponentenweise zu bestimmen:
 \end{equation}
 
 \end{mytheo}
-
-
-
-
 
 
 \paragraph{Rekursive Fehlererkennung - Gleichung \ref{eq:recError}}
@@ -339,7 +334,7 @@ Zuerst werde ich erläutern wie man den Gradienten der Kostenfunktion bestimmen 
 
 \end{enumerate} 
 
-Der beschriebene Algorithmus ist in der Lage den Gradienten eines einzelnen Trainingsbeispiels zu generieren ($C=C_x$). In der Praxis wird allerdings auf eine Weiterführung wie dem \emph{stochastischen} Gradientenabstieg zurückgegriffen. Hierbei wird die gesamte Menge an Trainingsbeispielen in kleinere Einheiten der Größe \emph{m} eingeteilt. Wieso dies sinnvoll ist habe ich bereits in (todo Referenz einfügen) erläutert. Im folgenden möchte ich jedoch kurz zusammenfassen wie dieser notiert wird. 
+Der beschriebene Algorithmus ist in der Lage den Gradienten eines einzelnen Trainingsbeispiels zu generieren ($C=C_x$). In der Praxis wird allerdings auf eine Weiterführung wie dem \emph{stochastischen} Gradientenabstieg zurückgegriffen. Hierbei wird die gesamte Menge an Trainingsbeispielen in kleinere Einheiten der Größe \emph{m} eingeteilt. Wieso dies sinnvoll ist habe ich bereits im Abschnitt \ref{par:stochGA} erläutert. Im folgenden möchte ich jedoch kurz zusammenfassen wie dieser notiert wird. 
 
 
 \begin{enumerate}
@@ -356,7 +351,7 @@ Der beschriebene Algorithmus ist in der Lage den Gradienten eines einzelnen Trai
 	\item \textbf{Backpropagation Fehler}: Für jede Schicht $l = L-1, L-2, \ldots, 2$ wird der entsprechende Fehlervektor mithilfe von $\delta^{x,l} = ((w^{l+1})^T \delta^{x,l+1}) \odot \sigma'(z^{x,l})$ berechnet. 
 \end{enumerate}
 
-\item \textbf{Gradientenabstieg}: Für jede Schicht $l = L, L-1, \ldots, 2$ werden die Gewichte entsprechend der Regel $w^l \rightarrow w^l-\frac{\eta}{m} \sum_x \delta^{x,l} (a^{x,l-1})^T$ aktualisiert. Mittels dieser Regel werden alle Gewichtsvektoren Schicht für Schicht durchgegangen. Im hintern Teil wird der durchschnittliche Fehler über alle \emph{m} Trainingsbeispiele berechnet indem man die einzelnen Trainingsbeispiele durchiteriert und für die gerade betrachtete Schicht den Fehlervektor berechnet. Die einzelnen Fehler des Vektors werden dann über die Trainingsbeispiele pro Vektorposition aufaddiert und abschließend durch die Anzahl \emph{m} geteilt um den Durchschnitt zu erhalten. Im letzten Schritt werden die Durchschnitte noch mit einer Lernrate multipliziert (todo Referenz auf Gradientenabstieg - Lernrate einfügen). 
+\item \textbf{Gradientenabstieg}: Für jede Schicht $l = L, L-1, \ldots, 2$ werden die Gewichte entsprechend der Regel $w^l \rightarrow w^l-\frac{\eta}{m} \sum_x \delta^{x,l} (a^{x,l-1})^T$ aktualisiert. Mittels dieser Regel werden alle Gewichtsvektoren Schicht für Schicht durchgegangen. Im hintern Teil wird der durchschnittliche Fehler über alle \emph{m} Trainingsbeispiele berechnet indem man die einzelnen Trainingsbeispiele durchiteriert und für die gerade betrachtete Schicht den Fehlervektor berechnet. Die einzelnen Fehler des Vektors werden dann über die Trainingsbeispiele pro Vektorposition aufaddiert und abschließend durch die Anzahl \emph{m} geteilt um den Durchschnitt zu erhalten. Im letzten Schritt werden die Durchschnitte noch mit einer Lernrate multipliziert (siehe Abschnitt \ref{sp:lernrate}). 
 
 Um die Schwellwerte einer Ebene zu aktualisieren wird die folgende Regel verwendet: $b^l \rightarrow b^l-\frac{\eta}{m} \sum_x \delta^{x,l}$.
 

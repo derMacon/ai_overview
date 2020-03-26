@@ -2,9 +2,9 @@
 
 \subsection{Aufbau und Notation}
 
-Im Jahr 1958 entwickelte der US-amerikanischer Psychologe und Informatiker Frank Rosenblatt das sogenannte \emph{Perceptron}. Dieses stellt das älteste neurale Netz dar welches teilweise auch heutzutage noch genutzt wird. Inspiriert wurde Rosenblatt vom Auge einer Fliege wobei die Entscheidung der nächsten Flugrichtung in Teilen bereits im Auge stattfindet. Das Perceptron stellt in diesem Zusammenhang eine direkte Abbildung dieser Beobachtung dar. 
+Im Jahr 1958 entwickelte der US-amerikanischer Psychologe und Informatiker Frank Rosenblatt das sogenannte \emph{Perceptron}. Dieses stellt das älteste neuronale Netz dar welches teilweise auch heutzutage noch genutzt wird. Inspiriert wurde Rosenblatt vom Auge einer Fliege, wobei die Entscheidung der nächsten Flugrichtung in Teilen bereits im Auge stattfindet. Das Perceptron stellt in diesem Zusammenhang eine direkte Abbildung dieser Beobachtung dar. 
 
-Das Modell ist eine Weiterentwicklung von der McCulloch-Pitts-Zelle (siehe \autoref{sc:mpn}). Allerdings ist das Perceptron in der Lage die unterschiedlichen Eingabewerte zu priorisieren. Dies geschieht mittels reeller Gewichte welche jeweils mit den Inputwerten verrechnet werden: $\sum_j w_j x_j$. Gleich bleibt jedoch die binäre Klassifizierung wie schon bei der McMulloch-Pitts-Zelle.
+Das Modell ist eine Weiterentwicklung von der McCulloch-Pitts-Zelle (siehe \autoref{sc:mpn}). Allerdings ist das Perceptron in der Lage die unterschiedlichen Eingabewerte zu priorisieren. Dies geschieht mittels reeller Gewichte welche jeweils mit den Inputwerten verrechnet werden: $\sum_j w_j x_j$. Gleich bleibt jedoch die binäre Klassifizierung, wie schon bei der McMulloch-Pitts-Zelle.
 
 \begin{figure}[!htb]
 	\centering
@@ -45,7 +45,7 @@ wobei gilt
 
 Sämtliche Gewichte und Eingabewerte können als Vektoren betrachtet werden. Die Summe der Produkte kann dadurch wiederum schlicht als \emph{Vektorpunktprodukt} verstanden werden (\ref{eq:vektorprod}).
 
-Geplottet sieht die Aktivierungsfunktion \emph{g} übrigens folgendermaßen aus (siehe \ref{perceptron_einhSprFkt}): 
+Geplottet sieht die Aktivierungsfunktion \emph{g} übrigens folgendermaßen aus (siehe \ref{fig:perceptron_einhSprFkt}): 
 
 \begin{figure}[!htb]
 	\centering
@@ -54,7 +54,7 @@ Geplottet sieht die Aktivierungsfunktion \emph{g} übrigens folgendermaßen aus 
 	\label{fig:perceptron_einhSprFkt}
 \end{figure}
 
-Um die generelle Notation des gesamten Modells zu vereinfachen bietet es sich außerdem an den Schwellwert $\theta$ auf die linke Seite der Gleichung zu ziehen (siehe \ref{eq:aktFkt}). Damit gelten folgende Rahmenbedingungen: 
+Um die generelle Notation des gesamten Modells zu vereinfachen bietet es sich außerdem an den Schwellwert $\theta$ auf die linke Seite der Gleichung (siehe Gleichung \ref{eq:aktFkt}) zu ziehen. Damit gelten folgende Rahmenbedingungen: 
 
 \begin{equation} \label{eq:aktFkt2}
 g(\mathbf{z}) =\begin{cases}
@@ -66,7 +66,7 @@ g(\mathbf{z}) =\begin{cases}
 wobei gilt
 
 \begin{equation} \label{eq:vektorprod}
-\mathbf{z} =  \mathbf{w_0x_{0}} + w_1x_{1} + \dots + w_mx_{m} = \sum_{j=1}^{m} x_{j}w_{j} \\ = \mathbf{w}^T\mathbf{x}
+z =  \mathbf{w_0x_{0}} + w_1x_{1} + \dots + w_mx_{m} = \sum_{j=1}^{m} x_{j}w_{j} \\ = w^Tx
 \end{equation}
 
 \label{w0Erklaerung}
@@ -79,7 +79,9 @@ Wichtig hierbei, es wird ein zusätzliches Gewicht welches den negativen Schwell
 	\label{fig:perc_modelansicht}
 \end{figure}
 
-Letztendlich sei jedoch erwähnt, dass es in der Literatur auch öfters eine Darstellung mittels eines \emph{Bias} gibt, siehe Gleichung \autoref{eq:aktFkt3} \cite{dlnielsen}
+\FloatBarrier
+
+Letztendlich sei jedoch erwähnt, dass es in der Literatur auch öfters eine Darstellung mittels eines Schwellwerts (engl. \emph{Bias}) gibt, siehe Gleichung \autoref{eq:aktFkt3} \cite{dlnielsen}
 
 \begin{equation} \label{eq:aktFkt3}
 \mbox{output} =\begin{cases}
@@ -94,16 +96,16 @@ Letztendlich sei jedoch erwähnt, dass es in der Literatur auch öfters eine Dar
 
 \paragraph{Erklärung}
 
-Das bisher vorgestellte Modell beinhaltet bis jetzt wenig Eigenschaften für einen \emph{lernenden} Algorithmus, dies ändert sich jedoch mit der Idee von Rosenblatt das Modell selbst die Angleichung der Gewichte übernehmen zu lassen. Hierzu wird auf ein eine Menge von Trainingsdatensätzen zurückgegriffen. 
-% todo ref zu Trainingsdatensets einfügen
+Das bisher vorgestellte Modell beinhaltet bis jetzt wenig Eigenschaften für einen \emph{lernenden} Algorithmus, dies ändert sich jedoch mit der Idee von Rosenblatt das Modell selbst die Angleichung der Gewichte übernehmen zu lassen. Hierzu wird auf eine Menge von Trainingsdatensätzen zurückgegriffen. 
 Diese Datensätze bestehen aus Eingabewerten für das System und der korrespondierenden Ausgabe. Die Lernregel selbst sieht zusammengefasst folgendermaßen aus. 
 
+\vspace{4mm}
 \begin{minipage}{\textwidth}
 \begin{itemize}
 \item Initialisiere die Gewichte mit einem sehr kleinen Wert oder dem Wert Null. 
 \item Für jeden Datensatz der Menge: 
 \begin{itemize}
-	\item Berechne den Ausgabe-Wert des Systems 
+	\item Berechne den Ausgabewert des Systems 
 	\item Gleiche die Gewichte an 
 \end{itemize}
 \end{itemize}
@@ -111,7 +113,8 @@ Diese Datensätze bestehen aus Eingabewerten für das System und der korrespondi
 
 \vspace{5 mm}
 
-Der genannte Ausgabewert wird wie bereits angedeutet über die Aktivierungsfunktion des Modells bestimmt. Die einzelnen Komponenten des \emph{Gewichtevektors} werden getrennt betrachtet und angeglichen. Ein Aktualisieren eines einzelnen Gewichts innerhalb des Gewichtsvektors wird formal mit $w_j := w_j + \Delta w_j$ beschrieben (das Dreieck kennzeichnet, dass es sich um eine \emph{Veränderung} handelt). Da die beschriebene Lernregel inkrementell arbeitet muss man eine sogenannte \emph{Lernrate} bestimmen. Dieser Wert bestimmt letztendlich wie stark ein Gewicht bei einer Iteration verändert wird. Formal wird diese Rate mit dem Zeichen $\eta$ dargestellt. Die eigentliche Formel zum Angleichen der Gewichte sieht folgendermaßen aus: 
+\label{sp:lernrate}
+Der genannte Ausgabewert wird über die Aktivierungsfunktion des Modells bestimmt. Die einzelnen Komponenten des \emph{Gewichtevektors} werden getrennt betrachtet und angeglichen. Ein Aktualisieren eines einzelnen Gewichts innerhalb des Gewichtsvektors wird formal mit $w_j := w_j + \Delta w_j$ beschrieben (das Delta kennzeichnet, dass es sich um eine \emph{Veränderung} handelt). Da die beschriebene Lernregel inkrementell arbeitet muss man eine sogenannte \emph{Lernrate} bestimmen. Dieser Wert bestimmt letztendlich wie stark ein Gewicht bei einer Iteration verändert wird. Formal wird diese Rate mit dem Zeichen $\eta$ dargestellt. Die allgemeine Darstellung zum Angleichen der Gewichte sieht folgendermaßen aus: 
 
 \begin{equation} \label{eq:lernRegel}
 \Delta w_j = \eta \; (\text{target}^{(i)} - \text{output}^{(i)})\;x^{(i)}_{j}
@@ -122,7 +125,7 @@ Zuerst wird ein Datensatz gewählt durch dessen Ausgabewerte alle Gewichte angeg
 
 \paragraph{Anwendung}
 
-Für einen zweidimensionalen Trainingsdatensatz \footnote{Ein zweidimensionaler Datenpunkt besitzt einen zweidimensionalen Eingabevektor (also genau zwei Eingabewerte).} würde die Lernregel folgendermaßen aussehen. Hervorzuheben sei jedoch, dass alle Gewichte gleichzeitig angeglichen werden. 
+Für einen zweidimensionalen Trainingsdatensatz\footnote{Ein zweidimensionaler Datenpunkt besitzt einen zweidimensionalen Eingabevektor (also genau zwei Eingabewerte).} würde die Lernregel folgendermaßen aussehen. Hervorzuheben sei jedoch, dass alle Gewichte gleichzeitig angeglichen werden. 
 
 \begin{equation} \label{eq:lernRegAnw}
 \begin{aligned}
@@ -152,12 +155,14 @@ Durch den Differenzfaktor von Null verändert sich das betrachtete Gewicht erwar
 \end{aligned}
 \end{equation}
 
-Eine Implementierung des Beschriebenen Konzepts in der Programmiersprache Python ist auf Github \cite{pcImplementierung} zu finden. Ich werde hier jedoch nicht weiter auf die Details der Implementierung eingehen. 
+Eine Implementierung des beschriebenen Konzepts in der Programmiersprache Python ist auf Github \cite{pcImplementierung} zu finden. Ich werde hier jedoch nicht weiter auf die Details der Implementierung eingehen. 
 
-Wie schon die McCulloch-Pitts Zelle (siehe Abbildung \ref{fig:aufbau}) ist das Perceptron nur in der Lage mittels einer linearen Klassifizierungs-Funktion die zwei unterschiedlichen Gruppen auseinander zu halten (siehe Abbildung \ref{fig:probKlassi}).
+Wie schon die McCulloch-Pitts Zelle (siehe Abbildung \ref{fig:aufbau} Seite \pageref{fig:aufbau}) ist das Perceptron nur in der Lage mittels einer linearen Klassifizierungs-Funktion die zwei unterschiedlichen Gruppen auseinander zu halten (siehe Abbildung \ref{fig:probKlassi}).
+
+\FloatBarrier
 
 Hier noch einmal extra aufgeführt, die letztendliche Formel zum Berechnen einer einzelnen Gradientenkomponente.
-\begin{figure}
+\begin{figure}[htb!]
   \centering
   \subfloat[][]{\includegraphics[width=.39\linewidth]{img/perceptron_klassifizierung1}}
   \qquad
@@ -166,4 +171,5 @@ Hier noch einmal extra aufgeführt, die letztendliche Formel zum Berechnen einer
   \mycaption{Perceptor - Problematische Klassifizierung}{mpNeuron}
   \label{fig:probKlassi}
 \end{figure}
+
 

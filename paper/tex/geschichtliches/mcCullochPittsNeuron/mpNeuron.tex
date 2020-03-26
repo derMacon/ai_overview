@@ -2,7 +2,7 @@
 
 \subsection{Funktionsweise}
 
-Im Jahr 1943 entwickelten Warren McCulloch und Walter Pitts ein Modell welches die Funktionalität eines biologischen Neurons imitieren sollte. In der folgenden Abbildung \ref{fig:bioNeuron} ist der grobe Aufbau eines Neurons zu sehen. 
+Im Jahr 1943 entwickelten Warren McCulloch und Walter Pitts ein Modell das die Funktionalität eines biologischen Neurons imitieren sollte. In der folgenden Abbildung \ref{fig:bioNeuron} ist der grobe Aufbau eines biologischen Neurons zu sehen. 
 
 \begin{figure}[!htb]
 	\centering
@@ -11,9 +11,9 @@ Im Jahr 1943 entwickelten Warren McCulloch und Walter Pitts ein Modell welches d
 	\label{fig:bioNeuron}
 \end{figure}
 
-Die sogenannten \emph{Dendriten} (englisch \emph{dendrites}) nehmen Informationen auf. Sie besitzen Rezeptoren welche in der Lage sind Signale anderer Neuronen aufzunehmen. Diese Signale bewirken elektrische Veränderungen in dem Neuron welche vom Zellkörper (\emph{Soma}) interpretiert / verarbeitet werden. Dieser Zellkörper sammelt alle Informationen und speichert diese im sogenannten \emph{Axonhügel} (engl. Axonhillock) welcher die Ursprungsstelle des \emph{Axons} beziehungsweise \emph{Neuriten} beschreibt. Wenn das gebündelte Signal stark genug sein sollte wird es an den nächsten Teil des Neurons, dem \emph{Axon}, weitergeleitet. Ab diesem Zeitpunkt wird das Signal als \emph{Aktionspotential} bezeichnet und wird über die \emph{Axon} übertragen. Am Ende wird das Signal an diverse \emph{Axonterminale} weitergeleitet welche per Neurotransmitter mit den jeweils nächsten Dendriten verbunden sind. 
+Die sogenannten \emph{Dendriten} (englisch \emph{dendrites}) nehmen Informationen auf. Sie besitzen Rezeptoren welche in der Lage sind Signale anderer Neuronen aufzunehmen. Diese Signale bewirken elektrische Veränderungen in dem Neuron welche vom Zellkörper (\emph{Soma}) interpretiert / verarbeitet werden. Dieser Zellkörper sammelt alle Informationen und speichert diese im sogenannten \emph{Axonhügel} (engl. Axonhillock) welcher die Ursprungsstelle des \emph{Axons} beziehungsweise der \emph{Neuriten} beschreibt. Wenn das gebündelte Signal stark genug sein sollte, wird es an den nächsten Teil des Neurons (dem \emph{Axon}) weitergeleitet. Ab diesem Zeitpunkt wird das Signal als \emph{Aktionspotential} bezeichnet und wird über die \emph{Axon} übertragen. Am Ende wird das Signal an diverse \emph{Axonterminale} weitergeleitet welche per Neurotransmitter mit den jeweils nächsten Dendriten verbunden sind. 
 
-Dieser biologische Aufbau dient als Grundlage für die Entwicklung des Modells von McCulloch und Pitts. Das Augenmerk ihres Modells liegt in erster Linie darauf Klassifizierungsprobleme zu lösen. Bei einem Klassifizierungsproblem wird \emph{Das zu klassifizierende Objekt X ist dabei durch einen Merkmalvektor $\vec{x}$ aus dem betrachteten Merkmalraum M mit der Dimension n charakterisiert. Das Problem besteht nun darin zu entscheiden, ob das Objekt X in der betrachteten Klasse K liegt.} \cite{klproblem} oder nicht. Der grobe Aufbau eines sogenannten \emph{McCulloch-Pitts-Zelle} ist in \ref{fig:mpn_aufbau} zu sehen. Erwähnt sei auch noch, dass man mit diesem Modell lediglich binäre Klassifizierungen mittels einer linearen Entscheidungsfunktion / Aktivierungsfunktion durchführen kann (siehe \ref{fig:aufbau})
+Dieser biologische Aufbau dient als Grundlage für die Entwicklung des Modells von McCulloch und Pitts. Das Augenmerk ihres Modells liegt in erster Linie darauf Klassifizierungsprobleme zu lösen. Bei einem Klassifizierungsproblem wird \emph{das zu klassifizierende Objekt X ist dabei durch einen Merkmalvektor $\vec{x}$ aus dem betrachteten Merkmalraum M mit der Dimension n charakterisiert. Das Problem besteht nun darin zu entscheiden, ob das Objekt X in der betrachteten Klasse K liegt.} \cite{klproblem}. Der grobe Aufbau einer sogenannten \emph{McCulloch-Pitts-Zelle} ist in Abbildung \ref{fig:mpn_aufbau} zu sehen. Erwähnt sei ebenfalls, dass man mit diesem Modell lediglich binäre Klassifizierungen mittels einer linearen Entscheidungsfunktion / Aktivierungsfunktion durchführen kann (siehe \ref{fig:aufbau})
 
 
 \begin{figure}%
@@ -26,7 +26,7 @@ Dieser biologische Aufbau dient als Grundlage für die Entwicklung des Modells v
   \label{fig:aufbau}
 \end{figure}
 
-Das Modell kann beliebig viele Input-werte aufweisen. Wichtig hierbei: Sie dürfen nur boolescher Natur sein (nur falsch oder wahr). Bei gegebenen Werten führt das Neuron selbst zwei Arbeitsschritte durch: 
+Das Modell kann beliebig viele Eingabe-Werte aufweisen. Wichtig hierbei: Sie dürfen nur boolescher Natur sein (nur falsch oder wahr). Bei gegebenen Werten führt das Neuron selbst zwei Arbeitsschritte durch: 
 \begin{enumerate}
 
 \item Erst werden alle Werte aufaddiert (in der Abbildung dargestellt durch die Funktion \emph{g}). Dies imitiert das Verhalten der \emph{Dendriten} in einem biologischen Neuron. 
@@ -35,27 +35,25 @@ Das Modell kann beliebig viele Input-werte aufweisen. Wichtig hierbei: Sie dürf
 
 \end{enumerate}
 
-Die übliche Notation dieses Modells gibt vor, dass der jeweilige Schwellwert jeweils in die linke Seite des Kreises geschrieben wird während die rechte Seite ausgegraut wird. Im folgenden seien einmal beispielhaft das \emph{AND} und das \emph{OR} Gatter dargestellt. (Für weitere Beispiele siehe \autoref{ap:sc:mpz})
+Die übliche Notation dieses Modells gibt vor, dass der jeweilige Schwellwert jeweils in die linke Seite des Kreises geschrieben, während die rechte Seite ausgegraut wird. Im folgenden seien einmal beispielhaft das \emph{AND} und das \emph{OR} Gatter dargestellt. (Für weitere Beispiele siehe \autoref{ap:sc:mpz})
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=.5\linewidth]{img/aufbau2}
-	\mycaption{Biologische Neuronen - Notation}{mpNeuron}
-	\label{fig:bioNeuron_notation}
+	\includegraphics[width=.4\linewidth]{img/aufbau2}
+	\mycaption{MPZ - Notation}{mpNeuron}
+	\label{fig:mpn_aufbau}
 \end{figure}
 
-% todo Formeln einfügen... wenn Zeit sein sollte
-
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\linewidth]{img/mpn_and}
+	\includegraphics[width=.8\linewidth]{img/mpn_and}
 	\mycaption{McCulloch-Pitts-Zelle - AND Gatter}{mpNeuron}
 	\label{fig:mpn_and}
 \end{figure}
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\linewidth]{img/mpn_or}
+	\includegraphics[width=.9\linewidth]{img/mpn_or}
 	\mycaption{McCulloch-Pitts-Zelle - OR Gatter}{mpNeuron}
 	\label{fig:mpn_or}
 \end{figure}
@@ -65,10 +63,15 @@ Die übliche Notation dieses Modells gibt vor, dass der jeweilige Schwellwert je
 
 \begin{minipage}{\textwidth}
 \begin{itemize}
-\item Dieses Modell erlaubt wie gesagt nur boolesche Eingabewerte, viele Modelle erfordern allerdings kontinuierliche Werte. Mit diesen wäre es zum Beispiel deutlich einfach ein Bild oder Ähnliches zu analysieren.
+
+\item Dieses Modell  nur boolesche Eingabewerte, viele Modelle erfordern allerdings kontinuierliche Werte. Mit diesen wäre es zum Beispiel deutlich einfach ein Bild oder Ähnliches zu analysieren.
+
 \item Die Schwelle (Theta) muss stets manuell bestimmt werden. Einen Trainingsalgorithmus wie man ihn von heutigen Ansätzen her kennt gibt es in diesem Modell nicht. 
+
 \item Es gibt keinerlei Priorisierungsmöglichkeit zwischen den einzelnen Eingabewerten. Jeder hat einen gleichgroßen Einfluss auf das Ergebnis, so etwas wie ein Auschlußkriterium gibt es hierbei also nicht. 
-\item Es ist nicht möglich \emph{gedeckelt} Gatter wie zum Beispiel ein \emph{XOR} abzubilden. Bei einem Neuron mit zwei Input müsste zum Beispiel ein Schwellwert von 1 \underline{genau} getroffen werden. Dieses Modell ist allerdings nur in der Lage zu entscheiden ob ein Schwellwert \emph{überschritten} wurde oder nicht. 
+
+\item Es ist nicht möglich \emph{gedeckelt} Gatter wie zum Beispiel ein \emph{XOR} abzubilden. Bei einem Neuron mit zwei Eingabe-Werten müsste zum Beispiel ein Schwellwert von 1 \underline{genau} getroffen werden. Dieses Modell ist allerdings nur in der Lage zu entscheiden ob ein Schwellwert \emph{überschritten} wurde oder nicht. 
+
 \end{itemize}
 \end{minipage}
 
