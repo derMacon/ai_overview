@@ -4,5 +4,6 @@
 
 Unterlagen zum Seminarvortrag an der Fachhochschule Wedel im Sommersemester 2020. 
 * Thema 2: Einführung in Deep Learning
-* Paper befindet sich [hier](./paper/tex/seminar_main.pdf)
+* Paper befindet sich [hier](./paper/tex/seminar_main.pdf). 
+* Slides befinden sich [hier](./slides/tex/slides_main.pdf).
 
