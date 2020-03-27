@@ -1,0 +1,69 @@
+\documentclass[10pt]{beamer}
+
+% template preamble
+
+\usetheme[subsectionpage=progressbar, progressbar=frametitle, sectionpage=none]{metropolis}
+
+\usepackage{appendixnumberbeamer}
+
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+
+\usepackage{xspace}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+% eigene packages 
+\usepackage[english, ngerman]{babel}
+\usepackage{blindtext}
+
+
+% header
+\title{Deeplearning}
+\subtitle{Einführung - Thema 2}
+\date{\today}
+\author{Silas Hoffmann}
+\institute{Fachhochschule Wedel}
+\titlegraphic{\hfill\includegraphics[height=1.5cm]{_img/logo_alpha}}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}
+\frametitle{Inhalt}
+\tableofcontents
+\end{frame}
+
+\input{geschichtliches/geschichtliches_part}
+\input{aktuelleEntwicklung/aktuelles_sec}
+
+
+\begin{frame}[standout]
+  Questions?
+\end{frame}
+
+\appendix
+
+\begin{frame}[fragile]{Backup slides}
+  Sometimes, it is useful to add slides at the end of your presentation to
+  refer to during audience questions.
+
+  The best way to do this is to include the \verb|appendixnumberbeamer|
+  package in your preamble and call \verb|\appendix| before your backup slides.
+
+  \themename will automatically turn off slide numbering and progress bars for
+  slides in the appendix.
+\end{frame}
+
+\begin{frame}[allowframebreaks]{References}
+
+  \bibliography{demo}
+  \bibliographystyle{abbrv}
+
+\end{frame}
+
+
+\end{document}
