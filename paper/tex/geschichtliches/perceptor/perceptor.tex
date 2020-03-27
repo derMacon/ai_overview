@@ -2,7 +2,7 @@
 
 \subsection{Aufbau und Notation}
 
-Im Jahr 1958 entwickelte der US-amerikanischer Psychologe und Informatiker Frank Rosenblatt das sogenannte \emph{Perceptron}. Dieses stellt das älteste neuronale Netz dar welches teilweise auch heutzutage noch genutzt wird. Inspiriert wurde Rosenblatt vom Auge einer Fliege, wobei die Entscheidung der nächsten Flugrichtung in Teilen bereits im Auge stattfindet. Das Perceptron stellt in diesem Zusammenhang eine direkte Abbildung dieser Beobachtung dar. 
+Im Jahr 1958 entwickelte der US-amerikanischer Psychologe und Informatiker Frank Rosenblatt das sogenannte \emph{Perceptron}. Dieses stellt das älteste neuronale Netz dar welches teilweise auch heutzutage noch genutzt wird. Inspiriert wurde Rosenblatt vom Auge einer Fliege, wobei die Entscheidung der nächsten Flugrichtung in Teilen bereits im Auge stattfindet. Das Perceptron stellt in diesem Zusammenhang eine direkte Abbildung dieser Beobachtung dar.
 
 Das Modell ist eine Weiterentwicklung von der McCulloch-Pitts-Zelle (siehe \autoref{sc:mpn}). Allerdings ist das Perceptron in der Lage die unterschiedlichen Eingabewerte zu priorisieren. Dies geschieht mittels reeller Gewichte welche jeweils mit den Inputwerten verrechnet werden: $\sum_j w_j x_j$. Gleich bleibt jedoch die binäre Klassifizierung, wie schon bei der McMulloch-Pitts-Zelle.
 
@@ -13,9 +13,9 @@ Das Modell ist eine Weiterentwicklung von der McCulloch-Pitts-Zelle (siehe \auto
 	\label{fig:erstesPerceptron}
 \end{figure}
 
-Die Abbildung \ref{fig:erstesPerceptron} beschreibt ein einfaches Perceptron mit drei Eingabewerten. Genau wie die MP-Zelle verwendet dieses Modell einen Schwellwert $\theta$ um den letztendlichen Ausgabewert zu bestimmen, jedoch möchte ich hier noch einmal etwas genauer auf die Notation des Ganzen eingehen, da diese auch in späteren Abschnitten benötigt wird. 
+Die Abbildung \ref{fig:erstesPerceptron} beschreibt ein einfaches Perceptron mit drei Eingabewerten. Genau wie die MP-Zelle verwendet dieses Modell einen Schwellwert $\theta$ um den letztendlichen Ausgabewert zu bestimmen, jedoch möchte ich hier noch einmal etwas genauer auf die Notation des Ganzen eingehen, da diese auch in späteren Abschnitten benötigt wird.
 
-Die Funktion welche berechnet ob ein Schwellwert überschritten wird oder nicht wird \emph{Aktivierungsfunktion} genannt (hier mit \emph{g} bezeichnet). 
+Die Funktion welche berechnet ob ein Schwellwert überschritten wird oder nicht wird \emph{Aktivierungsfunktion} genannt (hier mit \emph{g} bezeichnet).
 
 \begin{equation} \label{eq:aktFkt}
 g(\mathbf{z}) =\begin{cases}
@@ -24,7 +24,7 @@ g(\mathbf{z}) =\begin{cases}
   \end{cases}
 \end{equation}
 
-wobei gilt 
+wobei gilt
 
 \begin{equation} \label{eq:vektorprod}
 \mathbf{w} = \begin{bmatrix}
@@ -45,16 +45,16 @@ wobei gilt
 
 Sämtliche Gewichte und Eingabewerte können als Vektoren betrachtet werden. Die Summe der Produkte kann dadurch wiederum schlicht als \emph{Vektorpunktprodukt} verstanden werden (\ref{eq:vektorprod}).
 
-Geplottet sieht die Aktivierungsfunktion \emph{g} übrigens folgendermaßen aus (siehe \ref{fig:perceptron_einhSprFkt}): 
+Geplottet sieht die Aktivierungsfunktion \emph{g} übrigens folgendermaßen aus (siehe \ref{fig:perceptron_einhSprFkt}):
 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=.3\linewidth]{./img/perceptron_einheitsSprungfunktion}
-	\mycaption{Perceptron - Einheits-Sprungfunktion}{mpNeuron}
+	\mycaption{Perceptron - Einheits-Sprungfunktion}{perceptronAdeline}
 	\label{fig:perceptron_einhSprFkt}
 \end{figure}
 
-Um die generelle Notation des gesamten Modells zu vereinfachen bietet es sich außerdem an den Schwellwert $\theta$ auf die linke Seite der Gleichung (siehe Gleichung \ref{eq:aktFkt}) zu ziehen. Damit gelten folgende Rahmenbedingungen: 
+Um die generelle Notation des gesamten Modells zu vereinfachen bietet es sich außerdem an den Schwellwert $\theta$ auf die linke Seite der Gleichung (siehe Gleichung \ref{eq:aktFkt}) zu ziehen. Damit gelten folgende Rahmenbedingungen:
 
 \begin{equation} \label{eq:aktFkt2}
 g(\mathbf{z}) =\begin{cases}
@@ -66,11 +66,11 @@ g(\mathbf{z}) =\begin{cases}
 wobei gilt
 
 \begin{equation} \label{eq:vektorprod}
-z =  \mathbf{w_0x_{0}} + w_1x_{1} + \dots + w_mx_{m} = \sum_{j=1}^{m} x_{j}w_{j} \\ = w^Tx
+z =  \mathbf{w_0x_{0}} + w_1x_{1} + \dots + w_mx_{m} = \sum_{j=0}^{m} x_{j}w_{j} \\ = w^Tx
 \end{equation}
 
 \label{w0Erklaerung}
-Wichtig hierbei, es wird ein zusätzliches Gewicht welches den negativen Schwellwert hält, sowie einen zusätzlicher Inputwert mit dem Wert 1, eingeführt ($w_0 = -\theta  \text{ und } x_0=1$). Bei der Berechnung (siehe \autoref{eq:aktFkt2}) fließt dieser Faktor nun als negativer Summand mit ein wodurch man nur noch prüft ob die Gesamtsumme kleiner Null ist oder nicht. Von dieser Notation wird insbesondere bei der \emph{Lernregel} (siehe Abschnitt \ref{ss:lernregel}) Gebrauch gemacht. Mittels dieser Vereinfachung lässt sich ein Modell auch folgendermaßen darstellen: 
+Wichtig hierbei, es wird ein zusätzliches Gewicht welches den negativen Schwellwert hält, sowie einen zusätzlicher Inputwert mit dem Wert 1, eingeführt ($w_0 = -\theta  \text{ und } x_0=1$). Bei der Berechnung (siehe \autoref{eq:aktFkt2}) fließt dieser Faktor nun als negativer Summand mit ein wodurch man nur noch prüft ob die Gesamtsumme kleiner Null ist oder nicht. Von dieser Notation wird insbesondere bei der \emph{Lernregel} (siehe Abschnitt \ref{ss:lernregel}) Gebrauch gemacht. Mittels dieser Vereinfachung lässt sich ein Modell auch folgendermaßen darstellen:
 
 \begin{figure}[!htb]
 	\centering
@@ -96,17 +96,17 @@ Letztendlich sei jedoch erwähnt, dass es in der Literatur auch öfters eine Dar
 
 \paragraph{Erklärung}
 
-Das bisher vorgestellte Modell beinhaltet bis jetzt wenig Eigenschaften für einen \emph{lernenden} Algorithmus, dies ändert sich jedoch mit der Idee von Rosenblatt das Modell selbst die Angleichung der Gewichte übernehmen zu lassen. Hierzu wird auf eine Menge von Trainingsdatensätzen zurückgegriffen. 
-Diese Datensätze bestehen aus Eingabewerten für das System und der korrespondierenden Ausgabe. Die Lernregel selbst sieht zusammengefasst folgendermaßen aus. 
+Das bisher vorgestellte Modell beinhaltet bis jetzt wenig Eigenschaften für einen \emph{lernenden} Algorithmus, dies ändert sich jedoch mit der Idee von Rosenblatt das Modell selbst die Angleichung der Gewichte übernehmen zu lassen. Hierzu wird auf eine Menge von Trainingsdatensätzen zurückgegriffen.
+Diese Datensätze bestehen aus Eingabewerten für das System und der korrespondierenden Ausgabe. Die Lernregel selbst sieht zusammengefasst folgendermaßen aus.
 
 \vspace{4mm}
 \begin{minipage}{\textwidth}
 \begin{itemize}
-\item Initialisiere die Gewichte mit einem sehr kleinen Wert oder dem Wert Null. 
-\item Für jeden Datensatz der Menge: 
+\item Initialisiere die Gewichte mit einem sehr kleinen Wert oder dem Wert 0.
+\item Für jeden Datensatz der Menge:
 \begin{itemize}
-	\item Berechne den Ausgabewert des Systems 
-	\item Gleiche die Gewichte an 
+	\item Berechne den Ausgabewert des Systems
+	\item Gleiche die Gewichte an
 \end{itemize}
 \end{itemize}
 \end{minipage}
@@ -114,18 +114,18 @@ Diese Datensätze bestehen aus Eingabewerten für das System und der korrespondi
 \vspace{5 mm}
 
 \label{sp:lernrate}
-Der genannte Ausgabewert wird über die Aktivierungsfunktion des Modells bestimmt. Die einzelnen Komponenten des \emph{Gewichtevektors} werden getrennt betrachtet und angeglichen. Ein Aktualisieren eines einzelnen Gewichts innerhalb des Gewichtsvektors wird formal mit $w_j := w_j + \Delta w_j$ beschrieben (das Delta kennzeichnet, dass es sich um eine \emph{Veränderung} handelt). Da die beschriebene Lernregel inkrementell arbeitet muss man eine sogenannte \emph{Lernrate} bestimmen. Dieser Wert bestimmt letztendlich wie stark ein Gewicht bei einer Iteration verändert wird. Formal wird diese Rate mit dem Zeichen $\eta$ dargestellt. Die allgemeine Darstellung zum Angleichen der Gewichte sieht folgendermaßen aus: 
+Der genannte Ausgabewert wird über die Aktivierungsfunktion des Modells bestimmt. Die einzelnen Komponenten des \emph{Gewichtevektors} werden getrennt betrachtet und angeglichen. Ein Aktualisieren eines einzelnen Gewichts innerhalb des Gewichtsvektors wird formal mit $w_j := w_j + \Delta w_j$ beschrieben (das Delta kennzeichnet, dass es sich um eine \emph{Veränderung} handelt). Da die beschriebene Lernregel inkrementell arbeitet muss man eine sogenannte \emph{Lernrate} bestimmen. Dieser Wert bestimmt letztendlich wie stark ein Gewicht bei einer Iteration verändert wird. Formal wird diese Rate mit dem Zeichen $\eta$ dargestellt. Die allgemeine Darstellung zum Angleichen der Gewichte sieht folgendermaßen aus:
 
 \begin{equation} \label{eq:lernRegel}
 \Delta w_j = \eta \; (\text{target}^{(i)} - \text{output}^{(i)})\;x^{(i)}_{j}
-\end{equation} 
+\end{equation}
 
-Zuerst wird ein Datensatz gewählt durch dessen Ausgabewerte alle Gewichte angeglichen werden sollen. Generell gilt, dass das \emph{i} in den Klammern nicht als Exponent sondern als Index für den betrachten Trainingsdatensatz steht. Dann wird die Differenz des optimalen Ausgabewerts und des erreichten Werts berechnet. Diese Differenz wird anschließend mit der Lernrate und dem korrespondierenden Eingabewert des betrachteten Gewichts multipliziert. Dies wird vielleicht etwas klarer wenn man noch einmal einen Blick in das Diagramm \ref{fig:perc_modelansicht} auf Seite \pageref{fig:perc_modelansicht} wirft. Der Eingabewert $x^{(i)}_{j}$ steht also für die Komponente mit dem Index \emph{j} in dem Eingabevektor des Trainingsdatensatzes an der Stelle \emph{i} innerhalb der Menge von Trainingsdaten. 
+Zuerst wird ein Datensatz gewählt durch dessen Ausgabewerte alle Gewichte angeglichen werden sollen. Generell gilt, dass das \emph{i} in den Klammern nicht als Exponent sondern als Index für den betrachten Trainingsdatensatz steht. Dann wird die Differenz des optimalen Ausgabewerts und des erreichten Werts berechnet. Diese Differenz wird anschließend mit der Lernrate und dem korrespondierenden Eingabewert des betrachteten Gewichts multipliziert. Dies wird vielleicht etwas klarer wenn man noch einmal einen Blick in das Diagramm \ref{fig:perc_modelansicht} auf Seite \pageref{fig:perc_modelansicht} wirft. Der Eingabewert $x^{(i)}_{j}$ steht also für die Komponente mit dem Index \emph{j} in dem Eingabevektor des Trainingsdatensatzes an der Stelle \emph{i} innerhalb der Menge von Trainingsdaten.
 
 
 \paragraph{Anwendung}
 
-Für einen zweidimensionalen Trainingsdatensatz\footnote{Ein zweidimensionaler Datenpunkt besitzt einen zweidimensionalen Eingabevektor (also genau zwei Eingabewerte).} würde die Lernregel folgendermaßen aussehen. Hervorzuheben sei jedoch, dass alle Gewichte gleichzeitig angeglichen werden. 
+Für einen zweidimensionalen Trainingsdatensatz\footnote{Ein zweidimensionaler Datenpunkt besitzt einen zweidimensionalen Eingabevektor (also genau zwei Eingabewerte).} würde die Lernregel folgendermaßen aussehen. Hervorzuheben sei jedoch, dass alle Gewichte gleichzeitig angeglichen werden.
 
 \begin{equation} \label{eq:lernRegAnw}
 \begin{aligned}
@@ -135,9 +135,9 @@ Für einen zweidimensionalen Trainingsdatensatz\footnote{Ein zweidimensionaler D
 \end{aligned}
 \end{equation}
 
-In dieser Darstellung wurde die bereits in \ref{w0Erklaerung} besprochene Notation verwendet bei der ein zusätzliches Gewicht mit dem Schwellwert eingeführt wurde. Da der eigentliche Eingabewert hierbei lediglich den Faktor \emph{1} besitzt fällt er hierbei einfach weg. Wir haben also neben diesem einbezogenen \emph{Bias} lediglich die zwei weiteren Gewichte die angeglichen werden. 
+In dieser Darstellung wurde die bereits in \ref{w0Erklaerung} besprochene Notation verwendet bei der ein zusätzliches Gewicht mit dem Schwellwert eingeführt wurde. Da der eigentliche Eingabewert hierbei lediglich den Faktor \emph{1} besitzt fällt er hierbei einfach weg. Wir haben also neben diesem einbezogenen \emph{Bias} lediglich die zwei weiteren Gewichte die angeglichen werden.
 
-Für den Fall, dass das Modell einen Datensatz richtig klassifiziert gibt es genau zwei Möglichkeiten: 
+Für den Fall, dass das Modell einen Datensatz richtig klassifiziert gibt es genau zwei Möglichkeiten:
 
 \begin{equation}
 \begin{aligned}
@@ -146,7 +146,7 @@ Für den Fall, dass das Modell einen Datensatz richtig klassifiziert gibt es gen
 \end{aligned}
 \end{equation}
 
-Durch den Differenzfaktor von Null verändert sich das betrachtete Gewicht erwartungsgemäß nicht. Bei dem entsprechenden Gegenteil ist dies nicht der Fall, hier könnte es zum Beispiel so aussehen: 
+Durch den Differenzfaktor von Null verändert sich das betrachtete Gewicht erwartungsgemäß nicht. Bei dem entsprechenden Gegenteil ist dies nicht der Fall, hier könnte es zum Beispiel so aussehen:
 
 \begin{equation}
 \begin{aligned}
@@ -155,7 +155,7 @@ Durch den Differenzfaktor von Null verändert sich das betrachtete Gewicht erwar
 \end{aligned}
 \end{equation}
 
-Eine Implementierung des beschriebenen Konzepts in der Programmiersprache Python ist auf Github \cite{pcImplementierung} zu finden. Ich werde hier jedoch nicht weiter auf die Details der Implementierung eingehen. 
+Eine Implementierung des beschriebenen Konzepts in der Programmiersprache Python ist auf Github \cite{pcImplementierung} zu finden. Ich werde hier jedoch nicht weiter auf die Details der Implementierung eingehen.
 
 Wie schon die McCulloch-Pitts Zelle (siehe Abbildung \ref{fig:aufbau} Seite \pageref{fig:aufbau}) ist das Perceptron nur in der Lage mittels einer linearen Klassifizierungs-Funktion die zwei unterschiedlichen Gruppen auseinander zu halten (siehe Abbildung \ref{fig:probKlassi}).
 
@@ -171,5 +171,3 @@ Hier noch einmal extra aufgeführt, die letztendliche Formel zum Berechnen einer
   \mycaption{Perceptor - Problematische Klassifizierung}{mpNeuron}
   \label{fig:probKlassi}
 \end{figure}
-
-

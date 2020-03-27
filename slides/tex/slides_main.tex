@@ -2,7 +2,12 @@
 
 % template preamble
 
-\usetheme[subsectionpage=progressbar, progressbar=frametitle, sectionpage=none]{metropolis}
+\usetheme[
+	subsectionpage=progressbar, 
+	progressbar=frametitle, 
+	sectionpage=none, 
+	block=fill
+]{metropolis}
 
 \usepackage{appendixnumberbeamer}
 
@@ -18,10 +23,15 @@
 % eigene packages 
 \usepackage[english, ngerman]{babel}
 \usepackage{blindtext}
+\usepackage{graphicx}
+
+% Macros
+\newcommand{\comment}[1]{}
+
 
 
 % header
-\title{Deeplearning}
+\title{Deep Learning}
 \subtitle{Einführung - Thema 2}
 \date{\today}
 \author{Silas Hoffmann}
@@ -40,9 +50,10 @@
 \input{geschichtliches/geschichtliches_part}
 \input{aktuelleEntwicklung/aktuelles_sec}
 
+\maketitle
 
 \begin{frame}[standout]
-  Questions?
+Fragen?
 \end{frame}
 
 \appendix
@@ -59,12 +70,9 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{References}
-
-\nocite{*} 
-
-  \bibliography{verweise}
+  \nocite{*} 
+  \bibliography{../../verweise/verweise}
   \bibliographystyle{abbrv}
-
 \end{frame}
 
 
