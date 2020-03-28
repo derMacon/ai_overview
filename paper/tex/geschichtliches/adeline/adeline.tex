@@ -1,9 +1,8 @@
-
 \section{Adeline} \label{sc:adel}
 
 \subsection{Aufbau}
 
-Im 1959 entwickelten der Stanford Professor Bernard Widrow und der Elektroingeneur Marcian Edward Hoff das sogenannte \emph{Adeline-Modell}. Der Name ist ein Akronym für \emph{ADAptive LINear Element}. Dieses Modell basiert auf dem Perceptron mit dem Unterschied, dass dieses Modell auf die Einheits-Sprungfunktion, wie sie das Peceptron bei der Angleichung der Gewichte verwendet, verzichtet. Es wird stattdessen eine lineare Aktivierungsfunktion ${g(z)}$ verwendet, welche in diesem Fall erstmal mit der Identitätsfunktion besetzt wird (es gilt also ${g(w^Tx) = w^Tx}$). Außerdem wird eine Entscheidungsfunktion an das Ende des ganzen Modells gehängt um weiterhin die Werte quantifizieren zu können. Diese hat jedoch keinen Einfluss auf den Trainingsalgorithmus. 
+In 1959 entwickelten der Stanford Professor Bernard Widrow und der Elektroingenieur Marcian Edward Hoff das sogenannte \emph{Adeline-Modell}. Der Name ist ein Akronym für \emph{ADAptive LINear Element}. Dieses Modell basiert auf dem Perceptron mit dem Unterschied, dass dieses Modell auf die Einheits-Sprungfunktion, wie sie das Peceptron bei der Angleichung der Gewichte verwendet, verzichtet. Es wird stattdessen eine lineare Aktivierungsfunktion ${g(z)}$ verwendet, welche in diesem Fall erstmal mit der Identitätsfunktion besetzt wird (es gilt also ${g(w^Tx) = w^Tx}$). Außerdem wird eine Entscheidungsfunktion an das Ende des ganzen Modells gehängt um weiterhin die Werte quantifizieren zu können. Diese hat jedoch keinen Einfluss auf den Trainingsalgorithmus. 
 
 \begin{figure}[!htb]
 	\centering
@@ -15,12 +14,12 @@ Im 1959 entwickelten der Stanford Professor Bernard Widrow und der Elektroingene
 
 \subsection{Lernalgorithmus} \label{ss:la}
 
-Widrow und Hoff definierten die Delta-Regel für den Lernalgorithmus ihres Modells. Dieser ist auch unter dem Namen \emph{Least-Mean-Square-Algorithmus} bekannt und ist auch heute noch von Relevanz). Im Kern möchte man hierbei das Minimum einer Kostenfunktion über dem Modell bestimmen. Ich werde im folgenden Abschnitt darauf eingehen wie dieser funktioniert und wie genau er für dieses Modell eingesetzt werden kann. 
+Widrow und Hoff definierten die Delta-Regel für den Lernalgorithmus ihres Modells. Dieser ist auch unter dem Namen \emph{Least-Mean-Square-Algorithmus} bekannt und ist auch heute noch von Relevanz. Im Kern möchte man hierbei das Minimum einer Kostenfunktion über dem Modell bestimmen. Ich werde im folgenden Abschnitt darauf eingehen, wie, dieser funktioniert und wie genau er für dieses Modell eingesetzt werden kann. 
 
 \paragraph{Gradientenverfahren}
 Der wesentliche Nachteil der Einheits-Sprungfunktion ist der, dass sie nicht stetig und damit auch nicht differenzierbar ist. Deswegen hat man sich beim Lernalgorithmus des Adeline-Modells dazu entschieden stattdessen die Identitätsfunktion zu verwenden. 
 
-Es wird zuerst eine Kostenfunktion ${J(w)}$ definiert die minimiert werden soll. Die Kostenfunktion wird durch die \emph{Regressionsquadratsumme}\footnote{engl. \emph{sum of squared errors} (SSE)} definiert. Die Formel sieh folgendermaßen aus: 
+Es wird zuerst eine Kostenfunktion ${J(w)}$ definiert die minimiert werden soll. Die Kostenfunktion wird durch die \emph{Regressionsquadratsumme}\footnote{engl. \emph{sum of squared errors} (SSE)} definiert. Die Formel sieht folgendermaßen aus: 
 
 \begin{equation}
 J(w)  = \frac{1}{2} \sum_{i} (\text{target}^{(i)} - \text{output}^{(i)})^2 \quad \quad \text{output}^{(i)} \in \mathbb{R} \\
@@ -37,8 +36,8 @@ Werfen wir einen Blick auf die Abbildung \ref{fig:ad_gd1}.
 	\label{fig:ad_gd1}
 \end{figure}
 
-Die dargestellte Funktion besitzt nur einen Eingabewert. Zur Veranschaulichung kann man sich einen Ball vorstellen der einen Berg bzw. in ein Tal herunter rollt. Bezogen auf das Beispiel betrachtet man einen einen beliebigen Funktionswert und bestimmt die Ableitung an dieser Stelle. Diese Ableitung kann auch als \glqq Steigung \grqq an der betrachteten Stelle verstanden werden. Wenn man diese nun invertiert hat bekommt man theoretisch die \glqq Richtung \grqq in die der Ball rollen müsste. Ähnlich wie schon der Lernalgorithmus beim Perceptron, wird mit einer Lernrate ${\eta}$ gearbeitet, die bestimmt wie viel Veränderung in einem Iterations-Schritt stattfinden soll. Im Beispiel könnte man diese als Schrittweite verstehen. 
-Wie weit in einem Schritt gearbeitet wird ist von fundamentaler Bedeutung. In Abbildung \ref{fig:ad_gd2} ist zu sehen, dass es problematisch sein kann die Lernrate zu hoch zu definieren, denn der Algorithmus kann das Minimum auch überspringen. Andererseits kann es auch zu Problemen kommen wenn die Lernrate zu klein definiert wurde, da der Algorithmus eventuell in einem lokalen Minimum \glqq steckenbleibt \grqq . Um gerade das erste Problem zu beheben wird die Lernrate heutzutage in jedem Iterationsschritt in Abhängigkeit der Größe der Steigung berechnet.
+Die dargestellte Funktion besitzt nur einen Eingabewert. Zur Veranschaulichung kann man sich einen Ball vorstellen, der einen Berg bzw. in ein Tal herunter rollt. Bezogen auf das Beispiel betrachtet man einen einen beliebigen Funktionswert und bestimmt die Ableitung an dieser Stelle. Diese Ableitung kann auch als \glqq Steigung\grqq  an der betrachteten Stelle verstanden werden. Wenn man diese nun invertiert hat, bekommt man theoretisch die \glqq Richtung\grqq  in die der Ball rollen müsste. Ähnlich wie schon der Lernalgorithmus beim Perceptron, wird mit einer Lernrate ${\eta}$ gearbeitet, die bestimmt wie viel Veränderung in einem Iterations-Schritt stattfinden soll. Im Beispiel könnte man diese als Schrittweite verstehen. 
+Wie weit in einem Schritt gearbeitet wird, ist von fundamentaler Bedeutung. In Abbildung \ref{fig:ad_gd2} ist zu sehen, dass es problematisch sein kann die Lernrate zu hoch zu definieren, denn der Algorithmus kann das Minimum auch überspringen. Andererseits kann es auch zu Problemen kommen wenn die Lernrate zu klein definiert wurde, da der Algorithmus eventuell in einem lokalen Minimum \glqq steckenbleibt\grqq . Um gerade das erste Problem zu beheben wird die Lernrate heutzutage in jedem Iterationsschritt in Abhängigkeit der Größe der Steigung berechnet.
 
 \begin{figure}[!htb]
 	\centering
@@ -47,7 +46,7 @@ Wie weit in einem Schritt gearbeitet wird ist von fundamentaler Bedeutung. In Ab
 	\label{fig:ad_gd2}
 \end{figure}
 
-Letztendlich besitzt das hier betrachtete Modell aber meist mehr als ein einzelnes Gewicht, weswegen man sich nun damit auseinander setzten muss wie man dieses Verfahren wohl auf eine Kostenfunktion mit einem mehrdimensionalen Vektor anpassen muss. Mit einem zweidimensionalen Eingabevektor ist dies noch relativ gut darstellbar (siehe Abbildung \ref{fig:ad_gd3}).
+Letztendlich besitzt das hier betrachtete Modell aber meist mehr als ein einzelnes Gewicht, weswegen man sich nun damit auseinander setzen muss, wie man dieses Verfahren auf eine Kostenfunktion mit einem mehrdimensionalen Vektor anpassen muss. Mit einem zweidimensionalen Eingabevektor ist dies noch relativ gut darstellbar (siehe Abbildung \ref{fig:ad_gd3}).
 
 \begin{figure}[!htb]
 	\centering
@@ -56,13 +55,13 @@ Letztendlich besitzt das hier betrachtete Modell aber meist mehr als ein einzeln
 	\label{fig:ad_gd3}
 \end{figure}
 
-Auch bei Funktionen mit mehreren Eingabewerten ist es möglich an einem betrachteten Eingabevektor die Steigung zu bestimmen. Allgemein wird diese als \emph{Gradientenvektor} bezeichnet. Bei der gerade betrachteten Abbildung bilden die \emph{x} und die \emph{y-Achse} jeweils die beiden Eingabewerte der Funktion, wobei die Ausgabe mit der \emph{z-Achse} dargestellt wird. Hier wird die Analogie mit dem Herabrollen eines Berges vielleicht noch etwas klarer. Auch hier gilt, wie  schon bei den anderen betrachteten Modellen, wieder die Notation: 
+Auch bei Funktionen mit mehreren Eingabewerten ist es möglich an einem betrachteten Eingabevektor die Steigung zu bestimmen. Allgemein wird diese als \emph{Gradientenvektor} bezeichnet. Bei der gerade betrachteten Abbildung bilden die \emph{x}- und die \emph{y-Achse} jeweils die beiden Eingabewerte der Funktion, wobei die Ausgabe mit der \emph{z-Achse} dargestellt wird. Hier wird die Analogie mit dem Herabrollen eines Berges vielleicht noch etwas klarer. Auch hier gilt, wie  schon bei den anderen betrachteten Modellen, wieder die Notation: 
 
 \begin{equation} \label{eq:gewupd}
 {w = w + \Delta w}
 \end{equation}
 
-${\Delta w}$ stellt den angedeutete Gradientenvektor dar. Im mehrdimensionalen Raum ist diese Gewichtsveränderung im allgemeinen Fall den kompletten Gewichtsvektor und für den speziellen Fall mit einem einzelnen Gewicht folgendermaßen definiert. 
+${\Delta w}$ stellt den angedeuteten Gradientenvektor dar. Im mehrdimensionalen Raum ist diese Gewichtsveränderung im allgemeinen Fall den kompletten Gewichtsvektor und für den speziellen Fall mit einem einzelnen Gewicht folgendermaßen definiert. 
 
 \vspace{3mm}
 \begin{mytheo}{Gradient}{theoexample} \label{theo:gradient1}
@@ -79,7 +78,7 @@ Für die jeweiligen Gewichte:
 \end{mytheo}
 
 \subparagraph{Exkurs - Partielle Ableitungen \cite{partAbl}}
-Da es sich im Beispiel um einen mehrdimensionalen Eingabevektor handelt, muss man zum mit den partiellen Ableitungen arbeiten. Diese lassen sich am besten anhand eines weiteren Beispiels erklären. Betrachten wir zuerst einmal die Funktion ${{f(x, y) = x^2 + y^2}}$ (siehe Abbildung \ref{fig:partAbl1}). 
+Da es sich im Beispiel um einen mehrdimensionalen Eingabevektor handelt, muss man mit den partiellen Ableitungen arbeiten. Diese lassen sich am besten anhand eines weiteren Beispiels erklären. Betrachten wir zuerst einmal die Funktion ${{f(x, y) = x^2 + y^2}}$ (siehe Abbildung \ref{fig:partAbl1}). 
 
 \begin{figure}[!htb]
 	\centering
@@ -136,19 +135,19 @@ Um den Gradientenvektor der Kostenfunktion (Regressionsquadratsumme) zu bestimme
 \begin{myderivation}{Gradient}{theoexample} \label{deri:grad}
 
 \begin{equation} \label{eq:gr1}
-\frac{\partial J}{\partial w_j} = \frac{\partial J}{\partial w_j} \frac{1}{2} \sum_i  (t^{(i)} - o^{(i)})^2 \\
+\frac{\partial J}{\partial w_j} = \frac{\partial }{\partial w_j} \frac{1}{2} \sum_i  (t^{(i)} - o^{(i)})^2 \\
 \end{equation}
 
 \begin{equation} \label{eq:gr2}
-\frac{\partial J}{\partial w_j} = \frac{1}{2} \sum_i \frac{\partial J}{\partial w_j} (t^{(i)} - o^{(i)})^2 \\
+\frac{\partial J}{\partial w_j} = \frac{1}{2} \sum_i \frac{\partial }{\partial w_j} (t^{(i)} - o^{(i)})^2 \\
 \end{equation}
 
 \begin{equation} \label{eq:gr3}
-\frac{\partial J}{\partial w_j} = \frac{1}{2} \sum_i 2 (t^{(i)} - o^{(i)}) \frac{\partial J}{\partial w_j} (t^{(i)} - o^{(i)}) \\
+\frac{\partial J}{\partial w_j} = \frac{1}{2} \sum_i 2 (t^{(i)} - o^{(i)}) \frac{\partial }{\partial w_j} (t^{(i)} - o^{(i)}) \\
 \end{equation}
 
 \begin{equation} \label{eq:gr4}
-\frac{\partial J}{\partial w_j} = \sum_i (t^{(i)} - o^{(i)}) \frac{\partial J}{\partial w_j} \bigg(t^{(i)} - \sum_j w_j x^{(i)}_{j}\bigg) \\
+\frac{\partial J}{\partial w_j} = \sum_i (t^{(i)} - o^{(i)}) \frac{\partial }{\partial w_j} \bigg(t^{(i)} - \sum_j w_j x^{(i)}_{j}\bigg) \\
 \end{equation}
 
 \begin{equation} \label{eq:gr5}
@@ -165,7 +164,7 @@ Um den Gradientenvektor der Kostenfunktion (Regressionsquadratsumme) zu bestimme
 
 \item Gleichung \ref{eq:gr2}: Die Summe sowie der Faktor $\frac{1}{2}$ kann generell aus der Ableitung rausgezogen werden ohne etwas am Gesamtergebnis zu verändern. 
 
-\item Gleichung \ref{eq:gr3}: Ein erster Ableitungssschritt bezüglich der Kettenregel wird angewandt. Die äußere Funktion $ 2 (t^{(i)} - o^{(i)}) $ wird vor die noch ausstehende Ableitung der inneren Funktion $  \frac{\partial J}{\partial w_j} (t^{(i)} - o^{(i)}) $ gehängt. 
+\item Gleichung \ref{eq:gr3}: Ein erster Ableitungssschritt bezüglich der Kettenregel wird angewandt. Die äußere Funktion $ 2 (t^{(i)} - o^{(i)}) $ wird vor die noch ausstehende Ableitung der inneren Funktion $  \frac{\partial }{\partial w_j} (t^{(i)} - o^{(i)}) $ gehängt. 
 
 \item Gleichung \ref{eq:gr4}: Der konstante Faktor $2$ wird aus der Summe herausgezogen und direkt mit dem am Anfang hinzugefügten Faktor $ \frac{1}{2} $ multipliziert. Außerdem wird die eigentliche Berechnung der Ausgabe für $ o^{(i)} $ eingesetzt ($\sum_j w_j x^{(i)}_{j}$). 
 
