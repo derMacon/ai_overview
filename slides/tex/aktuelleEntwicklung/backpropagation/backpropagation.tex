@@ -84,53 +84,161 @@ z^l & = w^l a^{l-1}+b^l \\
 \end{frame}
 
 
-
 \begin{frame}
-\frametitle{Aufbau}
-
-%\begin{figure}[!htb]
-%	\centering
-
-%\Tree [.C y [.$a^{l+1}_j$ {\bf b} c ] d ]
-
-	
-\Tree [.C y [.$a^{l+1}_j$ [ .$z^{l+1}_j$ [ $w^l_j$ [ .$a^l_j$ [ .$z^l_j$ $w^l_j$ $a^{l-1}_j$ $b^{l-1}_j$ ] ] $b^{l-1}_j$ ] ] ] ]
-%	\caption [Baumdarstellung]{Baumdarstellung - Zusammenhang der Gewichte, Aktivierungen und Schwellwerte \cite{3b1b}}
-%	\label{fig:tree}
-%\end{figure}
-\end{frame}
-
-
-
-\begin{frame}
-\frametitle{Fundamentale Gleichungen - 1} 
-
-\begin{itemize}
-\item Fehlervektor der letzten Schicht berechnen: \inlineeq{\delta^L = \nabla_a C \odot \sigma'(z^L)}
-\end{itemize}
+\frametitle{Fehler - Ausgabeschicht} 
 
 \begin{columns}
 
-\column{0.5\textwidth}
+\begin{column}{0.5\textwidth}
 \myeq{
 \delta^L_j & = \frac{\partial C}{\partial z^L_j} \\
- & = \sum_k \frac{\partial C}{\partial a^L_k} \frac{\partial a^L_k}{\partial z^L_j}
+ & = \sum_k \frac{\partial C}{\partial a^L_k} \frac{\partial a^L_k}{\partial z^L_j} \\
+ & = \frac{\partial C}{\partial a^L_j} \frac{\partial a^L_j}{\partial z^L_j} \\
+ & = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j)
 }
-
-\column{0.5\textwidth}
-
-
-
-
 
 \begin{block}{Anmerkung: Kettenregel}
 \myeq{\frac{d}{{dx}}\left[ {f\left( u \right)} \right] = \frac{d}{{du}}\left[ {f\left( u \right)} \right]\frac{{du}}{{dx}}}
 \end{block}
+\end{column}
+
+\vrule
+\vspace{1mm}
+
+\begin{column}{0.5\textwidth}
+\vspace{-8mm}
+
+\begin{center}
+\begin{forest}
+ [C
+ 	[y]
+ 	[$a^{L}$
+ 		[$z^{L}$
+			[$w^L$]
+			[$a^{L-1}$
+				[\ldots]
+			]
+			[$b^{L}$]
+ 		]
+ 	]
+ ]
+\end{forest}
+\end{center}
+
+
+
+\begin{itemize}
+\item \textbf{C}: Kostenfunktion
+\item \textbf{y}: Erwartete Ausgabe
+\end{itemize}
+\end{column}
 
 \end{columns}
 
-
+\note[item]{Baum nur für Netz mit einer einzigen Aktivierung}
+\note[item]{Zusammenhang mit Kettenregel erläutern}
 \note[item]{Großes L immer für Ausgabeschicht}
 
 \end{frame}
+
+
+\begin{frame}
+\frametitle{Fehler - Ausgabeschicht}
+
+\begin{block}{Zusammenfassung}
+\begin{itemize}
+\item Um den Fehlervektor der letzten Schicht zu bestimmen: 
+\myeq{\delta^L = \nabla_a C \odot \sigma'(z^L)}
+\item Äquivalent zu: 
+\myeq{\delta^L = (a^L-y) \odot \sigma'(z^L)}
+\item Um die Fehler komponentenweise zu bestimmen:
+\myeq{\delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j)}
+\end{itemize}
+\end{block}
+
+\note[item]{$\nabla_a C$ entspricht dabei Vektor aller $\frac{\partial C}{\partial a^L_j}$ einer Schicht}
+\note[item]{$\odot$: Komponentenweise Multiplikation zweier Vektoren}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Fehler - Zwischenschicht} 
+
+\begin{itemize}
+\item Zusammenhang zwischen Fehler zweier Schichten herleiten
+\item Es gilt: $\delta^l_j = \partial C / \partial z^l_j$ sowie $\delta^{l+1}_k = \partial C / \partial z^{l+1}_k$
+\end{itemize}
+
+\begin{columns}
+
+\begin{column}{.5\textwidth}
+\vspace{-10mm}
+
+\myeq{
+\delta^l_j & = \frac{\partial C}{\partial z^l_j} \\
+ & = \sum_k \frac{\partial C}{\partial z^{l+1}_k} \frac{\partial z^{l+1}_k}{\partial z^l_j} \\
+ & = \sum_k \frac{\partial z^{l+1}_k}{\partial z^l_j} \delta^{l+1}_k
+}
+\end{column}
+
+\hspace{-15mm}
+\vrule
+
+\begin{column}{.5\textwidth}
+
+\begin{center}
+\begin{forest}
+ [$z^{l+1}$
+ 	[$w^{l+1}$]
+ 	[$a^{l}$
+ 		[$z^{l}$
+			[$w^l$]
+			[$a^{l-1}$
+				[\ldots]
+			]
+			[$b^{l}$]
+ 		]
+ 	]
+ 	[$b^{l+1}$]
+ ]
+\end{forest}
+\end{center}
+
+\end{column}
+\end{columns}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Fehler - Zwischenschicht} 
+\vspace{-10mm}
+
+\myeq{
+z^{l+1}_k & = \sum_j w^{l+1}_{kj} a^l_j +b^{l+1}_k = \sum_j w^{l+1}_{kj} \sigma(z^l_j) +b^{l+1}_k
+}
+
+\vspace{-7mm}
+
+\myeq{
+\frac{\partial z^{l+1}_k}{\partial z^l_j} = w^{l+1}_{kj} \sigma'(z^l_j)
+}
+
+\begin{block}{Zusammenfassung}
+\begin{itemize}
+\item Komponentenweise Darstellung: 
+\inlineeq{\delta^l_j = \sum_k w^{l+1}_{kj}  \delta^{l+1}_k \sigma'(z^l_j)}
+\end{itemize}
+
+\begin{itemize}
+\item Vektorielle Darstellung: 
+\inlineeq{\delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l)}
+\end{itemize}
+
+\end{block}
+\end{frame}
+
 
