@@ -1,4 +1,5 @@
-\documentclass[10pt]{beamer}
+%\documentclass[10pt]{beamer}
+\documentclass[10pt, handout]{beamer} % exportiere Frames ohne Animation
 
 % template preamble
 
@@ -24,11 +25,27 @@
 \usepackage[english, ngerman]{babel}
 \usepackage{blindtext}
 \usepackage{graphicx}
+\usepackage{pgfpages} % Notizen am Rand
 
 % Macros
 \newcommand{\comment}[1]{}
 
+% pdfpages - Einstellungen (Notizen)
+%\setbeameroption{hide notes} % Only slides
+%\setbeameroption{show only notes} % Only notes
+\setbeameroption{show notes on second screen=right} % Both
 
+\comment{
+\pgfpagesuselayout{4 on 1}[border shrink=1mm]
+\pgfpageslogicalpageoptions{1}{border code=\pgfsetlinewidth{3pt}\pgfusepath{stroke}}
+\pgfpageslogicalpageoptions{2}{border code=\pgfsetlinewidth{3pt}\pgfusepath{stroke}}
+\pgfpageslogicalpageoptions{3}{border code=\pgfsetlinewidth{3pt}\pgfusepath{stroke}}
+\pgfpageslogicalpageoptions{4}{border code=\pgfsetlinewidth{3pt}\pgfusepath{stroke}}
+}
+\setbeamertemplate{footline}{}
+%\setbeamertemplate{footline}{\hfill\insertframenumber}
+%\setbeamertemplate{note page}{\insertnote\hfill\insertframenumber}
+%\setbeamertemplate{note page}[plain]
 
 % header
 \title{Deep Learning}
@@ -55,6 +72,7 @@
 \begin{frame}[standout]
 Fragen?
 \end{frame}
+
 
 \appendix
 

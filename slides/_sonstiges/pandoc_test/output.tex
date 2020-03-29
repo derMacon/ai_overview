@@ -1,71 +1,24 @@
-\documentclass[]{article}
-\usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[T1]{fontenc}
-  \usepackage[utf8]{inputenc}
-\else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
-\fi
-% use upquote if available, for straight quotes in verbatim environments
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage[]{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
-}{}
-\PassOptionsToPackage{hyphens}{url} % url is loaded by hyperref
-\usepackage[unicode=true]{hyperref}
-\hypersetup{
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{0}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
+\documentclass[handout,compress]{beamer}
+\usepackage{pgfpages}
+\pgfpagesuselayout{4 on 1}[border shrink=1mm]
+\pgfpageslogicalpageoptions{1}{border code=\pgfsetlinewidth{3pt}\pgfusepath{stroke}}
+\pgfpageslogicalpageoptions{2}{border code=\pgfsetlinewidth{3pt}\pgfusepath{stroke}}
+\pgfpageslogicalpageoptions{3}{border code=\pgfsetlinewidth{3pt}\pgfusepath{stroke}}
+\pgfpageslogicalpageoptions{4}{border code=\pgfsetlinewidth{3pt}\pgfusepath{stroke}}
 
-% set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
-
-
-\date{}
+\setbeamertemplate{footline}{\hfill\insertframenumber}
 
 \begin{document}
 
 \begin{itemize}
-\tightlist
+
 \item
   asdfsdf
 \item
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf
   \end{itemize}
@@ -75,12 +28,12 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf asdf asdf
 
     \begin{itemize}
-    \tightlist
+    
     \item
       asdfsdf asdf asdf
     \end{itemize}
@@ -93,7 +46,7 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf asdf asdf
   \end{itemize}
@@ -103,7 +56,7 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf
   \end{itemize}
@@ -113,12 +66,12 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf asdf asdf
 
     \begin{itemize}
-    \tightlist
+    
     \item
       asdfsdf asdf asdf
     \end{itemize}
@@ -131,7 +84,7 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf asdf asdf
   \end{itemize}
@@ -139,7 +92,7 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf
   \end{itemize}
@@ -149,12 +102,12 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf asdf asdf
 
     \begin{itemize}
-    \tightlist
+    
     \item
       asdfsdf asdf asdf
     \end{itemize}
@@ -167,7 +120,7 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf asdf asdf
   \end{itemize}
@@ -177,7 +130,7 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf
   \end{itemize}
@@ -187,12 +140,12 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf asdf asdf
 
     \begin{itemize}
-    \tightlist
+    
     \item
       asdfsdf asdf asdf
     \end{itemize}
@@ -205,7 +158,7 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf asdf asdf
   \end{itemize}
@@ -213,7 +166,7 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf
   \end{itemize}
@@ -223,12 +176,12 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf asdf asdf
 
     \begin{itemize}
-    \tightlist
+    
     \item
       asdfsdf asdf asdf
     \end{itemize}
@@ -241,7 +194,7 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf asdf asdf
   \end{itemize}
@@ -251,7 +204,7 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf
   \end{itemize}
@@ -261,12 +214,12 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf asdf asdf
 
     \begin{itemize}
-    \tightlist
+    
     \item
       asdfsdf asdf asdf
     \end{itemize}
@@ -279,7 +232,7 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf asdf asdf
   \end{itemize}
@@ -287,7 +240,7 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf
   \end{itemize}
@@ -297,12 +250,12 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf asdf asdf
 
     \begin{itemize}
-    \tightlist
+    
     \item
       asdfsdf asdf asdf
     \end{itemize}
@@ -315,7 +268,7 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf asdf asdf
   \end{itemize}
@@ -325,7 +278,7 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf
   \end{itemize}
@@ -335,12 +288,12 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf asdf asdf
 
     \begin{itemize}
-    \tightlist
+    
     \item
       asdfsdf asdf asdf
     \end{itemize}
@@ -353,7 +306,7 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf asdf asdf
   \end{itemize}
@@ -361,7 +314,7 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf
   \end{itemize}
@@ -371,12 +324,12 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf asdf asdf
 
     \begin{itemize}
-    \tightlist
+    
     \item
       asdfsdf asdf asdf
     \end{itemize}
@@ -389,7 +342,7 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf asdf asdf
   \end{itemize}
@@ -399,7 +352,7 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf
   \end{itemize}
@@ -409,12 +362,12 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf asdf asdf
 
     \begin{itemize}
-    \tightlist
+    
     \item
       asdfsdf asdf asdf
     \end{itemize}
@@ -427,7 +380,7 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf asdf asdf
   \end{itemize}
@@ -435,7 +388,7 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf
   \end{itemize}
@@ -445,12 +398,12 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf asdf asdf
 
     \begin{itemize}
-    \tightlist
+    
     \item
       asdfsdf asdf asdf
     \end{itemize}
@@ -463,7 +416,7 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf asdf asdf
   \end{itemize}
@@ -473,7 +426,7 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf
   \end{itemize}
@@ -483,12 +436,12 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf asdf asdf
 
     \begin{itemize}
-    \tightlist
+    
     \item
       asdfsdf asdf asdf
     \end{itemize}
@@ -501,7 +454,7 @@
   asdfsdf
 
   \begin{itemize}
-  \tightlist
+  
   \item
     asdfsdf asdf asdf
   \end{itemize}
