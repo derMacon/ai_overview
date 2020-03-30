@@ -242,3 +242,91 @@ z^{l+1}_k & = \sum_j w^{l+1}_{kj} a^l_j +b^{l+1}_k = \sum_j w^{l+1}_{kj} \sigma(
 \end{frame}
 
 
+
+\begin{frame}
+\frametitle{Fehler - Schwellwerte \& Gewichte}
+
+\vspace{-8mm}
+
+\myeq{\scalebox{1.2}{$z^{l}_k = \sum_j w^{l}_{kj} a^{l-1}_j +b^l_k = \sum_j w^l_{kj} \sigma(z^{l-1}_j) +b^l_k$}}
+
+\vspace{3mm}
+
+\begin{columns}
+\begin{column}{.5\textwidth}
+
+\begin{block}{Schwellwerte}
+\myeq{
+\frac{\partial C}{\partial b^l_j} = \frac{\partial C}{\partial z^l_j} \frac{\partial z^l_j}{\partial b^l_j} = \delta^l_j
+}
+\end{block}
+
+\begin{block}{Gewichte}
+\myeq{\frac{\partial C}{\partial w^l_{jk}} = \frac{\partial C}{\partial z^l_j} \frac{\partial z^l_j}{\partial w^l_{jk}} = a^{l-1}_k \delta^l_j
+}
+\end{block}
+
+\end{column}
+
+
+\vrule
+
+\begin{column}{.5\textwidth}
+
+\begin{center}
+\begin{forest}
+ [$z^{l+1}$
+ 	[$w^{l+1}$]
+ 	[$a^{l}$
+ 		[$z^{l}$
+			[$w^l$]
+			[$a^{l-1}$
+				[\ldots]
+			]
+			[$b^{l}$]
+ 		]
+ 	]
+ 	[$b^{l+1}$]
+ ]
+\end{forest}
+\end{center}
+
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Anwendung}
+
+\begin{itemize}
+\item Menge an Trainingsdatensätzen auswählen
+\item Für jeden einzelnen Datensatz: 
+
+\begin{enumerate}
+\item \textbf{Feedforward}: Z-Wert und Aktivierung für jede Schicht $l = 2, 3, \ldots, L$ berechnen. 
+\begin{itemize}
+	\item Z-Wert: $z^{x,l} = w^l a^{l-1}+b^l$
+	\item Aktivierung $a^{x,l} = \sigma(z^{l})$
+\end{itemize}
+
+\item \textbf{Ausgabe-Fehler} $\delta^{x,L}$: Fehlervektor der Ausgabeschicht berechnen.
+\begin{itemize}
+	\item $\delta^{L}  = \nabla_a C \odot \sigma'(z^L)$
+\end{itemize}
+
+\item \textbf{Backpropagation-Fehler}: Rückwirkend Fehlervektor aller Schichten berechnen.
+\begin{itemize}
+	\item $\delta^{x,l} = ((w^{l+1})^T \delta^{x,l+1}) \odot \sigma'(z^{x,l})$
+\end{itemize}
+\end{enumerate}
+
+\item \textbf{Gradientenabstieg}: Gewichte und Schwellwerte getrennt anpassen. 
+\begin{itemize}
+	\item Gewichte: $w^l \rightarrow w^l-\frac{\eta}{m} \sum_x \delta^{x,l} (a^{x,l-1})^T$
+	\item Schwellwerte: $b^l \rightarrow b^l-\frac{\eta}{m} \sum_x \delta^{x,l}$
+\end{itemize}
+
+
+\end{itemize}
+
+\end{frame}
