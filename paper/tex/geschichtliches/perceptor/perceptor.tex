@@ -132,7 +132,7 @@ Für den Fall, dass das Modell einen Datensatz richtig klassifiziert gibt es gen
 
 \begin{equation}
 \begin{aligned}
-& \Delta w_j = \eta(1^{(i)} - 1^{(i)})\;x^{(i)}_{j} = 0 \\
+& \Delta w_j = \eta \big( (-1^{(i)}) - (-1^{(i)}) \big)\;x^{(i)}_{j} = 0 \\
 & \Delta w_j = \eta(1^{(i)} - 1^{(i)})\;x^{(i)}_{j} = 0 \\
 \end{aligned}
 \end{equation}
@@ -141,10 +141,14 @@ Durch den Differenzfaktor von Null verändert sich das betrachtete Gewicht erwar
 
 \begin{equation}
 \begin{aligned}
-& \Delta w_j = \eta(1^{(i)} - -1^{(i)})\;x^{(i)}_{j} = \eta(2)\;x^{(i)}_{j} \\
-& \Delta w_j = \eta(-1^{(i)} - 1^{(i)})\;x^{(i)}_{j} = \eta(-2)\;x^{(i)}_{j} \\
+& \Delta w_j = \eta \big( 1^{(i)} - (-1^{(i)}) \big) \;x^{(i)}_{j} = \eta(2)\;x^{(i)}_{j} \\
+& \Delta w_j = \eta \big( (-1^{(i)}) - 1^{(i)} \big) \;x^{(i)}_{j} = \eta(-2)\;x^{(i)}_{j} \\
 \end{aligned}
 \end{equation}
+
+
+% & \Delta w_j = \eta \big( 1^{(i)} - (-1^{(i)}) \big) \;x^{(i)}_{j} = \eta(2)\;x^{(i)}_{j} \\
+% & \Delta w_j = \eta \big( (-1^{(i)}) - 1^{(i)} )\big \;x^{(i)}_{j} = \eta(-2)\;x^{(i)}_{j} \\
 
 Eine Implementierung des beschriebenen Konzepts in der Programmiersprache Python ist auf Github \cite{pcImplementierung} zu finden. Ich werde hier jedoch nicht weiter auf die Details der Implementierung eingehen.
 

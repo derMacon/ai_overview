@@ -7,10 +7,22 @@
 \includegraphics[width=\linewidth]{./geschichtliches/mcCullochPittsNeuron/img/bioNeuron_alpha}
 \end{figure}
 
-\note[item]{\emph{Dendriten}: Nehmen Infos auf} 
-\note[item]{This is small
+\note[item]{\emph{Dendriten}: Nehmen Infos auf
 \begin{itemize}
-  \item This is large
+  \item besizten Rezeptoren und Signale anderer Dendriten aufzunehmen
+\end{itemize}}
+
+\note[item]{Signale: bewirken elektrische Veränderungen
+\begin{itemize}
+  \item werden vom Zellkern (Soma) interpretiert / verarbeitet
+  \item Zellkern sammelt Infos, speichert diese im Axonhügel
+\end{itemize}}
+
+\note[item]{Ursprung vom Axon / Neuriten}
+\note[item]{Wenn Signal stark genug: an Axon weitergeleitet
+\begin{itemize}
+  \item auch als \emph{Aktionspotential bezeichnet}
+  \item Signal am Ende über Axonterminale per Neurotransmitter mit nächste Dendriten verbunden
 \end{itemize}}
 
 \end{frame}
@@ -35,6 +47,17 @@
 \end{figure}
 
 \end{columns}
+
+
+\note[item]{1943: Warren McCulloch \& Walter Pitts}
+\note[item]{soll biologisches Neuron imitieren}
+\note[item]{Klassifizierungsproblem: anhand vom geg. Merkmalsvektor entscheiden ob Objekt X in Klasse K liegt}
+\note[item]{hier lediglich binäre Klassifikation
+\begin{itemize}
+    \item Unterscheidung nur zwischen zwei Klassen
+    \item Sonderfall dieses Modells: nur boolesche Eingabewerte
+\end{itemize}}
+\note[item]{muss mittels linearer Entscheidungsfunktion definierbar sein}
 
 \end{frame}
 
@@ -62,6 +85,18 @@ f(g(x)) =\begin{cases}
   \end{cases}
 \end{align*}
 \end{columns}
+
+\note[item]{beliebig viele Eigabewerte
+\begin{itemize}
+    \item müssen boolescher Natur sein
+\end{itemize}}
+
+\note[item]{Arbeitsschritte:
+\begin{itemize}
+    \item Alle Werte aufaddiert (Fkt. \emph{g})
+    \item Fkt. \emph{f} prüft ob Schwellwert überschritten
+\end{itemize}}
+
 \end{frame}
 
 
@@ -71,6 +106,9 @@ f(g(x)) =\begin{cases}
 \begin{figure}
 	\includegraphics[width=\linewidth]{./geschichtliches/mcCullochPittsNeuron/img/mpn_and_alpha}
 \end{figure}
+
+\note[item]{Anhand von Grafik erläutern}
+
 \end{frame}
 
 
@@ -80,6 +118,9 @@ f(g(x)) =\begin{cases}
 \begin{figure}
 	\includegraphics[width=\linewidth]{./geschichtliches/mcCullochPittsNeuron/img/mpn_or_alpha}
 \end{figure}
+
+\note[item]{Anhand von Grafik erläutern, auch im 3d - Raum möglich}
+
 \end{frame}
 
 
@@ -106,5 +147,33 @@ f(g(x)) =\begin{cases}
 
 
 \end{columns}
+
+\note[item]{keine kontinuierlichen Eignabewerte
+\begin{itemize}
+    \item nur boolesche Werte
+    \item Schwierig für komplexe Anwendungen 
+    \item siehe Bilderkennung - Farbwerte
+\end{itemize}}
+
+\note[item]{Schwelle muss manuelle gesetzt werden
+\begin{itemize}
+    \item Sprich kein Lernalgorithmus vorhanden
+\end{itemize}}
+
+\note[item]{Keine Priorisierungsmöglichkeiten
+\begin{itemize}
+    \item siehe Gewichtete Eingaben
+\end{itemize}}
+
+\note[item]{Funktionen durch lineare Entscheidungsfunktion getrennt
+\begin{itemize}
+    \item schwierig bei überlappenden Cluster
+    \item keine Polynome wie bei späteren Entwicklungen möglich
+\end{itemize}}
+
+\note[item]{auch gedeckelte Fkt. wie XOR können nicht dargestellt werden
+\begin{itemize}
+    \item Schwelle muss genau getroffen werden
+\end{itemize}}
 
 \end{frame}
