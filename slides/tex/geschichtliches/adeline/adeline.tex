@@ -22,6 +22,15 @@
 \includegraphics[width=.9\linewidth]{./geschichtliches/adeline/img/adeline_aufbau}
 \end{figure}
 
+\note[item]{1959: Stanford Prof. Bernard Widrow \& Elektroingenieur Marcian Edward Hoff}
+\note[item]{ADELINE: ADAptive LINear Element}
+\note[item]{Modell: Verzicht auf Einheitssprungfunktion bei Angleichung der Gewichte
+\begin{itemize}
+    \item Stattdessen lineare Aktierungsfunktion 
+    \item erstmal nur Identitätsfunktion verwendet
+    \item Entscheidungsfunktion für output weiterhin verwendet
+\end{itemize}}
+
 \end{frame}
 
 
@@ -42,6 +51,30 @@ J(w)  = \frac{1}{2} \sum_{i} (\text{target}^{(i)} - \text{output}^{(i)})^2 \quad
 \end{align*}
 \end{block}
 
+
+\note[item]{Auch unter \emph{Least-Mean-Square-Algorithmus} bzw. \emph{Regressionsquadratsumme} bekannt
+\begin{itemize}
+    \item noch heute relevant
+\end{itemize}}
+
+\note[item]{Funktion stellt Kostenfunktion dar
+\begin{itemize}
+    \item Fehler bei Kostenfunktion soll mithilfe der Lernregel minimiert werden
+\end{itemize}}
+
+\note[item]{Vorteil dieses Ansatzes: Ableitbare Kostenfunktion}
+\note[item]{Formel erläutern:
+\begin{itemize}
+    \item Differenz quadriert um Vorzeichen zu verlieren
+    \item Faktor 1 / 2 vorschieben um Ableitung einfacher zu gestalten
+    \item über alle Trainingsdatensätze der Menge iterieren
+    \begin{itemize}
+        \item Größe i
+    \end{itemize}
+\end{itemize}}
+
+\note[item]{Für genaueres Verständnis erstmal Einschub mit Gradientenverfahren}
+
 \end{frame}
 
 
@@ -59,6 +92,22 @@ J(w)  = \frac{1}{2} \sum_{i} (\text{target}^{(i)} - \text{output}^{(i)})^2 \quad
 \begin{figure}
 \includegraphics[width=.8\linewidth]{./geschichtliches/adeline/img/adeline_gd1_alpha}
 \end{figure}
+
+
+\note[item]{Wesentlicher Nachteil der Sprungfunktion: Nicht stetig \& damit nicht differenzierbar}
+\note[item]{Adeline verwendet Identitätsfunktion}
+\note[item]{Abbildung erläutern, Metapher: Ball rollt Hügel herunter
+\begin{itemize}
+    \item Abbildung erstmal nur mit einem einzelnen Gewicht geplottet
+    \item Ableitung an einer bestimmten Stelle gleich der Steigung
+    \item Gradientenvektor gibt diese Richtung an
+    \begin{itemize}
+        \item Mehrdimensional wenn mehreren Eingabeargumenten vorhanden
+    \end{itemize}
+    \item Steigung muss invertiert werden
+\end{itemize}}
+
+\note[item]{Es folgt: Exkurs - Partielle Ableitungen}
 
 \end{frame}
 
@@ -88,8 +137,22 @@ J(w)  = \frac{1}{2} \sum_{i} (\text{target}^{(i)} - \text{output}^{(i)})^2 \quad
 \end{figure}
 
 \end{columns}
-\end{frame}
 
+
+\note[item]{Notation: Bruch
+\begin{itemize}
+    \item Zähler: Abzuleitende Funktion
+    \item Nenner: Betrachtete Komponente 
+\end{itemize}}
+
+\note[item]{Abbildung: Fkt. geplottet mit 2 Eingabekomponenten
+\begin{itemize}
+    \item Funktion: $z = f(x) = x^2 + y^2$
+    \item Metapher: Blickwinkel erläutern
+    \item nächste Folie miteinbeziehen
+\end{itemize}}
+
+\end{frame}
 
 
 \begin{frame}
@@ -117,7 +180,7 @@ J(w)  = \frac{1}{2} \sum_{i} (\text{target}^{(i)} - \text{output}^{(i)})^2 \quad
 
 \end{columns}
 
-
+\note[item]{Metapher: Blickwinkel erläutern}
 
 \end{frame}
 
@@ -129,6 +192,14 @@ J(w)  = \frac{1}{2} \sum_{i} (\text{target}^{(i)} - \text{output}^{(i)})^2 \quad
 \includegraphics[width=\linewidth]{./geschichtliches/adeline/img/adeline_learning_rate_alpha}
 \end{figure}
 
+\note[item]{Lernrate kann als Schrittweite verstanden werden}
+\note[item]{Zwei mögliche Probleme:
+\begin{itemize}
+    \item Overshooting: Schrittweite zu groß - Minimum wird nicht erkannt
+    \item Lokales Minimum wird gefunden - Globales bleibt unerkannt
+\end{itemize}}
+\note[item]{Gradientenabstieg bisher nur in 2 Dimensionen (siehe nächste Folie}
+
 \end{frame}
 
 
@@ -137,6 +208,11 @@ J(w)  = \frac{1}{2} \sum_{i} (\text{target}^{(i)} - \text{output}^{(i)})^2 \quad
 \begin{figure}
 \includegraphics[width=\linewidth]{./geschichtliches/adeline/img/3dPlot_1}
 \end{figure}
+
+\note[item]{Abbildung: Gradientenabstieg in 3 Dimensionen geplottet}
+\note[item]{Hier Ball-Metapher dargestellt}
+\note[item]{Es folgt kompletter Durchlauf des Gradientenabsiegs}
+
 \end{frame}
 
 
@@ -145,6 +221,10 @@ J(w)  = \frac{1}{2} \sum_{i} (\text{target}^{(i)} - \text{output}^{(i)})^2 \quad
 \begin{figure}
 \includegraphics[width=\linewidth]{./geschichtliches/adeline/img/3dPlot_2}
 \end{figure}
+
+\note[item]{Abbildung: Gradientenabstieg in 3 Dimensionen geplottet}
+\note[item]{Hier durchgeführter Gradientenabstieg}
+
 \end{frame}
 
 
@@ -184,6 +264,29 @@ $}
 \item Angleichung der Gewichte $w = w + \Delta w$
 \end{itemize}
 
+\note[item]{Gradientenvektor: Richtung des \emph{Abstiegs}
+\begin{itemize}
+    \item mit \emph{Nabla} dargestellt (Dreieck)
+    \item kann auch mehrdimensional sein
+\end{itemize}}
+
+\note[item]{Vektorielle Darstellung
+\begin{itemize}
+    \item Eingabeparameter werden als Vektor verstanden
+    \item mit Gradientenvektor und Negativer Lernrate verrechnet / multipliziert
+\end{itemize}}
+
+\note[item]{Komponentenweise Darstellung
+\begin{itemize}
+    \item negative Lernrate mit partieller Ableitung verrechnet
+\end{itemize}}
+
+\note[item]{Angleichung der Gewichte:
+\begin{itemize}
+    \item wie schon bei vorherigen Modellen
+    \item Mathematische Darstellung: $w = w + \Delta w$
+\end{itemize}}
+
 \end{frame}
 
 
@@ -200,7 +303,25 @@ $}
 \end{align*}
 
 
+\note[item]{Ableiten der bisher vorgestellten Kostenfuntion (Least-Mean-Square)}
+\note[item]{Summe und Faktor vorziehen}
+\note[item]{Kettenregel anwenden
+\begin{itemize}
+    \item äußere Ableitung bereits bestimmt (Vorfaktor 2)
+    \item innere Ableitung steht noch aus
+\end{itemize}}
 
+\note[item]{Faktor 2 kann vorgezogen werden, wird mit 1/2 verrechnet}
+\note[item]{Ursprüngliche Notation für die Ausgabe wird eingesetzt:
+\begin{itemize}
+    \item Ausgabe: $\sum_j w_j x^{(i)}_{j}$
+\end{itemize}}
+
+\note[item]{Summe aufgelöst
+\begin{itemize}
+    \item es wird nach $w_j$ abgeleitet
+    \item alle Summanden in denen dieser Faktor nicht vorkommt entfallen
+\end{itemize}}
 
 \end{frame}
 
