@@ -229,6 +229,7 @@ z^l & = w^l a^{l-1}+b^l \\
 
 \begin{center}
 \begin{forest}
+[\ldots
  [$z^{l+1}$
  	[$w^{l+1}$]
  	[$a^{l}$
@@ -242,6 +243,7 @@ z^l & = w^l a^{l-1}+b^l \\
  	]
  	[$b^{l+1}$]
  ]
+]
 \end{forest}
 \end{center}
 
@@ -250,10 +252,12 @@ z^l & = w^l a^{l-1}+b^l \\
 
 
 \note[item]{Um von letzter Schicht auf vorherige Fehler zu schließen: $\delta^{l+1}_k = \partial C / \partial z^{l+1}_k$}
-
-%\item Zusammenhang zwischen Fehler zweier Schichten herleiten
-%\item Es gilt: $\delta^l_j = \partial C / \partial z^l_j$ sowie $\delta^{l+1}_k = \partial C / \partial z^{l+1}_k$
-
+\note[item]{Baum: Netz-Ausschnitt mit nur einem Neuron pro Schicht}
+\note[item]{Über Kettenregel wird nach aktuellem Z-Wert abgeleitet}
+\note[item]{Reihenfolge vertauscht
+\begin{itemize}
+    \item Letzter Term mit Definition $\delta^{l+1}_k = \partial C / \partial z^{l+1}_k$ ausgetauscht
+\end{itemize}}
 
 \end{frame}
 
@@ -285,6 +289,30 @@ z^{l+1}_k & = \sum_j w^{l+1}_{kj} a^l_j +b^{l+1}_k = \sum_j w^{l+1}_{kj} \sigma(
 \end{itemize}
 
 \end{block}
+
+\note[item]{Zwischenschritt: Z-Wert des nächsten Layers
+\begin{itemize}
+    \item Definition Z-Wert eingesetzt
+    \item Aktivierung wird mit Sigma-Funktion ausgetauscht
+\end{itemize}}
+
+\note[item]{Diese Gleichung wird nun nach $\partial z^l_j$ abgeleitet}
+
+
+\note[item]{Komponentenweise Darstellung: 
+\inlineeq{\delta^l_j = \sum_k w^{l+1}_{kj}  \delta^{l+1}_k \sigma'(z^l_j)}
+\begin{itemize}
+    \item vorherigen Zwischenschritte wurden wieder in die ursprüngliche Form eingesetzt
+    \inlineeq{\sum_k \frac{\partial z^{l+1}_k}{\partial z^l_j} \delta^{l+1}_k}
+    \item Reihenfolge der Faktoren wurde lediglich etwas verändert
+\end{itemize}}
+
+\note[item]{Vektorielle Darstellung: 
+\inlineeq{\delta^l = ((w^{l+1})^T \delta^{l+1}) \odot \sigma'(z^l)}
+\begin{itemize}
+    \item Summfunktion durch Vektormultiplikation ausgetauscht
+\end{itemize}}
+
 \end{frame}
 
 
@@ -321,6 +349,7 @@ z^{l+1}_k & = \sum_j w^{l+1}_{kj} a^l_j +b^{l+1}_k = \sum_j w^{l+1}_{kj} \sigma(
 
 \begin{center}
 \begin{forest}
+[\ldots
  [$z^{l+1}$
  	[$w^{l+1}$]
  	[$a^{l}$
@@ -334,12 +363,32 @@ z^{l+1}_k & = \sum_j w^{l+1}_{kj} a^l_j +b^{l+1}_k = \sum_j w^{l+1}_{kj} \sigma(
  	]
  	[$b^{l+1}$]
  ]
+]
 \end{forest}
 \end{center}
 
 \end{column}
 \end{columns}
+
+\note[item]{Bisher nur die Ableitung nach Z-Wert betrachtet
+\begin{itemize}
+    \item Nun nach Schwellwerten \& Gewichten
+\end{itemize}}
+
+\note[item]{Kettenregel: Ableitung nach dem Z-Wert vor Ableitung nach Gewicht / Schwellwert schalten}
+\note[item]{\textbf{Schwellwerte}: der hintere Bruch entfällt komplett
+\begin{itemize}
+    \item vordere Teil $\frac{\partial C}{\partial z^l_j}$ entspricht bereits $\delta^l_j$
+\end{itemize}}
+
+\note[item]{\textbf{Gewichte}: obere Z-Wert Gleichung nach Gewicht abgeleitet
+\begin{itemize}
+    \item $w^l_{kj}a^{l-1}_j \rightarrow a^{l-1}_k$
+    \item Fehler per Kettenregel angehängt
+\end{itemize}}
+
 \end{frame}
+
 
 \begin{frame}
 \frametitle{Anwendung}
@@ -374,5 +423,28 @@ z^{l+1}_k & = \sum_j w^{l+1}_{kj} a^l_j +b^{l+1}_k = \sum_j w^{l+1}_{kj} \sigma(
 
 
 \end{itemize}
+
+
+\note[item]{Menge an Trainingsdatensätzen auswählen
+\begin{itemize}
+    \item Siehe Stachastischer Gradientenabstieg
+\end{itemize}}
+
+\note[item]{Für jeden Datensatz
+\begin{itemize}
+    \item \emph{Feedforward} Aktivierungsvektor / Z-Wert jeder Schicht berechnen
+    \item \emph{Ausgabe-Fehler}: Fehler letzter Schicht berechnen
+    \item \emph{Backpropagation-Fehler}: Ausgehend von letzter Schicht Fehler bis hin zur Ersten berechnen
+\end{itemize}}
+
+\note[item]{Gradientenabstieg mit Ergebnissen
+\begin{itemize}
+	\item Gewichte: $w^l \rightarrow w^l-\frac{\eta}{m} \sum_x \delta^{x,l} (a^{x,l-1})^T$
+    \begin{itemize}
+        \item hintere Teil: durchschnittlicher Fehler über alle \emph{m} Trainingsdatensätze
+        \item Lernrate als Faktor davorgehängt
+    \end{itemize}
+	\item Schwellwerte: $b^l \rightarrow b^l-\frac{\eta}{m} \sum_x \delta^{x,l}$
+\end{itemize}}
 
 \end{frame}
