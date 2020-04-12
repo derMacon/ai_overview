@@ -4,7 +4,7 @@
 \frametitle{Notation}
 
 \begin{figure}
-	\includegraphics[width=\linewidth]{./geschichtliches/backpropagation/img/weight_notation}
+	\includegraphics[width=\linewidth]{./aktuelleEntwicklung/backpropagation/img/weight_notation}
 \end{figure}
 
 \note[item]{l: Exponent, steht für die Schicht
@@ -22,7 +22,7 @@
 \frametitle{Notation}
 
 \begin{figure}
-	\includegraphics[width=.6\linewidth]{./geschichtliches/backpropagation/img/biasAct_notation}
+	\includegraphics[width=.6\linewidth]{./aktuelleEntwicklung/backpropagation/img/biasAct_notation}
 \end{figure}
 
 \begin{columns}
@@ -50,6 +50,7 @@ z^l & = w^l a^{l-1}+b^l \\
 \note[item]{Jede Komponente einzeln mit $\sigma$ verarbeitet}
 \note[item]{Abstraktion vom Ausgabewert vor der Aktivierungsfkt
 \begin{itemize}
+    \item \emph{Unterschied zwischen Aktivierung und Z-Wert erläutern}
     \item hilft später beim Ableiten
 \end{itemize}}
 
@@ -152,9 +153,10 @@ z^l & = w^l a^{l-1}+b^l \\
 
 \end{columns}
 
-\note[item]{Baum nur für Netz mit einer einzigen Aktivierung}
+\note[item]{Baum nur für Netz mit einer einzigen Aktivierung repräsentativ}
 \note[item]{Zusammenhang mit Kettenregel erläutern}
 \note[item]{Großes L immer für Ausgabeschicht}
+\note[item]{Summfunktion: für mehrere Neuronen pro Schicht generalisiert}
 
 \end{frame}
 
@@ -173,8 +175,28 @@ z^l & = w^l a^{l-1}+b^l \\
 \end{itemize}
 \end{block}
 
-\note[item]{$\nabla_a C$ entspricht dabei Vektor aller $\frac{\partial C}{\partial a^L_j}$ einer Schicht}
-\note[item]{$\odot$: Komponentenweise Multiplikation zweier Vektoren}
+
+
+
+\note[item]{Um den Fehlervektor der letzten Schicht zu bestimmen:
+\inlineeq{\delta^L = \nabla_a C \odot \sigma'(z^L)}
+\begin{itemize}
+    \item $\nabla_a C$ entspricht dabei Vektor aller $\frac{\partial C}{\partial a^L_j}$ einer Schicht
+    \item $\odot$: Hadamard-Produkt
+    \begin{itemize}
+        \item Komponentenweise Multiplikation zweier Vektoren
+        \item Ausgabe ebenfalls wieder ein Vektor
+    \end{itemize}
+\end{itemize}}
+
+\note[item]{Äquivalent zu:
+\inlineeq{\delta^L = (a^L-y) \odot \sigma'(z^L)}
+\begin{itemize}
+    \item \inlineeq{(a^L-y)} Ausgabe des Systems minus erwartete Ausgabe
+\end{itemize}}
+
+\note[item]{Um die Fehler komponentenweise zu bestimmen:
+\inlineeq{\delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j)}}
 
 \end{frame}
 
@@ -225,6 +247,13 @@ z^l & = w^l a^{l-1}+b^l \\
 
 \end{column}
 \end{columns}
+
+
+\note[item]{Um von letzter Schicht auf vorherige Fehler zu schließen: $\delta^{l+1}_k = \partial C / \partial z^{l+1}_k$}
+
+%\item Zusammenhang zwischen Fehler zweier Schichten herleiten
+%\item Es gilt: $\delta^l_j = \partial C / \partial z^l_j$ sowie $\delta^{l+1}_k = \partial C / \partial z^{l+1}_k$
+
 
 \end{frame}
 
