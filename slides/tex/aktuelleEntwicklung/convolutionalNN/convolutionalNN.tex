@@ -53,7 +53,17 @@
     \item unterschiedliche Personen für Trainings- und Evaluierungsdatensätze
 \end{itemize}}
 
-\note[item]{soll erkennen ob ein Bild zu einer (oder mehreren) bestimmten Klasse(n) gehört}
+\note[item]{soll erkennen ob ein Bild zu einer (oder mehreren) bestimmten Klasse(n) gehört
+\begin{itemize}
+    \item von \emph{low-level} Eigenschaften auf komplexe Formen schließen
+\end{itemize}}
+
+\note[item]{Covolutional NN: zwei wesentliche Komponenten
+\begin{itemize}
+    \item \emph{Convolutional layer}: Filter
+    \item \emph{Pooling Layer}: Aggregations-Schichten
+    \item wiederholen sich abwechselnd
+\end{itemize}}
 
 \end{frame}
 
@@ -81,10 +91,13 @@
     \item entsprechend eventuell auch mehrere Dimensionen im Array
 \end{itemize}}
 
-%k\note[item]{Ein Covolutional NN besteht im wesentlichen 
-%k\note[item]{
-%k\note[item]{
-%k\note[item]{
+\note[item]{Fenster \emph{läuft} Eingabematrix ab
+\begin{itemize}
+    \item dadurch simple Formen erkennen
+    \item Beispiel folgt
+\end{itemize}}
+
+\note[item]{Hidden Layer kann als Ansammlung von low-level Merkmalen verstanden werden}
 
 \end{frame}
 
@@ -105,7 +118,7 @@
 
 \item Praxis
 \begin{itemize}
-	\item \emph{Convolutional Layer} mit 32 oder 16 Bit
+	%\item \emph{Convolutional Layer} mit 32 oder 16 Bit
 	\item Jeder Filter generiert eigene Ausgabematrix
 	\item Nächster Convolutional Layer verwendet Ausgabematrizen als Input
 	\item Ausgabe wird in \emph{Pooling Layer} gesteckt
@@ -114,8 +127,14 @@
 \end{itemize}
 
 
-\note[item]{Bsp. Filter 2 x 2, Schrittweite: 2 - führt zu Halbierung der InputMatrix}
-\note[item]{Im Bsp. hängen immer 4 Pixel an einem Filter, die Eingabematrix wird gefaltet (convolute)}
+\note[item]{Bsp. Filter 2 x 2, Schrittweite: 2 - führt zu Halbierung der InputMatrix
+\begin{itemize}
+    \item Im Bsp. hängen immer 4 Pixel an einem Filter, die Eingabematrix wird gefaltet (convolute)
+\end{itemize}}
+
+\note[item]{Filter generieren eigene Ausgabematrix}
+\note[item]{Filter können auch auf Filter folgen}
+\note[item]{von Filtern generierte Ausgaben werden auch \emph{activation map} oder \emph{feature map} genannt}
 
 \end{frame}
 
@@ -126,6 +145,27 @@
 \begin{figure}
 	\includegraphics[width=\linewidth]{./aktuelleEntwicklung/convolutionalNN/img/filter}
 \end{figure}
+
+\note[item]{Bild erläutern
+\begin{itemize}
+    \item Beispiel: Ziffer 7
+    \item Strich am oberen Rand
+    \item Gewichtsmatrix hier getrennt aufgeführt
+    \item rot: negative Werte
+    \item grün: positive Werte
+\end{itemize}}
+
+\note[item]{Dieses Feature (oberer Strich) kann aber auch bei anderen Ziffern auftauchen
+\begin{itemize}
+    \item Bsp. schlecht geschriebene Ziffer Null
+\end{itemize}}
+
+\note[item]{Erkannte Merkmale können von weiteren Filtern genutzt werden
+\begin{itemize}
+    \item erinnert an ganz alte Prinzipien 
+    \item wie schonn beim Adeline Modell, hier jedoch mit mehreren Schichten
+\end{itemize}}
+
 \end{frame}
 
 
@@ -144,7 +184,29 @@
 \end{itemize}
 
 
-\note[item]{ während die Größe des Inputs durch die Faltungen und das Pooling immer weiter reduziert wird, erhöht sich die Anzahl der Filter zur Erkennung von übergeordneten Signalen zunehmend}
+
+\note[item]{Pooling Layer
+\begin{itemize}
+    \item aggregiert Ergebnisse von Convolutional Layern
+    \item Zweck: nur die relevantesten Signale an die nächste Schicht weitergeben 
+\end{itemize}}
+
+\note[item]{\emph{während die Größe des Inputs durch die Faltungen und das Pooling immer weiter reduziert wird, erhöht sich die Anzahl der Filter zur Erkennung von übergeordneten Signalen zunehmend}}
+
+\note[item]{Verschiedene Pooling-Mechanismen:
+\begin{itemize}
+    \item MaxPooling: 
+    \begin{itemize}
+        \item am weitesten verbreitet
+        \item maximale Eingabewert wird weitergegeben
+    \end{itemize}
+    \item fractional max pooling
+    \item lp pooling
+    \item mean pooling
+    \item stochastic pooling 
+    \item spatial pooling
+    \item generalized pooling
+\end{itemize}}
 
 \end{frame}
 
@@ -154,7 +216,7 @@
 \frametitle{Fully Connected Layer}
 
 \begin{itemize}
-\item Ausgagngspunkt: \emph{High-Level} Merkmale bereits durch frühere Schichten erkannt. 
+\item Ausgagngspunkt: \emph{High-Level} Merkmale bereits durch frühere Schichten erkannt 
 \item Alle Neuronen der Ausgabeschicht sowie dieser Merkmale alle direkt miteinander verbunden
 \item Ausgabe sollte mit den richtigen Gewichten / Schwellwerten relativ eindeutige Ausgaben generieren
 \end{itemize}
@@ -164,6 +226,22 @@
 \end{figure}
 
 
-\end{frame}
+\note[item]{auch \emph{dense Layer} genannt}
+\note[item]{Ausgagngspunkt: \emph{High-Level} Merkmale bereits durch frühere Schichten erkannt
+\begin{itemize}
+    \item Neuronen halten diese Eigenschaften
+\end{itemize}}
 
+\note[item]{Ausgabeneuronen repräsentieren verschienden Klassen
+\begin{itemize}
+    \item siehe Klassifizierungsproblem
+    \item Fully connected Layer: stellt verbindung zwischen letztem hidden Layer und Ausgabelayer bereit
+\end{itemize}}
+
+\note[item]{Beispiel: Schnörkel zu Ziffern interpretieren
+\begin{itemize}
+    \item 10 dimensionaler Ausgabevektor bei Ziffern
+\end{itemize}}
+
+\end{frame}
 
