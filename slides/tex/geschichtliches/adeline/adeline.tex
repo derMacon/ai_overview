@@ -229,6 +229,41 @@ J(w)  = \frac{1}{2} \sum_{i} (\text{target}^{(i)} - \text{output}^{(i)})^2 \quad
 
 
 \begin{frame}
+\frametitle{Kostenfunktion ableiten}
+
+\begin{align*}
+\frac{\partial J}{\partial w_j} & = \frac{\partial }{\partial w_j} \frac{1}{2} \sum_i  (t^{(i)} - o^{(i)})^2 \\
+ & = \frac{1}{2} \sum_i \frac{\partial }{\partial w_j} (t^{(i)} - o^{(i)})^2 \\
+ & = \frac{1}{2} \sum_i 2 (t^{(i)} - o^{(i)}) \frac{\partial }{\partial w_j} (t^{(i)} - o^{(i)}) \\
+ & = \sum_i (t^{(i)} - o^{(i)}) \frac{\partial }{\partial w_j} \bigg(t^{(i)} - \sum_j w_j x^{(i)}_{j}\bigg) \\
+ & = \sum_i  (t^{(i)} - o^{(i)})(-x^{(i)}_{j})
+\end{align*}
+
+
+\note[item]{Ableiten der bisher vorgestellten Kostenfuntion (Least-Mean-Square)}
+\note[item]{Summe und Faktor vorziehen}
+\note[item]{Kettenregel anwenden
+\begin{itemize}
+    \item äußere Ableitung bereits bestimmt (Vorfaktor 2)
+    \item innere Ableitung steht noch aus
+\end{itemize}}
+
+\note[item]{Faktor 2 kann vorgezogen werden, wird mit 1/2 verrechnet}
+\note[item]{Ursprüngliche Notation für die Ausgabe wird eingesetzt:
+\begin{itemize}
+    \item Ausgabe: $\sum_j w_j x^{(i)}_{j}$
+\end{itemize}}
+
+\note[item]{Summe aufgelöst
+\begin{itemize}
+    \item es wird nach $w_j$ abgeleitet
+    \item alle Summanden in denen dieser Faktor nicht vorkommt entfallen
+\end{itemize}}
+
+\end{frame}
+
+
+\begin{frame}
 \frametitle{Gradientenverfahren}
 
 \begin{block}{Gradientenverfahren - Anwendung}
@@ -290,38 +325,4 @@ $}
 \end{frame}
 
 
-
-\begin{frame}
-\frametitle{Kostenfunktion ableiten}
-
-\begin{align*}
-\frac{\partial J}{\partial w_j} & = \frac{\partial }{\partial w_j} \frac{1}{2} \sum_i  (t^{(i)} - o^{(i)})^2 \\
- & = \frac{1}{2} \sum_i \frac{\partial }{\partial w_j} (t^{(i)} - o^{(i)})^2 \\
- & = \frac{1}{2} \sum_i 2 (t^{(i)} - o^{(i)}) \frac{\partial }{\partial w_j} (t^{(i)} - o^{(i)}) \\
- & = \sum_i (t^{(i)} - o^{(i)}) \frac{\partial }{\partial w_j} \bigg(t^{(i)} - \sum_j w_j x^{(i)}_{j}\bigg) \\
- & = \sum_i  (t^{(i)} - o^{(i)})(-x^{(i)}_{j})
-\end{align*}
-
-
-\note[item]{Ableiten der bisher vorgestellten Kostenfuntion (Least-Mean-Square)}
-\note[item]{Summe und Faktor vorziehen}
-\note[item]{Kettenregel anwenden
-\begin{itemize}
-    \item äußere Ableitung bereits bestimmt (Vorfaktor 2)
-    \item innere Ableitung steht noch aus
-\end{itemize}}
-
-\note[item]{Faktor 2 kann vorgezogen werden, wird mit 1/2 verrechnet}
-\note[item]{Ursprüngliche Notation für die Ausgabe wird eingesetzt:
-\begin{itemize}
-    \item Ausgabe: $\sum_j w_j x^{(i)}_{j}$
-\end{itemize}}
-
-\note[item]{Summe aufgelöst
-\begin{itemize}
-    \item es wird nach $w_j$ abgeleitet
-    \item alle Summanden in denen dieser Faktor nicht vorkommt entfallen
-\end{itemize}}
-
-\end{frame}
 

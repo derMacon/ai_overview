@@ -49,8 +49,8 @@ Um die generelle Notation des gesamten Modells zu vereinfachen bietet es sich au
 
 \begin{equation} \label{eq:aktFkt2}
 g(\mathbf{z}) =\begin{cases}
-	0 & \mbox{if } \mathbf{z} \leq 0 \\
-    1 & \mbox{if } \mathbf{z} > 0
+    1 & \mbox{if } z \geq 0 \\
+	-1 & \mbox{if } z < 0 
   \end{cases}
 \end{equation}
 
@@ -72,7 +72,7 @@ Wichtig hierbei, es wird ein zusätzliches Gewicht welches den negativen Schwell
 
 \FloatBarrier
 
-Letztendlich sei jedoch erwähnt, dass es in der Literatur auch öfters eine Darstellung mittels eines Schwellwerts (engl. \emph{Bias}) gibt, siehe Gleichung \autoref{eq:aktFkt3} \cite{dlnielsen}
+Letztendlich sei jedoch erwähnt, dass es in der Literatur auch öfters eine Darstellung mittels eines Schwellwerts (engl. \emph{Bias}) gibt, siehe \autoref{eq:aktFkt3} \cite{dlnielsen} \footnote{Die Form der Ungleichungen sowie die genauen Ausgabewerte können je nach Quelle variieren.}
 
 \begin{equation} \label{eq:aktFkt3}
 \mbox{output} =\begin{cases}
